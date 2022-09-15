@@ -42,7 +42,7 @@ $('#upload').change(function (){
             if(rs.error === false){
                 $('#image_show').html('<a href="'+ rs.url+'" target="_blank">' +
                     '<img src="'+rs.url+'" width="100px;" alt=""></a>');
-                $('#file').val(rs.url);
+                $('#thumb').val(rs.url);
             }
             else {
                 alert('Upload failed');
