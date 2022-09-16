@@ -72,7 +72,6 @@ class ProductController extends Controller
                 'message' => 'Xóa thành công sản phẩm'
             ]);
         }
-
         return response()->json(['error' => true]);
     }
 }

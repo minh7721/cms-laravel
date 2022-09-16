@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Services\Slider\SliderService;
 
@@ -28,15 +29,49 @@ class SliderController extends Controller
             'url' => 'required'
         ]);
 
-        $this->slider->insert($request);
-
+        $result = $this->slider->insert($request);
+        if($result){
+            return redirect('/admin/slider/list');
+        }
         return redirect()->back();
     }
 
     public function index(){
         return view('admin.slider.list',[
-            'tittle' => 'Danh sách slider',
+            'title' => 'Danh sách slider',
             'sliders' => $this->slider->get()
         ]);
+    }
+
+    public function show(Slider $slider){
+        return view('admin.slider.edit',[
+            'title' => 'Cập nhật silder',
+            'slider' => $slider
+        ]);
+    }
+
+    public function update(Request $request, Slider $slider){
+        $this->validate($request, [
+            'name' => 'required',
+            'thumb' => 'required',
+            'url' => 'required'
+        ]);
+
+        $result = $this->slider->update($request, $slider);
+        if($result){
+            return redirect('/admin/slider/list');
+        }
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request){
+        $result = $this->slider->delete($request);
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công slider'
+            ]);
+        }
+        return response()->json(['error' => true]);
     }
 }

@@ -22,7 +22,11 @@
                 <td>{{$slider->id}}</td>
                 <td>{{$slider->name}}</td>
                 <td>{{$slider->url}}</td>
-                <td>{{$slider->thumb}}</td>
+                <td>
+                    <a>
+                        <img src="{{$slider->thumb}}" style="height: 60px;">
+                    </a>
+                </td>
                 <td>{{$slider->sort_by}}</td>
                 <td>{!! Helper::active($slider->active) !!}</td>
                 <td>{{$slider->updated_at}}</td>
