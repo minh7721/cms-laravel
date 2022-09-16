@@ -182,6 +182,7 @@
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
+        <a href="/admin/users/login/logout" type="submit" class="btn btn-danger text-white">Đăng xuất</a>
     </aside>
     <!-- /.control-sidebar -->
 </div>

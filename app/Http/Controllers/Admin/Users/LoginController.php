@@ -15,8 +15,7 @@ class LoginController extends Controller
         ]);
     }
 
-    public function store(Request $request){
-//        dd($request->input());
+    public function authenticate(Request $request){
         $this->validate($request, [
             'email' => 'required|email:filter',
             'password' => 'required'
@@ -32,5 +31,11 @@ class LoginController extends Controller
 
         Session::flash('error', 'Email hoặc password không chính xác');
         return redirect()->back();
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/admin/users/login');
     }
 }
