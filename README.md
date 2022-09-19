@@ -19,9 +19,19 @@ B5: Tạo key cho file .env
 
 `php artisan key:generate`
 
-B5: Thực hiện câu lệnh sau trên terminal để tạo CSDL:
+B6: Thực hiện câu lệnh sau trên terminal để tạo CSDL:
 
 `php artisan migrate`
 
-B6: CHạy thử chương trình : 
+B7: Chạy câu lệnh sau:
+
+`php artisan db:seed`
+
+B8: CHạy thử chương trình : 
 `php artisan serve`
+
+### Đăng nhập vào tk admin
+
+Tài khoản: nhatminh7721@gmail.com
+
+Password: minh

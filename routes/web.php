@@ -71,5 +71,5 @@ Route::middleware(['auth'])->group(function (){
 
 });
 
-Route::get('/', [MainController::class, 'index']);
-
+//Route::get('/', [MainController::class, 'index']);
+Route::get('/', [LoginController::class, 'index'])->name('login');
