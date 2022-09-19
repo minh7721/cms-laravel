@@ -20,7 +20,13 @@ B5: Tạo key cho file .env
 `php artisan key:generate`
 
 B5: Thực hiện câu lệnh sau trên terminal để tạo CSDL:
+
 `php artisan migrate`
 
-B6: CHạy thử chương trình : 
+B6: Chạy lệnh sau để tạo đường dẫn uploads file ảnh
+
+`php artisan storage:link
+`
+
+B7: CHạy thử chương trình : 
 `php artisan serve`

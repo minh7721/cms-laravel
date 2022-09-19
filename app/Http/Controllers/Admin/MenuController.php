@@ -41,6 +41,9 @@ class MenuController extends Controller
     public function store(CreateFormRequest $request): RedirectResponse
     {
         $result = $this->menuService->create($request);
+        if($result){
+            return redirect('/admin/menus/list');
+        }
         return redirect()->back();
     }
 
@@ -70,8 +73,10 @@ class MenuController extends Controller
     }
 
     public function update(Menu $menu, CreateFormRequest $request){
-        $this->menuService->update($request, $menu);
-
-        return redirect('/admin/menus/list');
+        $result = $this->menuService->update($request, $menu);
+        if($result){
+            return redirect('/admin/menus/list');
+        }
+        return redirect()->back();
     }
 }

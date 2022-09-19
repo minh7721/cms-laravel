@@ -36,11 +36,15 @@ class ProductController extends Controller
             'title' => 'Thêm sản phẩm mới',
             'menus' => $this->productService->getMenu()
         ]);
+
     }
 
     public function store(ProductRequest $request): RedirectResponse
     {
         $result = $this->productService->insert($request);
+        if($result){
+            return redirect('/admin/product/list');
+        }
         return redirect()->back();
     }
 
