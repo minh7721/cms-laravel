@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'MinhAdmin',
             'email' => 'nhatminh7721@gmail.com',
-            'password' => '$2y$10$kYAkQoqtOjAlCTMip7J9VeCPjfddOK4PJsz1nShHGlTJGntcwJoNO	',
+            'password' => '$2y$10$kYAkQoqtOjAlCTMip7J9VeCPjfddOK4PJsz1nShHGlTJGntcwJoNO',
         ]);
     }
 }
