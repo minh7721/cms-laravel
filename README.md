@@ -1,12 +1,26 @@
 ## CMS Laravel
 Đề bài yêu cầu tạo một CMS với những tính năng CRUD cơ bản Thực hiện bởi: Hoàng Nhật Minh
+Download code và run code tại đường dẫn https://github.com/minh7721/cms-laravel.git
+
 Cách sử dụng kết quả:
 
-`B1: Config database ở file .env`
+B1: 
+Coppy .env.example sang .env vaf Config database ở file .env
 
-`B2: composer install`
+B2:
+`composer install`
 
-`B3: Thực hiện câu lệnh sau trên terminal để tạo CSDL: php artisan migrate`
+B3:`npm install`
 
+B4:
+`npm install --save @ckeditor/ckeditor5-build-classic`
 
-Download code và run code tại đường dẫn https://github.com/minh7721/frontend-pratice.git hoặc truy cập website https://minh7721.github.io/frontend-pratice/ hoặc http://minhhn77.xyz/
+B5: Tạo key cho file .env
+
+`php artisan key:generate`
+
+B5: Thực hiện câu lệnh sau trên terminal để tạo CSDL:
+`php artisan migrate`
+
+B6: CHạy thử chương trình : 
+`php artisan serve`
