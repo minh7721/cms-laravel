@@ -11,4 +11,8 @@ class MainController extends Controller
             'title' => 'Trang chủ'
         ]);
     }
+
+    public function show(){
+
+    }
 }
