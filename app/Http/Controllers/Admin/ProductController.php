@@ -11,7 +11,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -77,5 +76,13 @@ class ProductController extends Controller
             ]);
         }
         return response()->json(['error' => true]);
+    }
+
+    public function preview(Product $product){
+        return view('admin.product.preview', [
+            'title' => 'Chi tiết sản phẩm',
+            'product' => $product,
+            'menus' => $this->productService->getMenu()
+        ]);
     }
 }

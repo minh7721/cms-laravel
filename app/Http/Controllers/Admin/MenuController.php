@@ -79,4 +79,12 @@ class MenuController extends Controller
         }
         return redirect()->back();
     }
+
+    public function preview(Menu $menu){
+        return view('admin.menu.preview', [
+            'title' => 'Chi tiết danh mục',
+            'menu' => $menu,
+            'menus' => $this->menuService->getParent()
+        ]);
+    }
 }

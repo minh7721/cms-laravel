@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function (){
 
         #Menu
         Route::prefix('menus')->group(function (){
+            Route::get('preview/{menu}', [MenuController::class, 'preview']);
             Route::get('add', [MenuController::class, 'create']);
             Route::post('add', [MenuController::class, 'store']);
             Route::get('list', [MenuController::class, 'index']);
@@ -47,6 +48,7 @@ Route::middleware(['auth'])->group(function (){
 
         #Product
         Route::prefix('product')->group(function (){
+            Route::get('preview/{product}', [ProductController::class, 'preview']);
             Route::get('add', [ProductController::class, 'create']);
             Route::post('add', [ProductController::class, 'store']);
             Route::get('list', [ProductController::class, 'index']);
@@ -57,6 +59,7 @@ Route::middleware(['auth'])->group(function (){
 
         #Slider
         Route::prefix('slider')->group(function (){
+            Route::get('preview/{slider}', [SliderController::class, 'preview']);
             Route::get('add', [SliderController::class, 'create']);
             Route::post('add', [SliderController::class, 'store']);
             Route::get('list', [SliderController::class, 'index']);

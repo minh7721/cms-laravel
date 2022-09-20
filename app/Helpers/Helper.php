@@ -17,10 +17,13 @@ class Helper
                         <td>'. self::active($menu->active) .'</td>
                         <td>'. $menu->updated_at .'</td>
                         <td>
+                               <a class="btn btn-warning btn-sm" href="/admin/menus/preview/'. $menu->id.'">
+                                    <i class="fa fa-eye"></i>
+                                </a>
                                <a class="btn btn-primary btn-sm" href="/admin/menus/edit/'. $menu->id.'">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                               <a href="/admin/menus/" class="btn btn-danger btn-sm" onclick="removeRow('.$menu->id.',\'/admin/menus/destroy/\')">
+                               <a href="" class="btn btn-danger btn-sm" onclick="removeRow('.$menu->id.',\'/admin/menus/destroy/\')">
                                     <i class="fa fa-trash"></i>
                                </a>
                         </td>

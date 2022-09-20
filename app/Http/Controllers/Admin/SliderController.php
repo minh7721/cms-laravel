@@ -74,4 +74,11 @@ class SliderController extends Controller
         }
         return response()->json(['error' => true]);
     }
+
+    public function preview(Slider $slider){
+        return view('admin.slider.preview', [
+            'title' => 'Chi tiết slide',
+            'slider' => $slider
+        ]);
+    }
 }

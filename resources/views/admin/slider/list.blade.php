@@ -12,7 +12,7 @@
             <th>Sắp xếp</th>
             <th>Active</th>
             <th>Update at</th>
-            <th style="width: 100px;">&nbsp;</th>
+            <th style="width: 150px;">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -31,10 +31,13 @@
                 <td>{!! Helper::active($slider->active) !!}</td>
                 <td>{{$slider->updated_at}}</td>
                 <td>
+                    <a class="btn btn-warning btn-sm" href="/admin/slider/preview/{{$slider->id}}">
+                        <i class="fa fa-eye"></i>
+                    </a>
                     <a class="btn btn-primary btn-sm" href="/admin/slider/edit/{{$slider->id}}">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a href="/admin/slider/" class="btn btn-danger btn-sm"
+                    <a href="" class="btn btn-danger btn-sm"
                        onclick="removeRow({{$slider->id}}, '/admin/slider/destroy/')">
                         <i class="fa fa-trash"></i>
                     </a>

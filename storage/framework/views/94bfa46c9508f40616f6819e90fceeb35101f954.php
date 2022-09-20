@@ -1,0 +1,1 @@
+<?php /**PATH /var/www/cms-laravel/resources/views/admin/product/preview.blade.php ENDPATH**/ ?>

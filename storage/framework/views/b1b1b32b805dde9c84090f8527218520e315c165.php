@@ -12,7 +12,7 @@
             <th>Giá khuyến mãi</th>
             <th>Active</th>
             <th>Update at</th>
-            <th style="width: 100px;">&nbsp;</th>
+            <th style="width: 150px;">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -27,10 +27,14 @@
                 <td><?php echo Helper::active($product->active); ?></td>
                 <td><?php echo e($product->updated_at); ?></td>
                 <td>
+                    <a class="btn btn-warning btn-sm" href="/admin/product/preview/<?php echo e($product->id); ?>">
+                        <i class="fa fa-eye"></i>
+                    </a>
+
                     <a class="btn btn-primary btn-sm" href="/admin/product/edit/<?php echo e($product->id); ?>">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a href="/admin/menus/" class="btn btn-danger btn-sm"
+                    <a href="" class="btn btn-danger btn-sm"
                        onclick="removeRow(<?php echo e($product->id); ?>, '/admin/product/destroy/')">
                         <i class="fa fa-trash"></i>
                     </a>
