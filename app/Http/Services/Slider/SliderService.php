@@ -23,7 +23,7 @@ class SliderService
         return true;
     }
     public function get(){
-        return Slider::orderByDesc('id')->paginate('15');
+        return Slider::orderByDesc('id')->paginate(20);
     }
 
     public function update($request, $slider){
@@ -49,5 +49,9 @@ class SliderService
             return true;
         }
         return false;
+    }
+
+    public function search($search){
+        return Slider::orderbyDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
 }

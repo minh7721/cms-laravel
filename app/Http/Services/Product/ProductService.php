@@ -79,4 +79,8 @@ class ProductService
         }
         return false;
     }
+
+    public function search($search){
+        return Product::with('menu')->orderByDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
+    }
 }

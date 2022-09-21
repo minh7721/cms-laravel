@@ -12,4 +12,5 @@ class MainController extends Controller
             'title' => "Trang quản trị Admin"
         ]);
     }
+
 }

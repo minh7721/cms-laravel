@@ -21,11 +21,18 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->search ?? "";
+        if($search != ""){
+            $products = $this->productService->search($search);
+        }
+        else{
+            $products = $this->productService->get();
+        }
         return view('admin.product.list',[
             'title' => 'Danh sách sản phẩm',
-            'products' => $this->productService->get()
+            'products' => $products
         ]);
     }
 

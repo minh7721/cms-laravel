@@ -36,10 +36,17 @@ class SliderController extends Controller
         return redirect()->back();
     }
 
-    public function index(){
+    public function index(Request $request){
+        $search = $request->search ?? "";
+        if($search != ""){
+            $sliders = $this->slider->search($search);
+        }
+        else{
+            $sliders = $this->slider->get();
+        }
         return view('admin.slider.list',[
             'title' => 'Danh sách slider',
-            'sliders' => $this->slider->get()
+            'sliders' => $sliders
         ]);
     }
 

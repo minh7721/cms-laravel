@@ -22,11 +22,18 @@ class MenuController extends Controller
         $this->menuService = $menuService;
     }
 
-    public function index(): Factory|View|Application
+    public function index(Request $request): Factory|View|Application
     {
+        $search = $request->search ?? "";
+        if($search != ""){
+          $menus = $this->menuService->search($search);
+        }
+        else{
+            $menus = $this->menuService->getAll();
+        }
         return view('admin.menu.list', [
             'title' => 'Danh sách danh mục mới nhất',
-            'menus' => $this->menuService->getAll()
+            'menus' => $menus
         ]);
     }
 

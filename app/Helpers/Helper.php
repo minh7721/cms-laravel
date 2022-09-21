@@ -29,7 +29,6 @@ class Helper
                         </td>
                       </tr>
                     ';
-
                     unset($menus[$key]);
 
                     $html .= self::menu($menus, $menu->id, $char.'--');
@@ -51,12 +50,24 @@ class Helper
                 <li>
                     <a href="/danh-muc/'.$menu->id.'-'.$slug = Str::slug($menu->name, '-').'">
                         '.$menu->name.'
-                    </a>
-
-                </li>
-                ';
+                    </a>';
+                    if(self::isChild($menus, $menu->id)){
+                        $html .= '<ul class = "ml-2">';
+                        $html .= self::menus($menus, $menu->id);
+                        $html .= '</ul>';
+                    }
+                    $html .= '</li>';
             }
         }
         return $html;
+    }
+
+    public static function isChild($menus, $id){
+        foreach ($menus as $key => $menu){
+            if($menu->parent_id == $id){
+                return true;
+            }
+        }
+        return false;
     }
 }

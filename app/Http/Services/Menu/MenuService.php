@@ -14,7 +14,7 @@ class MenuService
     }
 
     public function getAll(){
-        return Menu::orderbyDesc('id')->paginate(10);
+        return Menu::orderbyDesc('id')->paginate(20);
     }
     public function create($request){
         try {
@@ -56,5 +56,9 @@ class MenuService
 
         Session::flash('success', 'Cập nhật thành công danh mục');
         return true;
+    }
+
+    public function search($search){
+        return Menu::orderbyDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
 }

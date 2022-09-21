@@ -2,6 +2,15 @@
 
 
 <?php $__env->startSection('content'); ?>
+    <div class="row mt-3">
+        <form action="" class="d-flex flex-row-reverse col-12">
+            <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
+            <div class="form-group">
+                <input type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên slider cần tìm">
+            </div>
+        </form>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -47,6 +56,7 @@
         </tbody>
     </table>
 
+    <?php echo $sliders->appends(request()->all())->links(); ?>
 
 <?php $__env->stopSection(); ?>
 

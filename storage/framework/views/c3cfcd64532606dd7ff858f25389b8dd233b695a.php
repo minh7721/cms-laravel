@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,7 +159,6 @@
                             <div class="card-header">
                                 <h3 class="card-title"><?php echo e($title); ?></h3>
                             </div>
-
                             <?php echo $__env->yieldContent('content'); ?>
                         </div>
                         <!-- /.card -->

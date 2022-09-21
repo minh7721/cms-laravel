@@ -2,6 +2,15 @@
 
 
 <?php $__env->startSection('content'); ?>
+    <div class="row mt-3">
+        <form action="" class="d-flex justify-content-end col-12">
+            <div class="form-group">
+                <input type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên danh mục cần tìm">
+            </div>
+            <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
+        </form>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -44,7 +53,7 @@
         </tbody>
     </table>
 
-    <?php echo $products->links(); ?>
+    <?php echo $products->appends(request()->all())->links(); ?>
 
 <?php $__env->stopSection(); ?>
 
