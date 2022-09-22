@@ -15,7 +15,7 @@ class SliderSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('menus')->insert([
+        DB::table('sliders')->insert([
             'id' => 1,
             'name' => 'Ảnh slider 1',
             'url' => 'https://pin.it/1GIaWUj',
