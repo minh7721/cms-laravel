@@ -13,7 +13,7 @@
                 <img src="/template/admin/dist/img/minhhn2.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">MinhHN MVP</a>
+                <a href="#" class="d-block">MinhHN</a>
             </div>
         </div>
 
