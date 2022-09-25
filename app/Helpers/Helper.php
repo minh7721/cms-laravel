@@ -14,6 +14,9 @@ class Helper
                       <tr>
                         <td>'. $menu->id .'</td>
                         <td>'. $char. $menu->name .'</td>
+                        <td>'. $char. $menu->parent_id .'</td>
+                        <td>'. $char. $menu->description .'</td>
+                        <td>'. $char. $menu->slug .'</td>
                         <td>'. self::active($menu->active) .'</td>
                         <td>'. $menu->updated_at .'</td>
                         <td>
@@ -39,7 +42,7 @@ class Helper
     }
 
     public static function active($active = 0){
-        return $active==0 ? "<p class='btn btn-danger'>NO</p>" : "<p class='btn btn-success'>YES</p>";
+        return $active==0 ? "<input type='radio'>" : "<input type='radio' checked>";
     }
 
     public static function menus($menus, $parent_id = 0){

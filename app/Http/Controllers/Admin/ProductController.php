@@ -24,15 +24,23 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $search = $request->search ?? "";
+        $category = $request->category ?? 0;
+        $status = $request->status ?? "";
+        $active = $status == 'active' ? 1 : 0 ;
         if($search != ""){
             $products = $this->productService->search($search);
         }
         else{
             $products = $this->productService->get();
         }
+        $menus = $this->productService->getMenu();
         return view('admin.product.list',[
             'title' => 'Danh sách sản phẩm',
-            'products' => $products
+            'products' => $products,
+            'menus' => $menus,
+            'search' => $search,
+            'category' => $category,
+            'status' => $status
         ]);
     }
 

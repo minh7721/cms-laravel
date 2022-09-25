@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label>Mô tả chi tiết</label>
-                <textarea disabled name="content" id="content" class="form-control">{{$product->content}}</textarea>
+                <p>{!! $product->content !!}</p>
             </div>
 
             <div class="form-group w-50">

@@ -83,4 +83,21 @@ class ProductService
     public function search($search){
         return Product::with('menu')->orderByDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
+
+    public function filter($category, $status){
+        $user = User::query();
+
+        if ($request->has('name')) {
+            $user->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if ($request->has('status')) {
+            $user->where('status', $request->status);
+        }
+        if ($request->has('birthday')) {
+            $user->whereDate('birthday', $request->birthday);
+        }
+
+        return $user->get();
+        return Product::with('menu')->orderByDesc('id')->where('categories.id', '=', $category)->where('active', '=', $active)->paginate(20);
+    }
 }

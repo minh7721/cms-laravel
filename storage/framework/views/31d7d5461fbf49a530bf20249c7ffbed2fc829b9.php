@@ -67,3 +67,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/admin/sidebar.blade.php ENDPATH**/ ?>

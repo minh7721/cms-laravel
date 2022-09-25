@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label>Mô tả chi tiết</label>
-                <textarea disabled name="content" id="content" class="form-control">{{ $menu->content }}</textarea>
+                <p>{!! $menu->content !!}</p>
             </div>
 
             <div class="form-group">

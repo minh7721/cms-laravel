@@ -23,6 +23,7 @@ class MenuService
                 'parent_id' => (int) $request->input('parent_id'),
                 'description' => (string) $request->input('description'),
                 'content' => (string) $request->input('content'),
+                'slug' => Str::of($request->input('name'))->slug('-'),
                 'active' => (string) $request->input('active'),
             ]);
 

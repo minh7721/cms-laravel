@@ -1,6 +1,4 @@
-@extends('admin.main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row mt-3">
         <div class="col-4">
             <a href="/admin/menus/add" class="btn btn-primary d-flex justify-content-center align-self-center col-2" style="height: 45px;">
@@ -29,9 +27,13 @@
             </tr>
         </thead>
         <tbody>
-            {!! \App\Helpers\Helper::menu($menus) !!}
+            <?php echo \App\Helpers\Helper::menu($menus); ?>
+
         </tbody>
     </table>
 
-    {!! $menus->appends(request()->all())->links() !!}
-@endsection
+    <?php echo $menus->appends(request()->all())->links(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/admin/menu/list.blade.php ENDPATH**/ ?>

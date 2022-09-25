@@ -1,7 +1,7 @@
-@php use App\Helpers\Helper; @endphp
-@extends('admin.main')
+<?php use App\Helpers\Helper; ?>
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="row mt-3">
         <div class="col-4">
             <a href="/admin/slider/add" class="btn btn-primary d-flex justify-content-center align-self-center col-2" style="height: 45px;">
@@ -34,35 +34,38 @@
         </thead>
         <tbody>
 
-        @foreach($sliders as $key => $slider)
+        <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{$slider->id}}</td>
-                <td>{{$slider->name}}</td>
-                <td>{{$slider->url}}</td>
+                <td><?php echo e($slider->id); ?></td>
+                <td><?php echo e($slider->name); ?></td>
+                <td><?php echo e($slider->url); ?></td>
                 <td>
                     <a>
-                        <img src="{{$slider->thumb}}" style="height: 60px;">
+                        <img src="<?php echo e($slider->thumb); ?>" style="height: 60px;">
                     </a>
                 </td>
-                <td>{{$slider->sort_by}}</td>
-                <td>{!! Helper::active($slider->active) !!}</td>
-                <td>{{$slider->updated_at}}</td>
+                <td><?php echo e($slider->sort_by); ?></td>
+                <td><?php echo Helper::active($slider->active); ?></td>
+                <td><?php echo e($slider->updated_at); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="/admin/slider/preview/{{$slider->id}}">
+                    <a class="btn btn-warning btn-sm" href="/admin/slider/preview/<?php echo e($slider->id); ?>">
                         <i class="fa fa-eye"></i>
                     </a>
-                    <a class="btn btn-primary btn-sm" href="/admin/slider/edit/{{$slider->id}}">
+                    <a class="btn btn-primary btn-sm" href="/admin/slider/edit/<?php echo e($slider->id); ?>">
                         <i class="fa fa-edit"></i>
                     </a>
                     <a href="" class="btn btn-danger btn-sm"
-                       onclick="removeRow({{$slider->id}}, '/admin/slider/destroy/')">
+                       onclick="removeRow(<?php echo e($slider->id); ?>, '/admin/slider/destroy/')">
                         <i class="fa fa-trash"></i>
                     </a>
                 </td>
             </tr>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>
 
-    {!! $sliders->appends(request()->all())->links() !!}
-@endsection
+    <?php echo $sliders->appends(request()->all())->links(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/admin/slider/list.blade.php ENDPATH**/ ?>

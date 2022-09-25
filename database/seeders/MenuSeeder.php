@@ -15,11 +15,12 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('menus')->insert([
-            'id' => '17',
+        DB::table('categories')->insert([
+            'id' => '1',
             'name' => 'Sách chứng khoán',
             'parent_id' => 0,
             'description' => 'Sách chứng khoán',
+            'slug' => 'sach-chung-khoan',
             'content' => '<p>S&aacute;ch chứng kho&aacute;n</p>',
             'active' => 1,
         ]);
