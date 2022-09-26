@@ -13,7 +13,7 @@ function removeRow(id, url){
             url: url,
             success: function (result){
                 if(result.error === false){
-                    alert(result.message);
+                    alert('Xóa thành công');
                     location.reload();
                 }
                 else{

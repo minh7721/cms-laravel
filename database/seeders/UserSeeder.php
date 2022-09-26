@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Database\Factories\UserFactory;
+use DateTime;
+use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,9 +22,16 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'MinhAdmin',
-            'email' => 'nhatminh7721@gmail.com',
+            'name' => 'MinhHN',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'role_id' => 1,
             'password' => '$2y$10$kYAkQoqtOjAlCTMip7J9VeCPjfddOK4PJsz1nShHGlTJGntcwJoNO',
+            'remember_token' => Str::random(10),
+            'created_at' => new DateTime,
+            'updated_at' => new DateTime,
         ]);
+
+        User::factory(100)->create();
     }
 }

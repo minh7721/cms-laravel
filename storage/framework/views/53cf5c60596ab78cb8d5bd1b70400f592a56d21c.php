@@ -16,21 +16,17 @@
         </form>
     </div>
     <form action="" method="GET">
-        <div class="row mt-1 ml-1 d-flex align-items-center">
-               <select name="category" class="form-select p-2 mb-3" aria-label="Default select example">
-                   <option value="0" selected>Lọc theo danh mục</option>
-                   <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                       <option <?php echo e($category == $menu->id ? 'selected' : ''); ?> value="<?php echo e($menu->id); ?>"><?php echo e($menu->name); ?></option>
-                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-               </select>
-
-                <select name="status" class="form-select p-2 mb-3 ml-3" aria-label="Default select example">
-                    <option value="0">Trạng thái</option>
-                    <option <?php echo e($status == 'active' ? 'selected' : ''); ?> value="active">Kích hoạt</option>
-                    <option <?php echo e($status == 'inactive' ? 'selected' : ''); ?> value="inactive">Chưa kích hoạt</option>
-                </select>
-
-            <button class="btn btn-primary mb-3 ml-3 p-2" style="width: 80px;">Lọc</button>
+        <div class="row p-2 mb-3 d-flex align-items-center">
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lọc theo danh mục
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a class="dropdown-item" href="?category=<?php echo e($menu->id); ?>"><?php echo e($menu->name); ?></a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
         </div>
     </form>
     <table>
@@ -45,7 +41,7 @@
             <th>Giá khuyến mãi</th>
             <th>Active</th>
             <th>Update at</th>
-            <th style="width: 150px;">Active</th>
+            <th style="width: 150px;">Option</th>
         </tr>
         </thead>
         <tbody>

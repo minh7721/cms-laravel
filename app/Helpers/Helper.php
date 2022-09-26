@@ -16,7 +16,7 @@ class Helper
                         <td>'. $char. $menu->name .'</td>
                         <td>'. $char. $menu->parent_id .'</td>
                         <td>'. $char. $menu->description .'</td>
-                        <td>'. $char. $menu->slug .'</td>
+                        <td>'. $char. $menu->tag .'</td>
                         <td>'. self::active($menu->active) .'</td>
                         <td>'. $menu->updated_at .'</td>
                         <td>

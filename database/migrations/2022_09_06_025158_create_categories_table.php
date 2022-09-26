@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('parent_id');
             $table->text('description');
             $table->longText('content');
-            $table->string('slug')->unique();
+            $table->string('tag')->unique();
             $table->integer('active');
             $table->timestamps();
         });

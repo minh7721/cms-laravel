@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
-use App\Http\Services\Product\ProductService;
+use App\Http\Services\Admin\Product\ProductService;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,14 +25,16 @@ class ProductController extends Controller
     {
         $search = $request->search ?? "";
         $category = $request->category ?? 0;
-        $status = $request->status ?? "";
-        $active = $status == 'active' ? 1 : 0 ;
         if($search != ""){
             $products = $this->productService->search($search);
+        }
+        elseif($category != 0){
+            $products = $this->productService->filter($category);
         }
         else{
             $products = $this->productService->get();
         }
+
         $menus = $this->productService->getMenu();
         return view('admin.product.list',[
             'title' => 'Danh sách sản phẩm',
@@ -40,7 +42,6 @@ class ProductController extends Controller
             'menus' => $menus,
             'search' => $search,
             'category' => $category,
-            'status' => $status
         ]);
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Services\Menu;
+namespace App\Http\Services\Admin\Menu;
 
 use App\Models\Menu;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 
 class MenuService
@@ -23,7 +23,7 @@ class MenuService
                 'parent_id' => (int) $request->input('parent_id'),
                 'description' => (string) $request->input('description'),
                 'content' => (string) $request->input('content'),
-                'slug' => Str::of($request->input('name'))->slug('-'),
+                'tag' => Str::of($request->input('name'))->slug('-'),
                 'active' => (string) $request->input('active'),
             ]);
 

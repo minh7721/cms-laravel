@@ -16,21 +16,17 @@
         </form>
     </div>
     <form action="" method="GET">
-        <div class="row mt-1 ml-1 d-flex align-items-center">
-               <select name="category" class="form-select p-2 mb-3" aria-label="Default select example">
-                   <option value="0" selected>Lọc theo danh mục</option>
-                   @foreach($menus as $key=>$menu)
-                       <option {{ $category == $menu->id ? 'selected' : ''}} value="{{$menu->id}}">{{$menu->name}}</option>
-                   @endforeach
-               </select>
-
-                <select name="status" class="form-select p-2 mb-3 ml-3" aria-label="Default select example">
-                    <option value="0">Trạng thái</option>
-                    <option {{ $status == 'active' ? 'selected' : '' }} value="active">Kích hoạt</option>
-                    <option {{ $status == 'inactive' ? 'selected' : '' }} value="inactive">Chưa kích hoạt</option>
-                </select>
-
-            <button class="btn btn-primary mb-3 ml-3 p-2" style="width: 80px;">Lọc</button>
+        <div class="row p-2 mb-3 d-flex align-items-center">
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lọc theo danh mục
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @foreach($menus as $key=>$menu)
+                        <a class="dropdown-item" href="?category={{ $menu->id }}">{{ $menu->name }}</a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </form>
     <table>
@@ -45,7 +41,7 @@
             <th>Giá khuyến mãi</th>
             <th>Active</th>
             <th>Update at</th>
-            <th style="width: 150px;">Active</th>
+            <th style="width: 150px;">Option</th>
         </tr>
         </thead>
         <tbody>

@@ -14,7 +14,7 @@ class Menu extends Model
         'parent_id',
         'description',
         'content',
-        'slug',
+        'tag',
         'active'
     ];
 }

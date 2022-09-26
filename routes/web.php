@@ -4,10 +4,10 @@ use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
-
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\Admin\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,8 +69,29 @@ Route::middleware(['auth'])->group(function (){
             Route::delete('destroy', [SliderController::class, 'destroy']);
         });
 
+        #Tag
+        Route::prefix('tag')->group(function (){
+            Route::get('list', [TagController::class, 'index']);
+            Route::get('add', [TagController::class, 'create']);
+            Route::post('add', [TagController::class, 'store']);
+            Route::get('edit/{tag}', [TagController::class, 'show']);
+            Route::post('edit/{tag}', [TagController::class, 'update']);
+            Route::delete('destroy', [TagController::class, 'destroy']);
+        });
+
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
+
+
+        #User
+        Route::prefix('users')->group(function (){
+            Route::get('list', [UserController::class, 'index']);
+            Route::get('create', [UserController::class, 'create']);
+            Route::post('create', [UserController::class, 'store']);
+            Route::get('edit/{tag}', [UserController::class, 'show']);
+            Route::post('edit/{tag}', [UserController::class, 'update']);
+            Route::delete('destroy', [UserController::class, 'destroy']);
+        });
     });
 
 });

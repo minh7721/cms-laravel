@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Services\Product;
+namespace App\Http\Services\Admin\Product;
 
 use App\Models\Menu;
 use App\Models\Product;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ProductService
@@ -47,7 +47,7 @@ class ProductService
     }
 
     public function get(){
-        return Product::with('menu')->orderByDesc('id')->paginate(15);
+        return Product::with('menu')->orderByDesc('id')->paginate(10);
     }
 
     public function update($request, $product){
@@ -84,20 +84,7 @@ class ProductService
         return Product::with('menu')->orderByDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
 
-    public function filter($category, $status){
-//        $user = User::query();
-//
-//        if ($request->has('name')) {
-//            $user->where('name', 'LIKE', '%' . $request->name . '%');
-//        }
-//        if ($request->has('status')) {
-//            $user->where('status', $request->status);
-//        }
-//        if ($request->has('birthday')) {
-//            $user->whereDate('birthday', $request->birthday);
-//        }
-//
-//        return $user->get();
-//        return Product::with('menu')->orderByDesc('id')->where('categories.id', '=', $category)->where('active', '=', $active)->paginate(20);
+    public function filter($category){
+        return Product::with('menu')->orderByDesc('id')->where('menu_id', '=', $category)->paginate(20);
     }
 }

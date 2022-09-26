@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\Slider;
+namespace App\Http\Services\Admin\Slider;
 
 use App\Models\Slider;
 use Illuminate\Support\Facades\Log;

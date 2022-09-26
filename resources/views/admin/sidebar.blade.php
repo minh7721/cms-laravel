@@ -31,37 +31,114 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="/admin/menus/list" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Danh mục
-                        </p>
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a href="/admin/product/list" class="nav-link">
-                        <i class="fas fa-poll-h"></i>
-                        <p>
-                            Sản phẩm
-                        </p>
-                    </a>
-                </li>
+            <!-- News -->
+            <div id="accordion">
+                <div class="">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <div class="py-2 px-3 text-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="mr-2 fa fa-newspaper"></i>
+                                News
+                            </div>
+                        </h5>
+                    </div>
 
-                <li class="nav-item">
-                    <a href="/admin/slider/list" class="nav-link">
-                        <i class="fas fa-images"></i>
-                        <p>
-                            Slider
-                        </p>
-                    </a>
-                </li>
+                    <div id="collapseOne" class="collapse show ml-3" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/admin/menus/list" class="nav-link">
+                                        <i class="mr-2 fa fa-newspaper"></i>
+                                        <p>
+                                            Danh mục
+                                        </p>
+                                    </a>
+                                </li>
 
-            </ul>
+                                <li class="nav-item">
+                                    <a href="/admin/product/list" class="nav-link">
+                                        <i class="mr-2 fas fa-poll-h"></i>
+                                        <p>
+                                            Sản phẩm
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/slider/list" class="nav-link">
+                                        <i class="mr-2 fas fa-images"></i>
+                                        <p>
+                                            Slider
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/tag/list" class="nav-link">
+                                        <i class="mr-2 fa fa-tag"></i>
+                                        <p>
+                                            Tags
+                                        </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <!-- News -->
+
+            <!-- Authentication -->
+            <div id="accordionTwo">
+                <div class="">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <div class="py-2 px-3 text-white" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <i class="fa fa-user-group mr-2"></i>
+                                Authentication
+                            </div>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse ml-3" aria-labelledby="headingOne" data-parent="#accordionTwo">
+                        <div class="card-body">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/admin/users/list" class="nav-link">
+                                        <i class="fa-solid fa-user mr-2"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/role/list" class="nav-link">
+                                        <i class="fa fa-people-group mr-2"></i>
+                                        <p>
+                                            Roles
+                                        </p>
+                                    </a>
+                                </li>
+
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="/admin/permission/list" class="nav-link">--}}
+{{--                                        <i class="fa fa-key mr-2"></i>--}}
+{{--                                        <p>--}}
+{{--                                            Permissions--}}
+{{--                                        </p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Authentication -->
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>
