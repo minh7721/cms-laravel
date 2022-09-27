@@ -62,4 +62,8 @@ class MenuService
     public function search($search){
         return Menu::orderbyDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
+
+    public function show(){
+        return Menu::where('active', 1)->orderByDesc('id')->get();
+    }
 }

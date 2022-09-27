@@ -1,4 +1,4 @@
-<title>{{$title}}</title>
+<title><?php echo e($title); ?></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="/template/images/icons/favicon.png"/>
@@ -16,3 +16,4 @@
 <link rel="stylesheet" type="text/css" href="/template/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" type="text/css" href="/template/css/util.css">
 <link rel="stylesheet" type="text/css" href="/template/css/main.css">
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/head.blade.php ENDPATH**/ ?>

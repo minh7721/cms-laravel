@@ -46,7 +46,8 @@
                         <li>
                             <a href="index.html">Danh mục</a>
                             <ul class="sub-menu">
-                                {!! \App\Helpers\Helper::menus($menus1) !!}
+                                <?php echo \App\Helpers\Helper::menus($menus1); ?>
+
                             </ul>
                         </li>
 
@@ -202,3 +203,4 @@
         </div>
     </div>
 </header>
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/header.blade.php ENDPATH**/ ?>

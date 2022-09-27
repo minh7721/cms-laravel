@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
+use App\Http\Controllers\User\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,5 +110,5 @@ Route::middleware(['auth'])->group(function (){
 
 });
 
-//Route::get('/', [MainController::class, 'index']);
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/', [MainController::class, 'index']);
+//Route::get('/', [LoginController::class, 'index'])->name('login');

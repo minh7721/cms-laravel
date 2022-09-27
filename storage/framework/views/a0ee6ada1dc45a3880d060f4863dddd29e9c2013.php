@@ -29,7 +29,7 @@
             <th>Sắp xếp</th>
             <th>Active</th>
             <th>Update at</th>
-            <th style="width: 150px;">Active</th>
+            <th style="width: 150px;">Option</th>
         </tr>
         </thead>
         <tbody>

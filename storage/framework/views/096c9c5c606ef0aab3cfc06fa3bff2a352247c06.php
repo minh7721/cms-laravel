@@ -406,3 +406,4 @@
 </script>
 <!--===============================================================================================-->
 <script src="/template/js/main.js"></script>
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/footer.blade.php ENDPATH**/ ?>

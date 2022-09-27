@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="">Tên sản phẩm</label>
-                <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
             </div>
             <div class="form-group">
                 <label>Danh mục</label>

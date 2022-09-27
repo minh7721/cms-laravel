@@ -81,3 +81,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/cart.blade.php ENDPATH**/ ?>

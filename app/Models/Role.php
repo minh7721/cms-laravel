@@ -14,18 +14,11 @@ class Role extends Model
     protected $fillable = [
         'name'
     ];
+    public $timestamps = false;
 
-//    public function Permissions() {
-//        return $this->belongsToMany(Permission::class, 'role_permission', 'role_id', 'permission_id');
-//    }
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Models\Permission');
+    }
 
-//    public function Permissions(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Permission::class, 'role_permission');
-//    }
-
-//    public function Users(): HasOne
-//    {
-//        return $this->hasOne(User::class, 'id', 'role_id');
-//    }
 }
