@@ -31,7 +31,7 @@
                 <label for="roleUser">Cấp bậc</label>
                 <select class="form-control" id="roleUser" name="roleUser">
                     @foreach($roles as $role)
-                        <option value="{{ $role->id }}">{{ $role->name }} {{ $role->id == $user->role_id ? 'selected' : ''}}</option>
+                        <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : ''}}>{{ $role->name }}</option>
                     @endforeach
                 </select>
             </div>

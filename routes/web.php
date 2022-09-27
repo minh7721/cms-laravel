@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\Users\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,14 +84,26 @@ Route::middleware(['auth'])->group(function (){
         Route::post('upload/services', [UploadController::class, 'store']);
 
 
+        #Authentication
+
         #User
         Route::prefix('users')->group(function (){
             Route::get('list', [UserController::class, 'index']);
             Route::get('create', [UserController::class, 'create']);
             Route::post('create', [UserController::class, 'store']);
-            Route::get('edit/{tag}', [UserController::class, 'show']);
-            Route::post('edit/{tag}', [UserController::class, 'update']);
+            Route::get('edit/{user}', [UserController::class, 'show']);
+            Route::post('edit/{user}', [UserController::class, 'update']);
             Route::delete('destroy', [UserController::class, 'destroy']);
+        });
+
+        #Role
+        Route::prefix('role')->group(function (){
+            Route::get('list', [RoleController::class, 'index']);
+            Route::get('create', [RoleController::class, 'create']);
+            Route::post('create', [RoleController::class, 'store']);
+            Route::get('edit/{role}', [RoleController::class, 'show']);
+            Route::post('edit/{role}', [RoleController::class, 'update']);
+            Route::delete('destroy', [RoleController::class, 'destroy']);
         });
     });
 

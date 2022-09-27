@@ -29,7 +29,7 @@
                 <label for="roleUser">Cấp bậc</label>
                 <select class="form-control" id="roleUser" name="roleUser">
                     <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?> <?php echo e($role->id == $user->role_id ? 'selected' : ''); ?></option>
+                        <option value="<?php echo e($role->id); ?>" <?php echo e($role->id == $user->role_id ? 'selected' : ''); ?>><?php echo e($role->name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
