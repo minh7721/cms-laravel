@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Session;
 class UserService
 {
     public function getAll(){
-//        return User::with('role')->orderByDesc('id')->paginate(20);
         return DB::table('role_user')
             ->join('users', 'user_id', '=', 'users.id')
             ->join('roles', 'role_id', '=', 'roles.id')
@@ -21,6 +20,11 @@ class UserService
             ->orderByDesc('users.id')
             ->paginate(20);
     }
+
+    public function getRole(){
+        return Role::get();
+    }
+
     public function search($search){
         return User::orderbyDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
     }
@@ -28,12 +32,19 @@ class UserService
     public function insert($request){
         try {
             $request->except('_token');
-            User::create([
+            $user = User::create([
                 'name' => (string) $request->input('name'),
                 'email' => (string) $request->input('email'),
                 'email_verified_at' => now(),
                 'password' => Hash::make($request->input('password')) ,
             ]);
+
+
+            DB::table('role_user')->insert([
+                'user_id' => $user->id,
+                'role_id' => $request->input('roleUser'),
+            ]);
+
             Session::flash('success', 'Tạo mới user thành công');
         }
         catch (\Exception $err){

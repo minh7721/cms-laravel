@@ -19,9 +19,9 @@
     <div id="content" class="mt-9 flex justify-center">
         <div class="lg:w-9/12 sm:w-full">
             <div class="flex justify-between truncate ">
-                <a class="bg-xanhLaDam rounded-36px font-normal text-white py-1.5 px-9" href="./index.html">Tất cả</a>
+                <a class="bg-xanhLaDam rounded-36px font-normal text-white py-1.5 px-9" href="/">Tất cả</a>
                 @foreach($menus as $menu)
-                      <a class="font-normal py-1.5 px-9" href="?category={{ $menu->id }}">{{ $menu->name }}</a>
+                      <a class="font-normal py-1.5 px-9" href="/category/{{ $menu->id }}">{{ $menu->name }}</a>
                 @endforeach
             </div>
 
@@ -32,55 +32,43 @@
             <div class="mt-8">
                 <div class="flex justify-center items-center">
                     <div class="grid lg:grid-flow-col grid-flow-row grid-cols-10 gap-4 justify-items-center">
-                        <a href="/{{ $products[0]->name }}" class="row-span-4 col-span-12 lg:col-span-6">
-                            <img src="/template/admin/dist/img/avatar.png" class="w-full" alt="">
-                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $products[0]->description }}</p>
+                        <a href="/{{ $products[0]->slug }}" class="row-span-4 col-span-12 lg:col-span-6">
+                            <img src="{{ $products[0] -> thumb }}" class="w-full rounded-36px" alt="">
+                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $products[0]->name }}</p>
                             <div class="flex flex-row text-sm mt-3">
-                                <p class="text-xanhLaDam text-base">Xã hội</p>
+                                <p class="text-xanhLaDam text-base">{{ $products[0]->menu->name }}</p>
                                 <p class="mx-2">•</p>
                                 <p class="font-normal text-base">Hoàng Nhật Minh</p>
                                 <p class="mx-2">•</p>
-                                <p class="font-normal opacity-50 text-base">{{ $products[0]->updated_At}}</p>
+                                <p class="font-normal opacity-50 text-base">{{ $products[0]->created_at}}</p>
                             </div>
-                            <p class="font-normal opacity-50 text-base">{{ $products[0]->content }}</p>
+                            <p class="font-normal opacity-50 text-base">{{ $products[0]->description }}</p>
                         </a>
-                        <a href="./chiTietNha.html"
+                        <a href="/{{ $products[1]->slug }}"
                            class="h-full lg:col-span-4 sm:col-span-12 md:col-span-5 lg:row-span-2 md:block flex flex-col justify-center">
-                            <img src="/template/images/blog/vongXoay.png" class="w-full">
-                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where
-                                Restaurant Workers
-                                Can They Work</p>
+                            <img src="{{ $products[0] -> thumb }}" class="w-full rounded-36px" alt="">
+                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $products[1]->name }}</p>
                             <div class="flex flex-row text-sm mt-3">
-                                <p class="text-xanhLaDam text-base">Xã hội</p>
+                                <p class="text-xanhLaDam text-base">{{ $products[1]->menu->name }}</p>
                                 <p class="mx-2">•</p>
                                 <p class="font-normal text-base">Hoàng Nhật Minh</p>
                                 <p class="mx-2">•</p>
-                                <p class="font-normal opacity-50 text-base">24/02/2020</p>
+                                <p class="font-normal opacity-50 text-base">{{ $products[1]->created_at}}</p>
                             </div>
-                            <p class="font-normal opacity-50 md:hidden text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus,
-                                interdum porta
-                                sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                            </p>
+                            <p class="font-normal opacity-50 md:hidden text-base">{{ $products[1]->description}}</p>
                         </a>
-                        <a href="./chiTietNha.html"
+                        <a href="/{{ $products[2]->slug}}"
                            class="h-full lg:col-span-4 sm:col-span-12 md:col-span-5 lg:row-span-2 md:block flex flex-col justify-center">
-                            <img src="/template/images/blog/nhieuHinhTron.png" class="w-full">
-                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where
-                                Restaurant Workers
-                                Can They Work</p>
+                            <img src="{{ $products[2] -> thumb }}" class="w-full rounded-36px">
+                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $products[2]->name }}</p>
                             <div class="flex flex-row text-sm mt-3">
-                                <p class="text-xanhLaDam text-base">Xã hội</p>
+                                <p class="text-xanhLaDam text-base">{{ $products[2]->menu->name }}</p>
                                 <p class="mx-2">•</p>
                                 <p class="font-normal text-base">Hoàng Nhật Minh</p>
                                 <p class="mx-2">•</p>
-                                <p class="font-normal opacity-50 text-base">24/02/2020</p>
+                                <p class="font-normal opacity-50 text-base">{{ $products[2]->created_at }}</p>
                             </div>
-                            <p class="font-normal opacity-50 md:hidden text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus,
-                                interdum porta
-                                sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                            </p>
+                            <p class="font-normal opacity-50 md:hidden text-base">{{ $products[2]->description }}</p>
                         </a>
 
                     </div>
@@ -92,7 +80,7 @@
                     <p class="float-left">Video</p>
                     <p class="float-right">Xem tất cả</p>
                 </div>
-                <div class="md:h-96 grid grid-cols-6 grid-flow-col  gap-4">
+                <div class="md:h-96 grid grid-cols-6 grid-flow-col gap-4">
                     <div
                         class="h-full w-full sm:h-[186px] sm:w-full content__video relative from-black bg-gradient-to-t rounded-36px h-96 col-span-6 lg:col-span-4 text-white">
                         <img src="/template/images/blog/videoFake.png"
@@ -271,96 +259,29 @@
 
             <div class="mt-9 flex flex-col justify-center">
                 <p class="">Danh sách tin</p>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class="w-full" src="/template/images/blog/nhaCoOngKhoi.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers,
-                            First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
+
+                @foreach($products as $key=> $product)
+                    <a href="/{{$product->slug}}" class="flex flex-row sm:flex-col my-8">
+                        <div class="w-full mr-6">
+                            <img class="w-full rounded-36px" src="{{ $product->thumb }}" alt="">
                         </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum
-                            porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class=" w-full" src="/template/images/blog/nhieuHinhTron.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers,
-                            First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
+                        <div class="flex flex-col w-full">
+                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $product->name }}</p>
+                            <div class="flex flex-row text-xs tracking-spaceChu">
+                                <p class="text-xanhLaDam mr-2 text-base">{{ $product->menu->name }} •</p>
+                                <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
+                                <p class="font-normal opacity-50 text-base">{{ $product->created_at }}</p>
+                            </div>
+                            <p class="font-normal opacity-50 text-base">{{ $product->description }}</p>
                         </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum
-                            porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class=" w-full" src="/template/images/blog/vongXoay.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers,
-                            First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
-                        </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum
-                            porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class=" w-full" src="/template/images/blog/nhaCo1OCuaSo.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers,
-                            First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
-                        </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum
-                            porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
+                    </a>
+                @endforeach
+
 
                 <div class="mt-20">
                     <div class="flex justify-center">
-                        <button class="border-4 border-black border rounded-36px mb-10"
-                                style="width:200px; height: 50px;">Xem
-                            thêm
+                        <button class="border-4 border-black border rounded-36px mb-10" style="width:200px; height: 50px;">
+                            Xem thêm
                         </button>
                     </div>
                 </div>

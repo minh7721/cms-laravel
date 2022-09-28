@@ -17,11 +17,11 @@ class TagFactory extends Factory
      */
     public function definition()
     {
-        $name = fake()->word();
+        $name = fake()->words(3, true);
         return [
             'name' => $name,
             'tag' => Str::of($name)->slug('-'),
-            'active' => fake()->randomElement([0, 1])
+            'active' => '1'
         ];
     }
 }

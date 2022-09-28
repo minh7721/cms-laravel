@@ -18,12 +18,14 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $name = fake()->words(3, true);
         return [
-            'name' => fake()->name(),
+            'name' => $name,
+            'slug' => Str::of($name)->slug('-'),
             'description' => fake()->sentence,
-            'content' => fake()->text,
+            'content' => fake()->paragraph(30),
             'menu_id' => fake()->numberBetween(1, 4),
-            'tag_id' => fake()->numberBetween(1, 10),
+            'tag_id' => fake()->numberBetween(1, 100),
             'thumb' => 'https://cdn3.ivivu.com/2018/01/ve-dep-sai-gon-qua-ong-kinh-cua-nguoi-me-anh-ivivu-2.jpg',
             'price' => '250000',
             'price_sale' => '200000',

@@ -32,6 +32,6 @@ B8: CHạy thử chương trình :
 
 ### Đăng nhập vào tk admin
 
-Tài khoản: admin@admin.com
+Tài khoản: admin@gmail.com
 
-Password: minh
+Password: admin

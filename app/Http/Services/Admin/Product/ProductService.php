@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductService
 {
@@ -35,7 +36,20 @@ class ProductService
         }
         try {
             $request->except('_token');
-            Product::create($request->all());
+            Product::create([
+                'name' => (string) $request->input('name'),
+                'slug' => Str::of($request->input('name'))->slug('-'),
+//                'tag_id' => (string) $request->input('name'),
+                'description' => (string) $request->input('description'),
+                'content' => (string) $request->input('content'),
+                'menu_id' => (string) $request->input('menu_id'),
+                'thumb' => (string) $request->input('thumb'),
+                'price' => (string) $request->input('price'),
+                'price_sale' => (string) $request->input('price_sale'),
+                'active' => (string) $request->input('active'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
             Session::flash('success', 'Thêm sản phẩm thành công');
         }
         catch (\Exception $err){
@@ -86,5 +100,25 @@ class ProductService
 
     public function filter($category){
         return Product::with('menu')->orderByDesc('id')->where('menu_id', '=', $category)->paginate(20);
+    }
+
+    public function show(){
+        return Product::with('menu')->with('tag')->where('active', 1)->limit(5)->orderBy('id', 'asc')->get();
+    }
+
+    public function getDetail($slug){
+        return Product::with('menu')
+            ->with('tag')
+            ->where('slug', $slug)
+            ->get();
+    }
+    public function getByCategory($menu_id){
+        return Product::with('menu')
+            ->with('tag')
+            ->where('active', 1)
+            ->where('menu_id', $menu_id)
+            ->limit(5)
+            ->orderBy('id', 'asc')
+            ->get();
     }
 }

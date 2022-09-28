@@ -25,7 +25,8 @@ class MenuFactory extends Factory
             'description' => fake()->sentence(),
             'content' => fake()->text(),
             'tag' => Str::of($name)->slug('-'),
-            'active' => fake()->randomElement([0, 1]),
+//            'active' => fake()->randomElement([0, 1]),
+            'active' => '1',
             'created_at' => new DateTime,
             'updated_at' => new DateTime,
         ];

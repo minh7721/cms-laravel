@@ -122,4 +122,5 @@ Route::middleware(['auth'])->group(function (){
 });
 
 Route::get('/', [MainController::class, 'index']);
-//Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/category/{category}', [MainController::class, 'getByCategory']);
+Route::get('/{slug}', [MainController::class, 'detail']);

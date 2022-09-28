@@ -36,8 +36,10 @@ class UserController extends Controller
 
     public function create(): Factory|View|Application
     {
+        $roles = $this->userServices->getRole();
         return view('admin.users.create', [
             'title' => 'Tạo mới users',
+            'roles' => $roles
         ]);
     }
 
@@ -57,9 +59,11 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $roles = $this->userServices->getRole();
         return view('admin.users.edit',[
             'title' => 'Cập nhật user',
             'user' => $user,
+            'roles' => $roles
         ]);
     }
 
