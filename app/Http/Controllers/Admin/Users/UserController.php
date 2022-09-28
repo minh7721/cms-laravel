@@ -38,7 +38,6 @@ class UserController extends Controller
     {
         return view('admin.users.create', [
             'title' => 'Tạo mới users',
-            'roles' => $this->userServices->getRole()
         ]);
     }
 
@@ -58,11 +57,9 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-//        dd($user);
         return view('admin.users.edit',[
             'title' => 'Cập nhật user',
             'user' => $user,
-            'roles' => $this->userServices->getRole()
         ]);
     }
 

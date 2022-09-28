@@ -111,14 +111,14 @@
                                     </a>
                                 </li>
 
-
-
-
-
-
-
-
-
+                                <li class="nav-item">
+                                    <a href="/admin/permission/list" class="nav-link">
+                                        <i class="fa fa-key mr-2"></i>
+                                        <p>
+                                            Permissions
+                                        </p>
+                                    </a>
+                                </li>
 
                             </ul>
                         </div>

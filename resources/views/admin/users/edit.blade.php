@@ -27,14 +27,14 @@
 {{--                <input type="password" name="password2" class="form-control" id="password2" placeholder="Nhập lại Password...">--}}
 {{--            </div>--}}
 
-            <div class="form-group">
-                <label for="roleUser">Cấp bậc</label>
-                <select class="form-control" id="roleUser" name="roleUser">
-                    @foreach($roles as $role)
-                        <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : ''}}>{{ $role->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label for="roleUser">Cấp bậc</label>--}}
+{{--                <select class="form-control" id="roleUser" name="roleUser">--}}
+{{--                    @foreach($roles as $role)--}}
+{{--                        <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : ''}}>{{ $role->name }}</option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+{{--            </div>--}}
         </div>
 
 

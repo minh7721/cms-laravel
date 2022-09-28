@@ -10,7 +10,7 @@
         </div>
         <form action="" class="d-flex justify-content-end col-8">
             <div class="form-group">
-                <input value="<?php echo e($search); ?>" type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên user cần tìm">
+
             </div>
             <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
         </form>
@@ -32,7 +32,7 @@
                 <td><?php echo e($user->id); ?></td>
                 <td><?php echo e($user->name); ?></td>
                 <td><?php echo e($user->email); ?></td>
-                <td><?php echo e($user->role->name); ?></td>
+                <td><?php echo e($user->role_name); ?></td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/users/edit/<?php echo e($user->id); ?>">
                         <i class="fa fa-edit"></i>

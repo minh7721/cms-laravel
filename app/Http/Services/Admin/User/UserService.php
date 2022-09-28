@@ -4,18 +4,22 @@ namespace App\Http\Services\Admin\User;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class UserService
 {
-    public function getRole(){
-        return Role::orderBy('id', 'asc')->get();
-    }
-
     public function getAll(){
-        return User::with('role')->orderByDesc('id')->paginate(20);
+//        return User::with('role')->orderByDesc('id')->paginate(20);
+        return DB::table('role_user')
+            ->join('users', 'user_id', '=', 'users.id')
+            ->join('roles', 'role_id', '=', 'roles.id')
+            ->select('users.*', 'roles.name as role_name')
+            ->distinct()
+            ->orderByDesc('users.id')
+            ->paginate(20);
     }
     public function search($search){
         return User::orderbyDesc('id')->where('name', 'like', '%'.$search.'%')->paginate(20);
@@ -29,7 +33,6 @@ class UserService
                 'email' => (string) $request->input('email'),
                 'email_verified_at' => now(),
                 'password' => Hash::make($request->input('password')) ,
-                'role_id' => (int) $request->input('roleUser')
             ]);
             Session::flash('success', 'Tạo mới user thành công');
         }
@@ -47,13 +50,12 @@ class UserService
             $user->email = (string) $request->input('email');
             $user->email_verified_at = now();
             $user->password = Hash::make($request->input('password')) ;
-            $user->role_id =  (int) $request->input('roleUser');
             $user->save();
 
             Session::flash('success', 'Cập nhật thông tin thành công');
         }
         catch (\Exception $err){
-            Session::flash('success', 'Cập nhật thông tin thất bại');
+            Session::flash('error', 'Cập nhật thông tin thất bại');
             Log::info($err->getMessage());
             return false;
         }

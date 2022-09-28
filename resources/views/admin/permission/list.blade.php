@@ -4,13 +4,13 @@
 @section('content')
     <div class="row mt-3">
         <div class="col-4">
-            <a href="/admin/users/create" class="btn btn-primary d-flex justify-content-center align-self-center col-2" style="height: 45px;">
+            <a href="/admin/permission/create" class="btn btn-primary d-flex justify-content-center align-self-center col-2" style="height: 45px;">
                 <p>Thêm</p>
             </a>
         </div>
         <form action="" class="d-flex justify-content-end col-8">
             <div class="form-group">
-{{--                <input value="{{ $search }}" type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên user cần tìm">--}}
+                <input value="{{ $search }}" type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên permission cần tìm">
             </div>
             <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
         </form>
@@ -20,25 +20,21 @@
         <tr>
             <th style="width: 50px;">ID</th>
             <th>Tên</th>
-            <th>Email</th>
-            <th>Role</th>
             <th style="width: 150px;">Option</th>
         </tr>
         </thead>
         <tbody>
 
-        @foreach($users as $key => $user)
+        @foreach($permissions as $key => $permission)
             <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->role_name}}</td>
+                <td>{{$permission->id}}</td>
+                <td>{{$permission->name}}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/users/edit/{{$user->id}}">
+                    <a class="btn btn-primary btn-sm" href="/admin/permission/edit/{{$permission->id}}">
                         <i class="fa fa-edit"></i>
                     </a>
                     <a href="" class="btn btn-danger btn-sm"
-                       onclick="removeRow({{$user->id}}, '/admin/users/destroy/')">
+                       onclick="removeRow({{$permission->id}}, '/admin/permission/destroy/')">
                         <i class="fa fa-trash"></i>
                     </a>
                 </td>
@@ -48,5 +44,5 @@
         </tbody>
     </table>
 
-    {!! $users->appends(request()->all())->links() !!}
+    {!! $permissions->appends(request()->all())->links() !!}
 @endsection

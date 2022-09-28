@@ -22,15 +22,26 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'MinhHN',
-            'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
-            'role_id' => 1,
-            'password' => '$2y$10$kYAkQoqtOjAlCTMip7J9VeCPjfddOK4PJsz1nShHGlTJGntcwJoNO',
-            'remember_token' => Str::random(10),
-            'created_at' => new DateTime,
-            'updated_at' => new DateTime,
-        ]);
+            [
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('admin'),
+                'remember_token' => Str::random(10),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'user',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('123456'),
+                'remember_token' => Str::random(10),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+                'email_verified_at' => now(),
+            ],
+
+            ]);
 
         User::factory(10)->create();
     }

@@ -7,13 +7,13 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="menu">Tên</label>
-                <input type="text" name="name" value="<?php echo e($role->name); ?>" class="form-control" id="name" placeholder="Nhập role...">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nhập permission...">
             </div>
         </div>
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <button type="submit" class="btn btn-primary">Thêm permission</button>
         </div>
         <?php echo csrf_field(); ?>
     </form>
@@ -25,4 +25,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/admin/role/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/admin/permission/create.blade.php ENDPATH**/ ?>

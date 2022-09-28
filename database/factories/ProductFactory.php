@@ -23,6 +23,7 @@ class ProductFactory extends Factory
             'description' => fake()->sentence,
             'content' => fake()->text,
             'menu_id' => fake()->numberBetween(1, 4),
+            'tag_id' => fake()->numberBetween(1, 10),
             'thumb' => 'https://cdn3.ivivu.com/2018/01/ve-dep-sai-gon-qua-ong-kinh-cua-nguoi-me-anh-ivivu-2.jpg',
             'price' => '250000',
             'price_sale' => '200000',

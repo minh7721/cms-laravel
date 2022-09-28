@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\Users\PermissionController;
 use App\Http\Controllers\Admin\Users\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\User\MainController;
@@ -105,6 +106,16 @@ Route::middleware(['auth'])->group(function (){
             Route::get('edit/{role}', [RoleController::class, 'show']);
             Route::post('edit/{role}', [RoleController::class, 'update']);
             Route::delete('destroy', [RoleController::class, 'destroy']);
+        });
+
+        #Role
+        Route::prefix('permission')->group(function (){
+            Route::get('list', [PermissionController::class, 'index']);
+            Route::get('create', [PermissionController::class, 'create']);
+            Route::post('create', [PermissionController::class, 'store']);
+            Route::get('edit/{permission}', [PermissionController::class, 'show']);
+            Route::post('edit/{permission}', [PermissionController::class, 'update']);
+            Route::delete('destroy', [PermissionController::class, 'destroy']);
         });
     });
 
