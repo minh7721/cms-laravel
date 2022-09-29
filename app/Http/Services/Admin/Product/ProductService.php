@@ -4,6 +4,7 @@ namespace App\Http\Services\Admin\Product;
 
 use App\Models\Menu;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,10 @@ class ProductService
 {
     public function getMenu(){
         return Menu::where('active', 1)->get();
+    }
+
+    public function getTag(){
+        return Tag::where('active', 1)->get();
     }
 
     protected function isValidPrice($request){
@@ -39,7 +44,7 @@ class ProductService
             Product::create([
                 'name' => (string) $request->input('name'),
                 'slug' => Str::of($request->input('name'))->slug('-'),
-//                'tag_id' => (string) $request->input('name'),
+                'tag_id' => (string) $request->input('tag'),
                 'description' => (string) $request->input('description'),
                 'content' => (string) $request->input('content'),
                 'menu_id' => (string) $request->input('menu_id'),

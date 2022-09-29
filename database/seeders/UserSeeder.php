@@ -40,9 +40,7 @@ class UserSeeder extends Seeder
                 'updated_at' => new DateTime,
                 'email_verified_at' => now(),
             ],
-
             ]);
-
         User::factory(10)->create();
     }
 }

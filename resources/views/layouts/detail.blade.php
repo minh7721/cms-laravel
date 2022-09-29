@@ -83,8 +83,8 @@
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 5: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
             </div>
             <div class="mt-9 flex flex-row">
-                <div class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">#Keyword1</div>
-                <div class="ml-4 rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">#Keyword2</div>
+                <div class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">{{ $product->tag->tag }}</div>
+                <div class="ml-4 rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">{{ $product->tag->tag }}</div>
             </div>
             <div class="mt-9 flex flex-row justify-between">
                 <div class="flex">
@@ -95,89 +95,46 @@
                 <a href="/category/{{$product->menu->id}}" class="sm:hidden text-sm font-normal text-mauChu">Xem tất cả</a>
             </div>
             <div class="mt-9 flex flex-col justify-center">
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class="w-full" src="./img/nhaCoOngKhoi.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers, First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
+
+                    @foreach($products as $product1)
+                        <div class="flex flex-row sm:flex-col my-8">
+                            <div class="w-full mr-6">
+                                <img class="w-full" src="{{ $product1->thumb }}" alt="">
+                            </div>
+                            <div class="flex flex-col w-full">
+                                <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $product1->name }}</p>
+                                <div class="flex flex-row text-xs tracking-spaceChu">
+                                    <p class="text-xanhLaDam mr-2 text-base">{{ $product1->menu->name }} •</p>
+                                    <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
+                                    <p class="font-normal opacity-50 text-base">{{ $product1->created_at }}</p>
+                                </div>
+                                <p class="font-normal opacity-50 text-base">{{ $product1->description }}</p>
+                            </div>
                         </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class=" w-full" src="./img/nhieuHinhTron.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers, First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
-                        </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
+                        @endforeach
 
                 <div class="mt-9 flex justify-between">
                     <p class="font-normal">Tin thịnh hành</p>
                     <i class="fa-solid fa-greater-than hidden sm:block"></i>
-                    <a href="./tinThinhHanh.html" class="sm:hidden opacity-70 font-normal">Xem tất cả</a>
+                    <a href="/category/{{$product->menu->id}}" class="sm:hidden opacity-70 font-normal">Xem tất cả</a>
                 </div>
 
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class="w-full" src="./img/nhaCoOngKhoi.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers, First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
-                        </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-row sm:flex-col my-8">
-                    <div class="w-full mr-6">
-                        <img class=" w-full" src="./img/nhieuHinhTron.png" alt="">
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <p class="mt-4 font-semibold text-lg tracking-spaceChu">Making a Housing Wage: Where Teachers, First
-                            Responders and Restaurant Workers Can Live
-                            Where They Work</p>
-                        <div class="flex flex-row text-xs tracking-spaceChu">
-                            <p class="text-xanhLaDam mr-2 text-base">Xã hội •</p>
-                            <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                            <p class="font-normal opacity-50 text-base">24/02/2020</p>
-                        </div>
-                        <p class="font-normal opacity-50 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit diam at feugiat purus, interdum porta
-                            sed. Ac ut hendrerit enim et scelerisque nullam lorem. Libero mi velit id vitae...</p>
-                        </p>
-                    </div>
-                </div>
+                        @foreach($products as $product1)
+                            <div class="flex flex-row sm:flex-col my-8">
+                                <div class="w-full mr-6">
+                                    <img class="w-full" src="{{ $product1->thumb }}" alt="">
+                                </div>
+                                <div class="flex flex-col w-full">
+                                    <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $product1->name }}</p>
+                                    <div class="flex flex-row text-xs tracking-spaceChu">
+                                        <p class="text-xanhLaDam mr-2 text-base">{{ $product1->menu->name }} •</p>
+                                        <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
+                                        <p class="font-normal opacity-50 text-base">{{ $product1->created_at }}</p>
+                                    </div>
+                                    <p class="font-normal opacity-50 text-base">{{ $product1->description }}</p>
+                                </div>
+                            </div>
+                        @endforeach
 
             </div>
         </div>

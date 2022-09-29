@@ -27,7 +27,7 @@
 
             <div class="mt-9 flex flex-col justify-center">
                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="flex flex-row sm:flex-col my-8">
+                    <a href="/<?php echo e($product->slug); ?>" class="flex flex-row sm:flex-col my-8">
                         <div class="w-full mr-6">
                             <img class="w-full rounded-36px" src="<?php echo e($product->thumb); ?>" alt="">
                         </div>
@@ -40,15 +40,14 @@
                             </div>
                             <p class="font-normal opacity-50 text-base"><?php echo e($product->description); ?></p>
                         </div>
-                    </div>
+                    </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                 <div class="mt-20">
                     <div class="flex justify-center">
-                        <button class="border-4 border-black border rounded-36px mb-10"
-                                style="width:200px; height: 50px;">Xem
-                            thêm
+                        <button class="border-4 border-black border rounded-36px mb-10" style="width:200px; height: 50px;">
+                            Xem thêm
                         </button>
                     </div>
                 </div>

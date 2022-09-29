@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\User\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -26,7 +28,21 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ], $request->input('remember')))
         {
-            return redirect()->route('admin');
+            $idUser = Auth::id();
+            $rs = DB::table('role_user')
+                ->join('users', 'user_id', '=', 'users.id')
+                ->distinct()
+                ->where('role_id', '1')
+                ->where('user_id', $idUser)
+                ->get();
+
+            if(count($rs) == 1){
+                return redirect()->route('admin');
+            }
+            else{
+                Session::flash('error', 'User mà đòi vào trang quản trị à');
+                return redirect()->back();
+            }
         }
 
         Session::flash('error', 'Email hoặc password không chính xác');

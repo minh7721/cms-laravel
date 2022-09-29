@@ -44,9 +44,12 @@ class MainController extends Controller
     public function detail(Request $request){
         $slug = $request->path();
         $product = $this->product->getDetail($slug);
+        $menu_id = $product[0]->menu_id;
+        $products = $this->product->getByCategory($menu_id);
         return view('layouts.detail', [
             'title' => 'Chi tiết bài viết',
-            'product' => $product[0]
+            'product' => $product[0],
+            'products' => $products
         ]);
     }
 }

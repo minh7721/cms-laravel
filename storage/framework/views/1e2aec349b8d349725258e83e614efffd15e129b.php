@@ -40,6 +40,17 @@
                 <textarea name="content" id="content" class="form-control"><?php echo e($product->content); ?></textarea>
             </div>
 
+            <div class="form-group">
+                <label>Tag</label>
+                <select class="form-control" name="tag">
+                    <option value="0">Tag</option>
+                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($tag->id); ?>" <?php echo e($product->tag_id == $tag->id ? 'selected' : ''); ?>><?php echo e($tag->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
+
+
             <div class="form-group w-50">
                 <label>Ảnh sản phẩm</label>
                 <input type="file" class="form-control" id="upload">

@@ -8,8 +8,8 @@
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-body">
             <div class="form-group">
-                <label for="">Tên sản phẩm</label>
-                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+                <label for="">Tên bài viết</label>
+                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên bài viết">
             </div>
             <div class="form-group">
                 <label>Danh mục</label>
@@ -23,11 +23,11 @@
             <div class="row d-flex justify-content-between">
                 <div style="width: 49%;" class="form-group">
                     <label for="price">Giá gốc</label>
-                    <input type="number" name="price" class="form-control" id="price" value="{{old('price')}}" placeholder="Nhập giá gốc sản phẩm">
+                    <input type="number" name="price" class="form-control" id="price" value="{{old('price')}}" placeholder="Nhập giá gốc bài viết">
                 </div>
                 <div style="width: 49%;" class="form-group">
                     <label for="price_sale">Giá giảm</label>
-                    <input type="number" name="price_sale" class="form-control" value="{{old('price_sale')}}" id="price_sale" placeholder="Nhập giá sản phẩm sau giảm">
+                    <input type="number" name="price_sale" class="form-control" value="{{old('price_sale')}}" id="price_sale" placeholder="Nhập giá bài viết sau giảm">
                 </div>
             </div>
             <div class="form-group">
@@ -39,8 +39,18 @@
                 <textarea name="content" id="content" class="form-control">{{old('content')}}</textarea>
             </div>
 
+            <div class="form-group">
+                <label>Tag</label>
+                <select class="form-control" name="tag">
+                    <option value="0">Tag</option>
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group w-50">
-                <label>Ảnh sản phẩm</label>
+                <label>Ảnh bài viết</label>
                 <input type="file" class="form-control" id="upload">
                 <div id="image_show">
 
@@ -63,7 +73,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+            <button type="submit" class="btn btn-primary">Tạo bài viết</button>
         </div>
         @csrf
     </form>

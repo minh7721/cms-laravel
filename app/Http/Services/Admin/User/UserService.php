@@ -21,6 +21,15 @@ class UserService
             ->paginate(20);
     }
 
+    public function loginAdmin($idUser){
+        return DB::table('role_user')
+            ->join('users', 'user_id', '=', 'users.id')
+            ->distinct()
+            ->where('role_id', '1')
+            ->where('user_id', $idUser)
+            ->get();
+    }
+
     public function getRole(){
         return Role::get();
     }

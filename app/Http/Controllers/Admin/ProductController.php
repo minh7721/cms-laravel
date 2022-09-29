@@ -49,7 +49,8 @@ class ProductController extends Controller
     {
         return view('admin.product.add', [
             'title' => 'Thêm sản phẩm mới',
-            'menus' => $this->productService->getMenu()
+            'menus' => $this->productService->getMenu(),
+            'tags' => $this->productService->getTag()
         ]);
 
     }
@@ -68,7 +69,8 @@ class ProductController extends Controller
         return view('admin.product.edit',[
             'title' => 'Cập nhật sản phẩm',
             'product' => $product,
-            'menus' => $this->productService->getMenu()
+            'menus' => $this->productService->getMenu(),
+            'tags' => $this->productService->getTag(),
         ]);
     }
 

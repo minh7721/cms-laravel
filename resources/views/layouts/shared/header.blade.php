@@ -10,7 +10,7 @@
                 nhà</a></li>
         <li><a href="#" class="block text-sm px-2 py-4 hover:text-mauDo transition duration-300">Khám
                 phá</a></li>
-        <li><a href="#" class="block text-sm px-2 py-4 hover:text-mauDo transition duration-300">Blog</a>
+        <li><a href="/" class="block text-sm px-2 py-4 hover:text-mauDo transition duration-300">Blog</a>
         </li>
         <li>
             <a href="#"
@@ -36,12 +36,12 @@
         </button>
     </div>
     <div class="header__left color__text lg:flex">
-        <div class="font__text text-sm opacity-50 ml-10">Mua nhà</div>
-        <div class="font__text text-sm opacity-50 ml-10">Thuê nhà</div>
-        <div class="font__text text-sm opacity-50 ml-10">Khám phá</div>
-        <div class="font__text text-sm text-mauDo ml-10 shrink underline decoration-1 underline-offset-8">
+        <a href="" class="font__text text-sm opacity-50 ml-10">Mua nhà</a>
+        <a href="" class="font__text text-sm opacity-50 ml-10">Thuê nhà</a>
+        <a href="" class="font__text text-sm opacity-50 ml-10">Khám phá</a>
+        <a href="/" class="font__text text-sm text-mauDo ml-10 shrink underline decoration-1 underline-offset-8">
             Blog
-        </div>
+        </a>
     </div>
     <div class="hidden lg:block lg:text-center md:text-left color__text font__text font-bold">*Reviewnhà</div>
     <div class="navbar-right flex justify-end header__right flex-row md:w-full">

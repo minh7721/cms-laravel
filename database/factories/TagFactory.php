@@ -17,7 +17,7 @@ class TagFactory extends Factory
      */
     public function definition()
     {
-        $name = fake()->words(3, true);
+        $name = fake()->word();
         return [
             'name' => $name,
             'tag' => Str::of($name)->slug('-'),

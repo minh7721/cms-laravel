@@ -41,6 +41,17 @@
                 <textarea name="content" id="content" class="form-control">{{$product->content}}</textarea>
             </div>
 
+            <div class="form-group">
+                <label>Tag</label>
+                <select class="form-control" name="tag">
+                    <option value="0">Tag</option>
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}" {{ $product->tag_id == $tag->id ? 'selected' : ''}}>{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
             <div class="form-group w-50">
                 <label>Ảnh sản phẩm</label>
                 <input type="file" class="form-control" id="upload">
