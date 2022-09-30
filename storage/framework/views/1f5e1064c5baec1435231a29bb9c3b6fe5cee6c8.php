@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{$title}}</title>
-    @include('admin.head')
+    <title><?php echo e($title); ?></title>
+    <?php echo $__env->make('admin.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b> MinhHN</a>
+        <a href="#"><b>Admin</b> blog</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            @include('admin.alert')
-            <form action="/admin/users/login/authenticate" method="post">
+
+            <?php echo $__env->make('admin.alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <form action="/auth/login/authenticate" method="post">
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Email">
                     <div class="input-group-append">
@@ -47,25 +47,25 @@
                     </div>
                     <!-- /.col -->
                 </div>
-                @csrf
+                <?php echo csrf_field(); ?>
             </form>
 
-            <div class="social-auth-links text-center mb-3">
-                <p>- OR -</p>
-                <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                </a>
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                </a>
-            </div>
+
+
+
+
+
+
+
+
+
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
+                <a href="">Quên mật khẩu</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="/auth/register" class="text-center">Đăng ký ngay</a>
             </p>
         </div>
         <!-- /.login-card-body -->
@@ -73,7 +73,8 @@
 </div>
 <!-- /.login-box -->
 
-@include('admin.footer')
+<?php echo $__env->make('admin.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </body>
 </html>
+<?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/auth/login.blade.php ENDPATH**/ ?>

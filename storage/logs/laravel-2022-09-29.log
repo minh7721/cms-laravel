@@ -1,0 +1,12 @@
+[2022-09-29 17:27:18] local.ERROR: Class "Arcanedev\LogViewer\LogViewerServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Arcanedev\\LogViewer\\LogViewerServiceProvider\" not found at /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:208)
+[stacktrace]
+#0 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(144): Illuminate\\Foundation\\ProviderRepository->createProvider()
+#1 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest()
+#2 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(666): Illuminate\\Foundation\\ProviderRepository->load()
+#3 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap()
+#5 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(375): Illuminate\\Foundation\\Application->bootstrapWith()
+#6 /var/www/backpack-test/cms-laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(149): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 /var/www/backpack-test/cms-laravel/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#8 {main}
+"} 

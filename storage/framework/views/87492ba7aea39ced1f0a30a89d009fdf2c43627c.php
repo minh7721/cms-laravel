@@ -26,6 +26,8 @@
     </ul>
 </div>
 
+<!-- PC -->
+
 <div id="header" class="grid lg:grid-cols-3 grid-cols-2 gap-4 content-center leading-4">
     <div class="lg:hidden flex items-center w-8">
         <button class="outline-none mobile-menu-button">
@@ -48,10 +50,9 @@
         <div class="icon-heart md:mr-6 sm:mr-1">
             <i class="fa-solid fa-heart-circle-check"></i>
         </div>
-        <button
-            class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+        <a href="/post/create" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
             Đăng bài
-        </button>
+        </a>
         <div class="profile flex">
             <div class="hidden lg:block profile-name">
                 <div class="profile-name__name">Hoang Nhat Minh</div>

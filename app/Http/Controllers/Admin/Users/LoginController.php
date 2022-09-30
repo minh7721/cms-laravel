@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     public function index(){
-        return view('admin.users.login',[
+        return view('auth.login',[
             'title' => "Login He Thong"
         ]);
     }
@@ -52,6 +52,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/admin/users/login');
+        return redirect('/auth/login');
     }
 }

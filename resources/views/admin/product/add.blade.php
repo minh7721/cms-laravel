@@ -20,16 +20,16 @@
                     @endforeach
                 </select>
             </div>
-            <div class="row d-flex justify-content-between">
-                <div style="width: 49%;" class="form-group">
-                    <label for="price">Giá gốc</label>
-                    <input type="number" name="price" class="form-control" id="price" value="{{old('price')}}" placeholder="Nhập giá gốc bài viết">
-                </div>
-                <div style="width: 49%;" class="form-group">
-                    <label for="price_sale">Giá giảm</label>
-                    <input type="number" name="price_sale" class="form-control" value="{{old('price_sale')}}" id="price_sale" placeholder="Nhập giá bài viết sau giảm">
-                </div>
-            </div>
+{{--            <div class="row d-flex justify-content-between">--}}
+{{--                <div style="width: 49%;" class="form-group">--}}
+{{--                    <label for="price">Giá gốc</label>--}}
+{{--                    <input type="number" name="price" class="form-control" id="price" value="{{old('price')}}" placeholder="Nhập giá gốc bài viết">--}}
+{{--                </div>--}}
+{{--                <div style="width: 49%;" class="form-group">--}}
+{{--                    <label for="price_sale">Giá giảm</label>--}}
+{{--                    <input type="number" name="price_sale" class="form-control" value="{{old('price_sale')}}" id="price_sale" placeholder="Nhập giá bài viết sau giảm">--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="form-group">
                 <label>Mô tả Ngắn</label>
                 <textarea name="description" class="form-control">{{old('description')}}</textarea>

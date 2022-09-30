@@ -10,12 +10,12 @@
         </div>
         <form action="" class="d-flex justify-content-end col-8">
             <div class="form-group">
-{{--                <input value="{{ $search }}" type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên user cần tìm">--}}
+                <input value="{{ $search }}" type="search" name="search" id="" class="form-control" style="height: 44px;" placeholder="Nhập tên user cần tìm">
             </div>
             <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
         </form>
     </div>
-    <table>
+    <table class="table table-hover text-wrap">
         <thead>
         <tr>
             <th style="width: 50px;">ID</th>

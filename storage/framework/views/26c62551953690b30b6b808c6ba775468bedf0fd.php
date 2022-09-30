@@ -40,8 +40,18 @@
                 <p><?php echo $product->content; ?></p>
             </div>
 
+            <div class="form-group">
+                <label>Tag</label>
+                <select disabled class="form-control" name="tag">
+                    <option value="0">Tag</option>
+                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($tag->id); ?>" <?php echo e($product->tag_id == $tag->id ? 'selected' : ''); ?>><?php echo e($tag->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
+
             <div class="form-group w-50">
-                <label>Ảnh sản phẩm</label>
+                <label>Ảnh bài viết</label>
                 <div id="image_show">
                     <a href="<?php echo e($product->thumb); ?>" target="_blank">'
                         <img src="<?php echo e($product->thumb); ?>" width="100px;" alt="">

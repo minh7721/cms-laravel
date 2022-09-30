@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         $menus = $this->productService->getMenu();
         return view('admin.product.list',[
-            'title' => 'Danh sách sản phẩm',
+            'title' => 'Danh sách bài viết',
             'products' => $products,
             'menus' => $menus,
             'search' => $search,
@@ -48,7 +48,7 @@ class ProductController extends Controller
     public function create(): Factory|View|Application
     {
         return view('admin.product.add', [
-            'title' => 'Thêm sản phẩm mới',
+            'title' => 'Thêm bài viết mới',
             'menus' => $this->productService->getMenu(),
             'tags' => $this->productService->getTag()
         ]);
@@ -67,7 +67,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('admin.product.edit',[
-            'title' => 'Cập nhật sản phẩm',
+            'title' => 'Cập nhật bài viết',
             'product' => $product,
             'menus' => $this->productService->getMenu(),
             'tags' => $this->productService->getTag(),
@@ -90,7 +90,7 @@ class ProductController extends Controller
         if ($result) {
             return response()->json([
                 'error' => false,
-                'message' => 'Xóa thành công sản phẩm'
+                'message' => 'Xóa thành công bài viết'
             ]);
         }
         return response()->json(['error' => true]);
@@ -98,9 +98,10 @@ class ProductController extends Controller
 
     public function preview(Product $product){
         return view('admin.product.preview', [
-            'title' => 'Chi tiết sản phẩm',
+            'title' => 'Chi tiết bài viết',
             'product' => $product,
-            'menus' => $this->productService->getMenu()
+            'menus' => $this->productService->getMenu(),
+            'tags' => $this->productService->getTag(),
         ]);
     }
 }

@@ -4,7 +4,7 @@
 <?php $__env->startSection('content'); ?>
     <div class="row mt-3">
         <div class="col-4">
-            <a href="/admin/product/add" class="btn btn-primary d-flex justify-content-center align-self-center col-2" style="height: 45px;">
+            <a href="/admin/product/add" class="btn btn-primary d-flex justify-content-center align-self-center col-2 ml-3" style="height: 45px;">
                 <p>Thêm</p>
             </a>
         </div>
@@ -18,7 +18,7 @@
     <form action="" method="GET">
         <div class="row p-2 mb-3 d-flex align-items-center">
             <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Lọc theo danh mục
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -29,18 +29,17 @@
             </div>
         </div>
     </form>
-    <table>
+    <table class="table table-hover text-wrap">
         <thead>
         <tr>
-            <th style="width: 50px;">ID</th>
-            <th>Tên sản phẩm</th>
-            <th>Danh mục</th>
-            <th>Mô tả</th>
-            <th>Hình ảnh</th>
-            <th>Giá gốc</th>
-            <th>Giá khuyến mãi</th>
+            <th class="col-1" style="width: 50px;">ID</th>
+            <th class="col-2">Tên bài viết</th>
+            <th class="col-1">Danh mục</th>
+            <th class="col-4">Mô tả</th>
+            <th class="col-1">Hình ảnh</th>
+            <th>Tag</th>
             <th>Active</th>
-            <th>Update at</th>
+            <th class="col-1">Update at</th>
             <th style="width: 150px;">Option</th>
         </tr>
         </thead>
@@ -57,8 +56,7 @@
                         <img src="<?php echo e($product->thumb); ?>" style="width: 50px;">
                     </a>
                 </td>
-                <td><?php echo e($product->price); ?></td>
-                <td><?php echo e($product->price_sale); ?></td>
+                <td><?php echo e($product->tag->name); ?></td>
                 <td><?php echo Helper::active($product->active); ?></td>
                 <td><?php echo e($product->updated_at); ?></td>
                 <td>

@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\PermissionController;
+use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\Admin\Users\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\User\MainController;
+use App\Http\Controllers\User\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +30,11 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
-Route::post('admin/users/login/authenticate', [LoginController::class, 'authenticate']);
-Route::get('admin/users/login/logout', [LoginController::class, 'logout']);
+Route::get('auth/login', [LoginController::class, 'index'])->name('login');
+Route::post('auth/login/authenticate', [LoginController::class, 'authenticate']);
+Route::get('auth/login/logout', [LoginController::class, 'logout']);
+Route::get('auth/register', [RegisterController::class, 'index']);
+Route::post('auth/register/create', [RegisterController::class, 'create']);
 
 Route::middleware(['auth'])->group(function (){
 
@@ -124,3 +128,4 @@ Route::middleware(['auth'])->group(function (){
 Route::get('/', [MainController::class, 'index']);
 Route::get('/category/{category}', [MainController::class, 'getByCategory']);
 Route::get('/{slug}', [MainController::class, 'detail']);
+Route::get('/post/create', [PostController::class, 'create']);

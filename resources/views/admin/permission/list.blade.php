@@ -15,7 +15,7 @@
             <button class="btn btn-primary ml-3" style="height: 44px;">Search</button>
         </form>
     </div>
-    <table>
+    <table class="table table-hover text-wrap">
         <thead>
         <tr>
             <th style="width: 50px;">ID</th>

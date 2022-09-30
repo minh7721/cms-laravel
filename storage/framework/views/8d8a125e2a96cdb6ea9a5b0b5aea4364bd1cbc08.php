@@ -68,7 +68,7 @@
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
         <div class="d-flex justify-content-center">
-            <a href="/admin/users/login/logout" type="submit" class="btn btn-danger text-white ml-3 mt-3 col-9 d-flex justify-content-center">Đăng xuất</a>
+            <a href="/auth/login/logout" type="submit" class="btn btn-danger text-white ml-3 mt-3 col-9 d-flex justify-content-center">Đăng xuất</a>
         </div>
     </aside>
     <!-- /.control-sidebar -->

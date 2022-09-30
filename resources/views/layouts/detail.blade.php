@@ -97,7 +97,7 @@
             <div class="mt-9 flex flex-col justify-center">
 
                     @foreach($products as $product1)
-                        <div class="flex flex-row sm:flex-col my-8">
+                        <a href="/{{$product1->slug}}" class="flex flex-row sm:flex-col my-8">
                             <div class="w-full mr-6">
                                 <img class="w-full" src="{{ $product1->thumb }}" alt="">
                             </div>
@@ -110,31 +110,31 @@
                                 </div>
                                 <p class="font-normal opacity-50 text-base">{{ $product1->description }}</p>
                             </div>
-                        </div>
+                        </a>
                         @endforeach
 
-                <div class="mt-9 flex justify-between">
-                    <p class="font-normal">Tin thịnh hành</p>
-                    <i class="fa-solid fa-greater-than hidden sm:block"></i>
-                    <a href="/category/{{$product->menu->id}}" class="sm:hidden opacity-70 font-normal">Xem tất cả</a>
-                </div>
+{{--                <div class="mt-9 flex justify-between">--}}
+{{--                    <p class="font-normal">Tin thịnh hành</p>--}}
+{{--                    <i class="fa-solid fa-greater-than hidden sm:block"></i>--}}
+{{--                    <a href="/category/{{$product->menu->id}}" class="sm:hidden opacity-70 font-normal">Xem tất cả</a>--}}
+{{--                </div>--}}
 
-                        @foreach($products as $product1)
-                            <div class="flex flex-row sm:flex-col my-8">
-                                <div class="w-full mr-6">
-                                    <img class="w-full" src="{{ $product1->thumb }}" alt="">
-                                </div>
-                                <div class="flex flex-col w-full">
-                                    <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $product1->name }}</p>
-                                    <div class="flex flex-row text-xs tracking-spaceChu">
-                                        <p class="text-xanhLaDam mr-2 text-base">{{ $product1->menu->name }} •</p>
-                                        <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
-                                        <p class="font-normal opacity-50 text-base">{{ $product1->created_at }}</p>
-                                    </div>
-                                    <p class="font-normal opacity-50 text-base">{{ $product1->description }}</p>
-                                </div>
-                            </div>
-                        @endforeach
+{{--                        @foreach($products as $product1)--}}
+{{--                            <div class="flex flex-row sm:flex-col my-8">--}}
+{{--                                <div class="w-full mr-6">--}}
+{{--                                    <img class="w-full" src="{{ $product1->thumb }}" alt="">--}}
+{{--                                </div>--}}
+{{--                                <div class="flex flex-col w-full">--}}
+{{--                                    <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $product1->name }}</p>--}}
+{{--                                    <div class="flex flex-row text-xs tracking-spaceChu">--}}
+{{--                                        <p class="text-xanhLaDam mr-2 text-base">{{ $product1->menu->name }} •</p>--}}
+{{--                                        <p class="font-normal mr-2 text-base">Hoàng Minh •</p>--}}
+{{--                                        <p class="font-normal opacity-50 text-base">{{ $product1->created_at }}</p>--}}
+{{--                                    </div>--}}
+{{--                                    <p class="font-normal opacity-50 text-base">{{ $product1->description }}</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
 
             </div>
         </div>

@@ -48,19 +48,19 @@
                                     <a href="/admin/product/list" class="nav-link">
                                         <i class="mr-2 fas fa-poll-h"></i>
                                         <p>
-                                            Sản phẩm
+                                            Bài viết
                                         </p>
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="/admin/slider/list" class="nav-link">
-                                        <i class="mr-2 fas fa-images"></i>
-                                        <p>
-                                            Slider
-                                        </p>
-                                    </a>
-                                </li>
+
+
+
+
+
+
+
+
 
                                 <li class="nav-item">
                                     <a href="/admin/tag/list" class="nav-link">
@@ -126,6 +126,38 @@
                 </div>
             </div>
             <!-- Authentication -->
+
+
+            <!-- Advanced -->
+            <div id="accordionThree">
+                <div class="">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <div class="py-2 px-3 text-white" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <i class="fa fa-user-group mr-2"></i>
+                                Advanced
+                            </div>
+                        </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse ml-3" aria-labelledby="headingOne" data-parent="#accordionThree">
+                        <div class="card-body">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/admin/logs/list" class="nav-link">
+                                        <i class="fa-solid fa-user mr-2"></i>
+                                        <p>
+                                            Logs
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced -->
 
         </nav>
         <!-- /.sidebar-menu -->

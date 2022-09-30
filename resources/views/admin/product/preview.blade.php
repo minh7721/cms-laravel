@@ -41,8 +41,18 @@
                 <p>{!! $product->content !!}</p>
             </div>
 
+            <div class="form-group">
+                <label>Tag</label>
+                <select disabled class="form-control" name="tag">
+                    <option value="0">Tag</option>
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}" {{ $product->tag_id == $tag->id ? 'selected' : ''}}>{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group w-50">
-                <label>Ảnh sản phẩm</label>
+                <label>Ảnh bài viết</label>
                 <div id="image_show">
                     <a href="{{$product->thumb}}" target="_blank">'
                         <img src="{{$product->thumb}}" width="100px;" alt="">
