@@ -20,6 +20,11 @@
                 <input type="password" name="password" class="form-control" id="password" placeholder="Nhập Password...">
             </div>
 
+            <div class="form-group">
+                <label for="menu">Role</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Nhập Password...">
+            </div>
+
 
 
 

@@ -134,7 +134,7 @@
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
                             <div class="py-2 px-3 text-white" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                <i class="fa fa-user-group mr-2"></i>
+                                <i class="fa-brands fa-adn mr-2"></i>
                                 Advanced
                             </div>
                         </h5>
@@ -145,7 +145,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li class="nav-item">
                                     <a href="/admin/logs/list" class="nav-link">
-                                        <i class="fa-solid fa-user mr-2"></i>
+                                        <i class="fa fa-file mr-2"></i>
                                         <p>
                                             Logs
                                         </p>

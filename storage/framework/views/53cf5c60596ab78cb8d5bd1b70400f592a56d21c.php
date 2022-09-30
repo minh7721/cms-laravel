@@ -27,6 +27,17 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
+
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lọc theo tag
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a class="dropdown-item" href="?tag=<?php echo e($tag->id); ?>"><?php echo e($tag->name); ?></a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
         </div>
     </form>
     <table class="table table-hover text-wrap">

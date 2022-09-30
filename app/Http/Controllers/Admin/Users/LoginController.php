@@ -29,19 +29,22 @@ class LoginController extends Controller
         ], $request->input('remember')))
         {
             $idUser = Auth::id();
+
             $rs = DB::table('role_user')
                 ->join('users', 'user_id', '=', 'users.id')
                 ->distinct()
-                ->where('role_id', '1')
                 ->where('user_id', $idUser)
                 ->get();
 
-            if(count($rs) == 1){
+            $role = $rs[0]->role_id;
+            if($role == 1){
+                return redirect()->route('admin');
+            }
+            elseif($role == 2){
                 return redirect()->route('admin');
             }
             else{
-                Session::flash('error', 'User mà đòi vào trang quản trị à');
-                return redirect()->back();
+                return redirect('/');
             }
         }
 

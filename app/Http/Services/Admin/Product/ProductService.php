@@ -107,6 +107,10 @@ class ProductService
         return Product::with('menu')->orderByDesc('id')->where('menu_id', '=', $category)->paginate(20);
     }
 
+    public function filterTag($tag){
+        return Product::with('tag')->orderByDesc('id')->where('tag_id', '=', $tag)->paginate(20);
+    }
+
     public function show(){
         return Product::with('menu')->with('tag')->where('active', 1)->limit(5)->orderBy('id', 'asc')->get();
     }
@@ -122,8 +126,7 @@ class ProductService
             ->with('tag')
             ->where('active', 1)
             ->where('menu_id', $menu_id)
-            ->limit(5)
             ->orderBy('id', 'asc')
-            ->get();
+            ->paginate(5);
     }
 }

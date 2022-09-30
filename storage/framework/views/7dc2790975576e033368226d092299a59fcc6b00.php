@@ -6,6 +6,10 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="Kai3gVF2"></script>
+
+
 <div class="text-mauChu md:w-10/12 w-11/12 mx-auto">
     <!-- Start Header -->
     <?php echo $__env->make('layouts.shared.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -42,9 +46,10 @@
                         <p class="ml-2 hidden lg:block font-normal text-base text-sm">Gửi mail</p>
                     </div>
 
-                    <div class="text-white rounded-36px flex items-center justify-center py-1.5 px-6 mr-2" style="background-color: #395185;">
-                        <i class="fa-brands fa-facebook"></i>
-                        <p class="ml-2 hidden lg:block font-normal text-base text-sm">Chia sẻ</p>
+                    <div class="fb-share-button text-white rounded-36px flex items-center justify-center py-1.5 px-6 mr-2" data-href="/<?php echo e($product->slug); ?>" data-layout="button" data-size="large">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                            Chia sẻ
+                        </a>
                     </div>
 
                     <div class="rounded-36px flex items-center justify-center py-1.5 px-6 border-2 border-black bg-white">
@@ -84,7 +89,7 @@
             </div>
             <div class="mt-9 flex flex-row">
                 <div class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;"><?php echo e($product->tag->tag); ?></div>
-                <div class="ml-4 rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;"><?php echo e($product->tag->tag); ?></div>
+
             </div>
             <div class="mt-9 flex flex-row justify-between">
                 <div class="flex">

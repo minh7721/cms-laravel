@@ -18,16 +18,6 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
-
-
-
-
-
-
-
-
-
-
             <div class="form-group">
                 <label>Mô tả Ngắn</label>
                 <textarea name="description" class="form-control"><?php echo e(old('description')); ?></textarea>

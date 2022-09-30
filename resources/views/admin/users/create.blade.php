@@ -22,6 +22,7 @@
                 <input type="password" name="password" class="form-control" id="password" placeholder="Nhập Password...">
             </div>
 
+
 {{--            <div class="form-group">--}}
 {{--                <label for="menu">Confirm Password</label>--}}
 {{--                <input type="password" name="password2" class="form-control" id="password2" placeholder="Nhập lại Password...">--}}

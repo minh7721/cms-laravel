@@ -21,16 +21,19 @@ class MainController extends Controller
     }
 
     public function index(Request $request){
+        $user = $request->user() ?? '';
         $menus = $this->menu->show();
         $products = $this->product->show();
         return view('layouts.main',[
             'title' => 'Trang chủ',
             'menus' => $menus,
-            'products' => $products
+            'products' => $products,
+            'user' => $user,
         ]);
     }
 
     public function getByCategory(Request $request){
+        $user = $request->user() ?? '';
         $menu_id = $request->category;
         $menus = $this->menu->show();
         $products = $this->product->getByCategory($menu_id);
@@ -38,10 +41,12 @@ class MainController extends Controller
             'title' => 'Trang chủ',
             'menus' => $menus,
             'products' => $products,
-            'menu_id' => $menu_id
+            'menu_id' => $menu_id,
+            'user' => $user,
         ]);
     }
     public function detail(Request $request){
+        $user = $request->user() ?? '';
         $slug = $request->path();
         $product = $this->product->getDetail($slug);
         $menu_id = $product[0]->menu_id;
@@ -49,7 +54,8 @@ class MainController extends Controller
         return view('layouts.detail', [
             'title' => 'Chi tiết bài viết',
             'product' => $product[0],
-            'products' => $products
+            'products' => $products,
+            'user' => $user,
         ]);
     }
 }

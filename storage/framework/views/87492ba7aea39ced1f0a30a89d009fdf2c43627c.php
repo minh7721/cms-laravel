@@ -50,12 +50,23 @@
         <div class="icon-heart md:mr-6 sm:mr-1">
             <i class="fa-solid fa-heart-circle-check"></i>
         </div>
-        <a href="/post/create" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-            Đăng bài
-        </a>
+
+
+
+
+
+        <?php echo $user == '' ? '  <a href="/auth/login" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+            Đăng nhập
+        </a>': '        <a href="/auth/login/logout" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+            Đăng xuất
+        </a>'; ?>
+
+
+
+
         <div class="profile flex">
             <div class="hidden lg:block profile-name">
-                <div class="profile-name__name">Hoang Nhat Minh</div>
+                <div class="profile-name__name"><?php echo e($user->name ?? 'Khách'); ?></div>
                 <div class="profile-name__job opacity-50 text-xs float-right font-normal">
                     Tư vấn
                 </div>

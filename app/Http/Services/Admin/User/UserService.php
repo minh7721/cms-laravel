@@ -71,7 +71,8 @@ class UserService
             $user->email_verified_at = now();
             $user->password = Hash::make($request->input('password')) ;
             $user->save();
-
+            $user->fill($request->input());
+            $user->save();
             Session::flash('success', 'Cập nhật thông tin thành công');
         }
         catch (\Exception $err){

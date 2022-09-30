@@ -129,3 +129,6 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/category/{category}', [MainController::class, 'getByCategory']);
 Route::get('/{slug}', [MainController::class, 'detail']);
 Route::get('/post/create', [PostController::class, 'create']);
+Route::post('/post/create', [PostController::class, 'store']);
+Route::post('/admin/upload/services', [UploadController::class, 'store']);
+

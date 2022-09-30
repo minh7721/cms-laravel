@@ -16,11 +16,10 @@
 
 <link rel="icon" href="/template/images/avatar.jpg" >
 
-
-
-
 <script src="https://cdn.tailwindcss.com"></script>
+
 <link rel="stylesheet" href="/template/css/style.css" />
+
 
 
 <?php /**PATH /var/www/backpack-test/cms-laravel/resources/views/layouts/shared/head.blade.php ENDPATH**/ ?>

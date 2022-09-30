@@ -11,17 +11,13 @@
     @include('layouts.shared.header')
     <!-- End Header -->
 
-    <!-- Start Slider -->
-    @include('layouts.shared.slider')
-    <!-- End Slider -->
-
     <!-- Start Content -->
     <div id="content" class="mt-9 flex justify-center">
         <div class="lg:w-9/12 sm:w-full">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Tên bài viết</label>
+                        <label>Tên bài viết</label>
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên bài viết">
                     </div>
                     <div class="form-group">
@@ -33,16 +29,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="row d-flex justify-content-between">
-                        <div style="width: 49%;" class="form-group">
-                            <label for="price">Giá gốc</label>
-                            <input type="number" name="price" class="form-control" id="price" value="{{old('price')}}" placeholder="Nhập giá gốc bài viết">
-                        </div>
-                        <div style="width: 49%;" class="form-group">
-                            <label for="price_sale">Giá giảm</label>
-                            <input type="number" name="price_sale" class="form-control" value="{{old('price_sale')}}" id="price_sale" placeholder="Nhập giá bài viết sau giảm">
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label>Mô tả Ngắn</label>
                         <textarea name="description" class="form-control">{{old('description')}}</textarea>
@@ -74,19 +61,19 @@
                     <div class="form-group">
                         <label>Kích hoạt</label>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" value="1" type="radio" id="active" name="active">
-                            <label for="active" class="custom-control-label">Có</label>
+                            <input class="custom-control-input custom-control-input-danger" value="1" type="radio" id="active" name="active" checked="">
+                            <label for="customRadio4" class="custom-control-label">Có</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" value="0" type="radio" id="no_active" name="active" checked="">
-                            <label for="no_active" class="custom-control-label">Không</label>
+                            <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="no_active" name="active">
+                            <label for="customRadio4" class="custom-control-label">Không</label>
                         </div>
                     </div>
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Tạo bài viết</button>
+                <div class="ml-3">
+                    <button type="submit" class="btn btn-outline-danger">Tạo bài viết</button>
                 </div>
                 @csrf
             </form>
@@ -99,6 +86,7 @@
     <!--End Footer  -->
 </div>
 @include('layouts.shared.footer')
+
 </body>
 
 </html>

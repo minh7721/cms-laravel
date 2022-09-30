@@ -25,23 +25,29 @@ class ProductController extends Controller
     {
         $search = $request->search ?? "";
         $category = $request->category ?? 0;
+        $tag = $request->tag ?? 0;
         if($search != ""){
             $products = $this->productService->search($search);
         }
         elseif($category != 0){
             $products = $this->productService->filter($category);
         }
+        elseif($tag != 0){
+            $products = $this->productService->filterTag($tag);
+        }
         else{
             $products = $this->productService->get();
         }
 
         $menus = $this->productService->getMenu();
+        $tags = $this->productService->getTag();
         return view('admin.product.list',[
             'title' => 'Danh sách bài viết',
             'products' => $products,
             'menus' => $menus,
             'search' => $search,
             'category' => $category,
+            'tags' => $tags
         ]);
     }
 

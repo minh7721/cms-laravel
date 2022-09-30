@@ -27,6 +27,17 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 45px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lọc theo tag
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @foreach($tags as $key=>$tag)
+                        <a class="dropdown-item" href="?tag={{ $tag->id }}">{{ $tag->name }}</a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </form>
     <table class="table table-hover text-wrap">
