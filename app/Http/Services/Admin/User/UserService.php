@@ -15,7 +15,7 @@ class UserService
         return DB::table('role_user')
             ->join('users', 'user_id', '=', 'users.id')
             ->join('roles', 'role_id', '=', 'roles.id')
-            ->select('users.*', 'roles.name as role_name')
+            ->select('users.*', 'roles.name as role_name', 'role_id')
             ->distinct()
             ->orderByDesc('users.id')
             ->paginate(20);

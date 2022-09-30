@@ -17,9 +17,8 @@ class Product extends Model
         'description',
         'content',
         'menu_id',
+        'user_id',
         'thumb',
-        'price',
-        'price_sale',
         'active'
     ];
 
@@ -31,6 +30,12 @@ class Product extends Model
     public function tag(): HasOne
     {
         return $this->hasOne(Tag::class, 'id', 'tag_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+
     }
 
     public function getCreatedAtAttribute($date)

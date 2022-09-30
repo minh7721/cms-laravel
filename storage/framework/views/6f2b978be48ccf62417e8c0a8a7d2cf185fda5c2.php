@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="password2" value="<?php echo e(old('password2')); ?>" class="form-control" placeholder="Nhập lại password">
+                    <input type="password" name="password_confirm" value="<?php echo e(old('password_confirm')); ?>" class="form-control" placeholder="Nhập lại password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

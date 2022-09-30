@@ -22,11 +22,12 @@ return new class extends Migration
             $table->longText('content');
             $table->integer('menu_id')->nullable();
             $table->string('thumb');
-            $table->integer('price')->nullable();
-            $table->integer('price_sale')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->integer('active');
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')
                 ->onDelete('cascade');
         });

@@ -45,8 +45,9 @@
         <tr>
             <th class="col-1" style="width: 50px;">ID</th>
             <th class="col-2">Tên bài viết</th>
+            <th class="col-1">Người đăng</th>
             <th class="col-1">Danh mục</th>
-            <th class="col-4">Mô tả</th>
+            <th class="col-3">Mô tả</th>
             <th class="col-1">Hình ảnh</th>
             <th>Tag</th>
             <th>Active</th>
@@ -60,6 +61,7 @@
             <tr>
                 <td>{{$product->id}}</td>
                 <td>{{$product->name}}</td>
+                <td>{{$product->user->name}}</td>
                 <td>{{$product->menu->name}}</td>
                 <td>{{$product->description}}</td>
                 <td>
@@ -75,13 +77,34 @@
                         <i class="fa fa-eye"></i>
                     </a>
 
-                    <a class="btn btn-primary btn-sm" href="/admin/product/edit/{{$product->id}}">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <a href="" class="btn btn-danger btn-sm"
-                       onclick="removeRow({{$product->id}}, '/admin/product/destroy/')">
-                        <i class="fa fa-trash"></i>
-                    </a>
+                    @if( $role == 1)
+                        <a  class="btn btn-primary btn-sm" href="/admin/product/edit/{{$product->id}}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="" class="btn btn-danger btn-sm"
+                           onclick="removeRow({{$product->id}}, '/admin/product/destroy/')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    @elseif($role == 2)
+                        @if($currentUser == $product->user_id)
+                            <a  class="btn btn-primary btn-sm" href="/admin/product/edit/{{$product->id}}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="" class="btn btn-danger btn-sm"
+                               onclick="removeRow({{$product->id}}, '/admin/product/destroy/')">
+                                <i class="fa fa-trash"></i>
+                            </a>
+
+                            @elseif($currentUser != $product->user_id)
+                            <a  class="disabled btn btn-primary btn-sm" href="/admin/product/edit/{{$product->id}}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="" class="disabled btn btn-danger btn-sm"
+                               onclick="removeRow({{$product->id}}, '/admin/product/destroy/')">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            @endif
+                    @endif
                 </td>
 
             </tr>

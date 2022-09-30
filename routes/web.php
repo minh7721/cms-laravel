@@ -37,6 +37,9 @@ Route::get('auth/register', [RegisterController::class, 'index']);
 Route::post('auth/register/create', [RegisterController::class, 'create']);
 
 Route::middleware(['auth'])->group(function (){
+    Route::get('/post/create', [PostController::class, 'create']);
+    Route::post('/post/create', [PostController::class, 'store']);
+
 
     Route::prefix('admin')->group(function (){
         Route::get('/', [AdminMainController::class, 'index'])->name('admin');
@@ -100,6 +103,7 @@ Route::middleware(['auth'])->group(function (){
             Route::get('edit/{user}', [UserController::class, 'show']);
             Route::post('edit/{user}', [UserController::class, 'update']);
             Route::delete('destroy', [UserController::class, 'destroy']);
+            Route::get('loginAnotherUser/{user}', [UserController::class, 'loginAnotherUser']);
         });
 
         #Role
@@ -128,7 +132,6 @@ Route::middleware(['auth'])->group(function (){
 Route::get('/', [MainController::class, 'index']);
 Route::get('/category/{category}', [MainController::class, 'getByCategory']);
 Route::get('/{slug}', [MainController::class, 'detail']);
-Route::get('/post/create', [PostController::class, 'create']);
-Route::post('/post/create', [PostController::class, 'store']);
+
 Route::post('/admin/upload/services', [UploadController::class, 'store']);
 

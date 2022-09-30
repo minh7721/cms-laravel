@@ -10,6 +10,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -27,6 +29,7 @@ class UserController extends Controller
         else{
             $users = $this->userServices->getAll();
         }
+
         return view('admin.users.list', [
             'title' => 'Danh sách người dùng',
             'users' => $users,
@@ -95,4 +98,33 @@ class UserController extends Controller
         return response()->json(['error' => true]);
     }
 
+    public function loginAnotherUser(User $user){
+        $current_user = Auth::id();
+        $current_user_id = DB::table('role_user')->select('role_id')->where('user_id', $current_user)->get()[0]->role_id;
+        $after_user_id = DB::table('role_user')->select('role_id')->where('user_id', $user->id)->get()[0]->role_id;
+
+       if($current_user_id == 1){
+           if ($after_user_id == 3){
+               Auth::login($user);
+               return redirect('/');
+           }
+           Auth::login($user);
+           return redirect('/admin');
+       }
+        elseif($current_user_id == 2){
+            if ($after_user_id == 1){
+                return redirect()->back();
+            }
+            if ($after_user_id == 3){
+                Auth::login($user);
+                return redirect('/');
+            }
+            Auth::login($user);
+            return redirect('/admin');
+        }
+       else{
+           return redirect()->back();
+       }
+
+    }
 }

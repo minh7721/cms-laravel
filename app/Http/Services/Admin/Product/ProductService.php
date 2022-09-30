@@ -5,6 +5,7 @@ namespace App\Http\Services\Admin\Product;
 use App\Models\Menu;
 use App\Models\Product;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -48,9 +49,8 @@ class ProductService
                 'description' => (string) $request->input('description'),
                 'content' => (string) $request->input('content'),
                 'menu_id' => (string) $request->input('menu_id'),
+                'user_id' => Auth::id(),
                 'thumb' => (string) $request->input('thumb'),
-//                'price' => (string) $request->input('price'),
-//                'price_sale' => (string) $request->input('price_sale'),
                 'active' => (string) $request->input('active'),
                 'created_at' => now(),
                 'updated_at' => now(),

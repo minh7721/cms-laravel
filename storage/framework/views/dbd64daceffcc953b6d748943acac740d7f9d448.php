@@ -13,7 +13,7 @@
         </form>
     </div>
 
-    <table>
+    <table class="table table-hover text-wrap">
         <thead>
             <tr>
                 <th style="width: 50px;">ID</th>

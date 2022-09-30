@@ -21,11 +21,11 @@ class MenuFactory extends Factory
         $name = fake()->name();
         return [
             'name' => $name,
+            'slug' => Str::of($name)->slug('-'),
             'parent_id' => 0,
             'description' => fake()->sentence(),
             'content' => fake()->text(),
             'tag' => Str::of($name)->slug('-'),
-//            'active' => fake()->randomElement([0, 1]),
             'active' => '1',
             'created_at' => new DateTime,
             'updated_at' => new DateTime,

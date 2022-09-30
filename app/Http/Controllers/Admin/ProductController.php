@@ -11,6 +11,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -39,6 +41,9 @@ class ProductController extends Controller
             $products = $this->productService->get();
         }
 
+        $role = DB::table('role_user')->where('user_id', Auth::id())->get();
+        $currentUser = Auth::id();
+
         $menus = $this->productService->getMenu();
         $tags = $this->productService->getTag();
         return view('admin.product.list',[
@@ -47,7 +52,9 @@ class ProductController extends Controller
             'menus' => $menus,
             'search' => $search,
             'category' => $category,
-            'tags' => $tags
+            'tags' => $tags,
+            'role' => $role[0]->role_id,
+            'currentUser' => $currentUser
         ]);
     }
 
@@ -103,11 +110,16 @@ class ProductController extends Controller
     }
 
     public function preview(Product $product){
+        $role = DB::table('role_user')->where('user_id', Auth::id())->get();
+        $currentUser = Auth::id();
+
         return view('admin.product.preview', [
             'title' => 'Chi tiết bài viết',
             'product' => $product,
             'menus' => $this->productService->getMenu(),
             'tags' => $this->productService->getTag(),
+            'role' => $role[0]->role_id,
+            'currentUser' => $currentUser
         ]);
     }
 }

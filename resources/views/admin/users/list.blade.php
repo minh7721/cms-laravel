@@ -41,6 +41,9 @@
                        onclick="removeRow({{$user->id}}, '/admin/users/destroy/')">
                         <i class="fa fa-trash"></i>
                     </a>
+                    <a class="btn btn-success btn-sm" href="/admin/users/loginAnotherUser/{{$user->id}}">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
                 </td>
 
             </tr>
