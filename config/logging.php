@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,9 +65,16 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path('logs/web.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
+        ],
+
+        'daily_cli' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/cli.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 7,
         ],
 
         'slack' => [
