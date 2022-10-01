@@ -38,6 +38,19 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'frontend' => [
+            'web',
+//            \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+//            \App\Http\Middleware\LanguageSwitcher::class,
+//            \App\Http\Middleware\ThemeMiddleware::class,
+//            \App\Http\Middleware\DebugbarEnableCheck::class,
+        ],
+
+        'backend' => [
+            'web',
+//            \App\Http\Middleware\DebugbarEnableCheck::class,
+        ],
+
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
