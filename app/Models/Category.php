@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $table = 'tags';
+    protected $table = 'categories';
 
     protected $guarded = ['id'];
 
@@ -17,8 +17,7 @@ class Tag extends Model
         'active' => 'boolean',
     ];
 
-    public function articles()
-    {
-        return $this->belongsToMany(Article::class, 'article_tag');
+    public function articles() {
+        return $this->hasMany(Article::class, 'category_id');
     }
 }
