@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable()->index();
-            $table->smallInteger('active')->default(1)->index();
+            $table->unsignedInteger('length')->default(0)->index();
             $table->timestamps();
         });
     }

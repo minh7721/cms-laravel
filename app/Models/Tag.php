@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Libs\StringUtils;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,14 @@ class Tag extends Model
         'active' => 'boolean',
     ];
 
+    public function save(array $options = [])
+    {
+        if (empty($this->length)) {
+            $this->length = StringUtils::wordsCount($this->name);
+        }
+        return parent::save($options);
+    }
+
     public function sluggable(): array
     {
         return [
@@ -33,4 +42,6 @@ class Tag extends Model
     {
         return $this->belongsToMany(Article::class, 'article_tag');
     }
+
+
 }

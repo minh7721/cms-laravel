@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('slug')->nullable()->index();
             $table->text('description');
             $table->longText('content');
-            $table->smallInteger('active')->default(1)->index();
             $table->timestamps();
         });
     }
