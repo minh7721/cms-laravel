@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Enums\ArticleStatus;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Article extends Model
 {
     use HasFactory;
+    use Sluggable;
     use SoftDeletes;
 
     protected $table = 'articles';
@@ -20,6 +22,15 @@ class Article extends Model
     protected $casts = [
         'featured'  => 'boolean',
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function author()
     {
