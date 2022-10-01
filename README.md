@@ -1,8 +1,8 @@
-## CMS Laravel
+# CMS Laravel
 Đề bài yêu cầu tạo một CMS với những tính năng CRUD cơ bản Thực hiện bởi: Hoàng Nhật Minh
-Download code và run code tại đường dẫn https://github.com/minh7721/cms-laravel.git
 
-Cách sử dụng kết quả:
+
+## Cài đặt
 
 B1: 
 Coppy .env.example sang .env vaf Config database ở file .env
@@ -35,3 +35,14 @@ B8: CHạy thử chương trình :
 Tài khoản: admin@gmail.com
 
 Password: admin
+
+## Các tính năng
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
+- [x] Mars
+- [ ] Jupiter
+- [ ] Saturn
+- [ ] Uranus
+- [ ] Neptune
+- [ ] Comet Haley
