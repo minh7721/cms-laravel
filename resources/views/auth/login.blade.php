@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>{{$title}}</title>
-    @include('admin.head')
+    @include('admin.bak.head')
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-body login-card-body">
 {{--            <p class="login-box-msg">Sign in to start your session</p>--}}
-            @include('admin.alert')
+            @include('admin.bak.alert')
             <form action="/auth/login/authenticate" method="post">
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Email">
@@ -73,7 +73,7 @@
 </div>
 <!-- /.login-box -->
 
-@include('admin.footer')
+@include('admin.bak.footer')
 
 </body>
 </html>

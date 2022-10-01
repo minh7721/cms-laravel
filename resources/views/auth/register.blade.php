@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>{{$title}}</title>
-    @include('admin.head')
+    @include('admin.bak.head')
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">Đăng ký ngay tài khoản mới</p>
-            @include('admin.alert')
+            @include('admin.bak.alert')
             <form action="/auth/register/create" method="post">
                 <div class="input-group mb-3">
                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Tên của bạn...">
@@ -84,7 +84,7 @@
     </div><!-- /.card -->
 </div>
 <!-- /.register-box -->
-@include('admin.footer')
+@include('admin.bak.footer')
 
 </body>
 </html>
