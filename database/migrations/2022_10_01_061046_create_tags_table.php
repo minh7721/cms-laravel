@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
+            $table->string('slug')->nullable()->index();
+            $table->smallInteger('active')->default(1)->index();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('tags');
     }
 };
