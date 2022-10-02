@@ -52,7 +52,7 @@
     });
 
     // Set active state on menu element
-    var full_url = "{{url('/')}}";
+    var full_url = "{{\URL::current()}}";
     var $navLinks = $(".main-sidebar li.nav-item a");
 
     // First look for an exact match including the search string

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,10 @@ class UserController extends Controller
     }
 
     public function index(Request $request) {
+        $data['title'] = "Users";
+        $data['users'] = User::paginate(10);
 
+        return view('admin.users.index', $data);
     }
 
     public function show(Request $request) {
