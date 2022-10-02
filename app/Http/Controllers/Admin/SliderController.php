@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Slider\SliderService;
 use App\Models\Slider;
 use Illuminate\Http\Request;
-
+/** @deprecated  */
 class SliderController extends Controller
 {
     protected $slider;

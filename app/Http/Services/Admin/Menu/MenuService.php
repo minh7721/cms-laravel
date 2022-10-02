@@ -6,7 +6,7 @@ use App\Models\Menu;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
-
+/** @deprecated  */
 class MenuService
 {
     public function getParent(){

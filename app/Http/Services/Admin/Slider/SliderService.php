@@ -6,7 +6,7 @@ use App\Models\Slider;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
+/** @deprecated  */
 class SliderService
 {
     public function insert($request){

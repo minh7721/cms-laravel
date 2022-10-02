@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+/** @deprecated  */
 class PostController extends Controller
 {
     protected $post;

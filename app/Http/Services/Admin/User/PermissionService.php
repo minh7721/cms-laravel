@@ -6,7 +6,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-
+/** @deprecated  */
 class PermissionService
 {
     public function getAll(){

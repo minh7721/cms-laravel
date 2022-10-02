@@ -6,7 +6,7 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-
+/** @deprecated  */
 class TagService
 {
     public function getAll(){

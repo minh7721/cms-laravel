@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Services\UploadService;
 use Illuminate\Http\Request;
-
+/** @deprecated  */
 class UploadController extends Controller
 {
     protected $upload;

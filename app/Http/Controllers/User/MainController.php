@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+/** @deprecated  */
 class MainController extends Controller
 {
     protected $menu;
