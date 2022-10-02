@@ -9,8 +9,6 @@ Route::prefix('admin')
 
         Route::middleware('auth_admin:backend')
             ->group(function () {
-                Route::get('', function () {
-                    dump('ADMIN');
-                });
+                Route::view('', 'admin.dashboard.index')->name('admin.dashboard');
             });
     });
