@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Libs\StringUtils;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +22,7 @@ class TagFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::of($name)->slug('-'),
-//            'length' => strlen($name)
+            'length' => StringUtils::wordsCount($name)
         ];
     }
 }
