@@ -20,8 +20,8 @@ class TagFactory extends Factory
         $name = fake()->word();
         return [
             'name' => $name,
-            'tag' => Str::of($name)->slug('-'),
-            'active' => '1'
+            'slug' => Str::of($name)->slug('-'),
+//            'length' => strlen($name)
         ];
     }
 }

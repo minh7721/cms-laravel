@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Database\Factories\UserFactory;
 use DateTime;
 use Faker\Factory;
@@ -20,13 +21,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::firstOrCreate([
+        User::firstOrCreate([
             'email' => 'admin@admin.com',
-        ], [
             'name' => 'Administrator',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('admin'),
+            'role_id' => 1
         ]);
 
-        \App\Models\User::factory(10)->create();
+        User::factory(100)->create();
     }
 }

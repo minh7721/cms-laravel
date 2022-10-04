@@ -1,10 +1,12 @@
 @yield('before_scripts')
 @stack('before_scripts')
 
+
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 <script src="{{asset("assets_admin/plugins/jquery/jquery.min.js")}}"></script>
 <script src="{{asset("assets_admin/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <script src="{{asset('assets_admin/js/adminlte.min.js?v=3.2.0')}}"></script>
-
+<script src="{{asset("Toast/toastr.js")}}"></script>
 <script>
     $(function () {
         $.validator.setDefaults({
@@ -78,6 +80,30 @@
     $curentPageLink.each(function() {
         $(this).addClass('active');
     });
+</script>
+
+
+
+<script>
+    function removeRow(id, url){
+        if (confirm('Bạn có chắc chắn muốn xóa không?')){
+            $.ajax({
+                type: 'DELETE',
+                datatype: 'JSON',
+                data: {id},
+                url: url,
+                success: function (result){
+                    if(result.error === false){
+                        alert('Xóa thành công');
+                        location.reload();
+                    }
+                    else{
+                        alert('Xóa không thành công');
+                    }
+                }
+            })
+        }
+    }
 </script>
 
 @yield('after_scripts')

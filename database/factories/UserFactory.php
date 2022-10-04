@@ -24,6 +24,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt('1'),
             'remember_token' => Str::random(10),
+            'role_id' => fake()->randomElement([1,2,3]),
             'created_at' => new DateTime,
             'updated_at' => new DateTime,
         ];

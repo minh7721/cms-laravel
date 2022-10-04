@@ -6,13 +6,13 @@
 </li>
 <li class="nav-header text-uppercase font-weight-bold">Data</li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{route('admin.article.index')}}" class="nav-link">
         <i class="nav-icon far fa-newspaper"></i>
         <p>Articles</p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="{{route('admin.category.index')}}" class="nav-link">
         <i class="nav-icon fas fa-list"></i>
         <p>Categories</p>
     </a>

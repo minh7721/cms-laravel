@@ -7,11 +7,18 @@
                 <h1>{{$title}}</h1>
             </div>
         </div>
+        @include('admin.includes.alert')
     </div>
 @endsection
 
 @section('content')
-
+    <div class="row mb-3">
+        <div class="col-4">
+            <a href="{{route('admin.user.create')}}" class="btn btn-primary col-2" style="height: 42px;">
+                <p>Thêm</p>
+            </a>
+        </div>
+    </div>
     <div id="crudTable_wrapper" class="mb-2">
         <table class="table table-hover text-wrap bg-white ">
             <thead>
@@ -30,12 +37,13 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{\App\Models\Enums\Role::search($user->role)}}</td>
+                            <td>{{$user->roles->name}}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="{{route('admin.user.edit', $user->id)}}">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="" class="btn btn-danger btn-sm">
+                                <a href="{{route('admin.user.delete', $user->id)}}" class="btn btn-danger btn-sm"
+                                   onclick="removeRow({{$user->id}}">
                                     <i class="fa fa-trash"></i>
                                 </a>
                                 <a class="btn btn-success btn-sm" href="#">
@@ -59,3 +67,4 @@
         </div>
     </div>
 @endsection
+
