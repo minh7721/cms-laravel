@@ -38,7 +38,7 @@
                                     <input value="{{ old('description') }}" type="text" name="description" class="form-control" id="description" placeholder="Enter description">
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">Mô tả dài</label>
+                                    <label for="content">Mô tả chi tiết</label>
                                     <textarea name="content" id="content" class="form-control" placeholder="Enter content">{{old('content')}}</textarea>
                                 </div>
                             </div>

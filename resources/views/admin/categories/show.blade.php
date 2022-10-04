@@ -45,7 +45,7 @@
 
                             <div class="card-footer">
                                 <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-primary">Sửa</a>
-                                <a href="{{ route('admin.category.delete', $category->id) }}" class="btn btn-primary">Xóa</a>
+                                <a href="{{ route('admin.category.delete', $category->id) }}" class="btn btn-danger">Xóa</a>
                             </div>
                             @csrf
                         </form>
