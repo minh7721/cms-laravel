@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('author_id')->index();
-            $table->unsignedInteger('category_id')->index();
+            $table->unsignedBigInteger('category_id')->index();
             $table->string('title');
             $table->string('slug')->nullable()->index();
             $table->string('thumb')->nullable();
