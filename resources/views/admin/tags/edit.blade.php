@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input disabled value="{{ $tag->name }}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                                    <input value="{{ $tag->name }}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                                 </div>
                             </div>
                             <div class="card-footer">
