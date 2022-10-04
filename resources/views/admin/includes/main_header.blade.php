@@ -39,7 +39,10 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <div class="dropdown-divider"></div>
-                <a href=" {{route('admin.auth.logout') }}" class="dropdown-item dropdown-footer bg-danger">Logout</a>
+                <a href=" {{route('admin.auth.logout') }}" class="dropdown-item dropdown-footer bg-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST" class="hidden">
+                    {{ csrf_field() }}
+                </form>
             </div>
         </li>
     </ul>

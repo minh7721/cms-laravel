@@ -1,12 +1,10 @@
 @yield('before_scripts')
 @stack('before_scripts')
 
-<script src="/ckeditor/ckeditor.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script src="{{asset("ckeditor/ckeditor.js")}}"></script>
 <script src="{{asset("assets_admin/plugins/jquery/jquery.min.js")}}"></script>
 <script src="{{asset("assets_admin/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <script src="{{asset('assets_admin/js/adminlte.min.js?v=3.2.0')}}"></script>
-<script src="{{asset("Toast/toastr.js")}}"></script>
 <script>
     $(function () {
         $.validator.setDefaults({
@@ -81,8 +79,6 @@
         $(this).addClass('active');
     });
 </script>
-
-
 
 <script>
     function removeRow(id, url){

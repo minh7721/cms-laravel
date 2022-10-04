@@ -7,23 +7,30 @@
                 <h1>{{$title}}</h1>
             </div>
         </div>
+        @include('admin.includes.alert')
     </div>
 @endsection
 
 @section('content')
+    <div class="row mb-3">
+        <div class="col-4">
+            <a href="{{route('admin.article.create')}}" class="btn btn-primary col-2" style="height: 42px;">
+                <p>Thêm</p>
+            </a>
+        </div>
+    </div>
 
     <div id="crudTable_wrapper" class="mb-2">
         <table class="table table-hover text-wrap bg-white ">
             <thead>
             <tr>
                 <th style="width: 50px;">ID</th>
+                <th>Tiêu đề</th>
                 <th>Tác giả</th>
                 <th>Thể loại</th>
-                <th>Tiêu đề</th>
-                <th>Mô tả</th>
-                <th>Mô tả chi tiết</th>
+                <th>Mô tả ngắn</th>
+                <th>Tag</th>
                 <th>Kích hoạt</th>
-                <th>Created</th>
                 <th style="width: 150px;">Option</th>
             </tr>
             </thead>
@@ -32,35 +39,32 @@
             @foreach($articles as $key => $article)
                 <tr>
                     <td>{{$article->id}}</td>
-                    <td>{{$article->author_id}}</td>
-                    <td>{{$article->category_id}}</td>
                     <td>{{$article->title}}</td>
-                    <td>{{$article->description}}</td>
-                    <td>{{$article->content}}</td>
-                    <td>{{$article->status}}</td>
-                    <td>{{$article->created_at}}</td>
+                    <td>{{$article->author->name}}</td>
+                    <td>{{$article->category->name }}</td>
+                    <td>{{$article->title}}</td>
+                    <th>{{$article->tags[0]->name}}</th>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="#">
+                        <input type="radio" {{ $article->status == 1 ? 'checked' : '' }}>
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{{ route('admin.article.show', $article->id) }}">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.article.edit', $article->id)}}">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a href="" class="btn btn-danger btn-sm">
+                        <a href="{{route('admin.article.delete', $article->id)}}" class="btn btn-danger btn-sm"
+                           onclick="removeRow({{$article->id}}">
                             <i class="fa fa-trash"></i>
                         </a>
-                        <a class="btn btn-success btn-sm" href="#">
-                            <i class="fa fa-arrow-right"></i>
-                        </a>
                     </td>
-
                 </tr>
             @endforeach
             </tbody>
         </table>
 
         <div class="row mt-2">
-            {{--            <div class="col-sm-12 col-md-4">--}}
-            {{--            </div>--}}
-            {{--            <div class="col-sm-0 col-md-4 text-center">--}}
-            {{--            </div>--}}
             <div class="col-sm-12 col-md-4">
                 {!! $articles->appends(request()->all())->links() !!}
             </div>
