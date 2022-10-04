@@ -57,10 +57,4 @@ class LoginController extends Controller
     {
         return view('admin.auth.login');
     }
-
-    public function logout(): RedirectResponse
-    {
-        Auth::logout();
-        return redirect()->route('admin.auth.login');
-    }
 }

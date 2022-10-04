@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Models\Category;
 
@@ -29,18 +30,26 @@ Route::prefix('admin')
                 });
 
                 //Article
-
                 Route::prefix('article')->group(function (){
-                    Route::get('', [ArticleController::class, 'index'])->name('admin.article.index');
+                    Route::get('/', [ArticleController::class, 'index'])->name('admin.article.index');
                     Route::get('{id}/show', [ArticleController::class, 'show'])->name('admin.article.show');
                     Route::get('create', [ArticleController::class, 'create'])->name('admin.article.create');
                     Route::post('store', [ArticleController::class, 'store'])->name('admin.article.store');
                     Route::get('{id}/edit', [ArticleController::class, 'edit'])->name('admin.article.edit');
                     Route::post('{id}/update', [ArticleController::class, 'update'])->name('admin.article.update');
                     Route::get('{id}/delete', [ArticleController::class, 'delete'])->name('admin.article.delete');
-
                 });
 
+                //Tag
+                Route::prefix('tag')->group(function (){
+                    Route::get('/', [TagController::class, 'index'])->name('admin.tag.index');
+                    Route::get('{id}/show', [TagController::class, 'show'])->name('admin.tag.show');
+                    Route::get('create', [TagController::class, 'create'])->name('admin.tag.create');
+                    Route::post('store', [TagController::class, 'store'])->name('admin.tag.store');
+                    Route::get('{id}/edit', [TagController::class, 'edit'])->name('admin.tag.edit');
+                    Route::post('{id}/update', [TagController::class, 'update'])->name('admin.tag.update');
+                    Route::get('{id}/delete', [TagController::class, 'delete'])->name('admin.tag.delete');
+                });
 
                 //Users
                 Route::prefix('user')->group(function (){

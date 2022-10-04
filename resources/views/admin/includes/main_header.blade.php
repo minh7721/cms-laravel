@@ -19,7 +19,7 @@
             <div class="navbar-search-block" id="navbar-search1">
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" value="{{ $search }}" type="search" name="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-navbar" value="{{ $search ?? '' }}" type="search" name="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>
@@ -39,7 +39,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <div class="dropdown-divider"></div>
-                <a href="{{route('admin.auth.logout')}}" class="dropdown-item dropdown-footer bg-danger">Logout</a>
+                <a href=" {{route('admin.auth.logout') }}" class="dropdown-item dropdown-footer bg-danger">Logout</a>
             </div>
         </li>
     </ul>

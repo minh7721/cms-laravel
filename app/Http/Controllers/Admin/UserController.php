@@ -53,15 +53,9 @@ class UserController extends Controller
     }
 
     //POST
-    public function store(Request $request): RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
         try {
-            $this->validate($request, [
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required'
-            ]);
-
             User::create([
                 'name' => (string) $request->input('name'),
                 'email' => (string) $request->input('email'),

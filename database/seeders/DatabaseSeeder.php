@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             SliderSeeder::class,
             RoleSeeder::class,
-//            CategorySeeder::class,
-//            ArticleSeeder::class,
-//            ArticleTagSeeder::class
+            CategorySeeder::class,
+            ArticleSeeder::class,
+            ArticleTagSeeder::class
         ]);
 //        DB::table('permission_role')->insert([
 //            ['permission_id' => 1, 'role_id' => 1],

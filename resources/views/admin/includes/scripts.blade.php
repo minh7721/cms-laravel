@@ -1,7 +1,7 @@
 @yield('before_scripts')
 @stack('before_scripts')
 
-
+<script src="/ckeditor/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 <script src="{{asset("assets_admin/plugins/jquery/jquery.min.js")}}"></script>
 <script src="{{asset("assets_admin/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
@@ -105,6 +105,8 @@
         }
     }
 </script>
-
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
 @yield('after_scripts')
 @stack('after_scripts')
