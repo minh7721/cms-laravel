@@ -32,7 +32,7 @@ B8: CHạy thử chương trình :
 
 ### Đăng nhập vào tk admin
 
-Tài khoản: admin@gmail.com
+Tài khoản: admin@admin.com
 
 Password: admin
 
@@ -44,8 +44,8 @@ Password: admin
 - [X] CRUD Article/Category/Tag
 - [X] Filter Dứ liệu theo một số trường
 - [ ] Kết nối và lưu trữ ảnh bằng MinIO thông qua s3 driver
-- [ ] Hiện thị Logs
-- [ ] Dashboard
+- [X] Hiện thị Logs
+- [X] Dashboard
 
 **Frontend**
 - [ ] Auth, Login facebook/google (* Login Frontend và Admin là khác nhau)
