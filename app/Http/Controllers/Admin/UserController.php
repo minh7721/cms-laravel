@@ -10,6 +10,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -114,6 +116,36 @@ class UserController extends Controller
         }
         Session::flash('error', 'Xóa user thất bại');
         return redirect()->back();
+
+    }
+
+    public function loginAnotherUser(User $id): Redirector|RedirectResponse|Application
+    {
+        $current_user = Auth::user();
+        $after_user_id = User::where('id', $id->id)->get()[0];
+
+        if($current_user->role_id == 1){
+            if ($after_user_id->role_id == 3){
+                Auth::login($id);
+                return redirect('/');
+            }
+            Auth::login($id);
+            return redirect('/admin');
+        }
+        elseif($current_user->role_id == 2){
+            if ($after_user_id->role_id == 1){
+                return redirect()->back();
+            }
+            if ($after_user_id->role_id == 3){
+                Auth::login($id);
+                return redirect('/');
+            }
+            Auth::login($id);
+            return redirect('/admin');
+        }
+        else{
+            return redirect()->back();
+        }
 
     }
 

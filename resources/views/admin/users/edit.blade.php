@@ -38,9 +38,9 @@
                                 <div class="form-group">
                                     <label for="role_id">Role</label>
                                     <select name="role_id" class="custom-select">
-                                        <option value="0" {{ $user->role_id == 1 ? 'selected' : '' }}>Admin</option>
-                                        <option value="1" {{ $user->role_id == 2 ? 'selected' : '' }}>Editor</option>
-                                        <option value="2" {{ $user->role_id == 3 ? 'selected' : '' }}>User</option>
+                                        <option value="1" {{ $user->role_id == 1 ? 'selected' : '' }}>Admin</option>
+                                        <option value="2" {{ $user->role_id == 2 ? 'selected' : '' }}>Editor</option>
+                                        <option value="3" {{ $user->role_id == 3 ? 'selected' : '' }}>User</option>
                                     </select>
                                 </div>
                             </div>

@@ -13,11 +13,33 @@
 
 @section('content')
     <div class="row mb-3">
-        <div class="col-4">
-            <a href="{{route('admin.article.create')}}" class="btn btn-primary col-2" style="height: 42px;">
+        <div class="col-1">
+            <a href="{{route('admin.article.create')}}" class="btn btn-primary col-12" style="height: 42px;">
                 <p>Thêm</p>
             </a>
         </div>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Lọc theo danh mục
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @foreach($categories as $key=>$category)
+                    <a class="dropdown-item" href="?category={{ $category->id }}">{{ $category->name }}</a>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Lọc theo tag
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @foreach($tags as $key=>$tag)
+                    <a class="dropdown-item" href="?tag={{ $tag->id }}">{{ $tag->name }}</a>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 
     <div id="crudTable_wrapper" class="mb-2">
@@ -43,7 +65,11 @@
                     <td>{{$article->author->name}}</td>
                     <td>{{$article->category->name }}</td>
                     <td>{{$article->title}}</td>
-                    <th>{{$article->tags[0]->name}}</th>
+                    <th>
+                        @foreach($article->tags as $tagItem)
+                            {{ $tagItem->name." " }}
+                        @endforeach
+                    </th>
                     <td>
                         <input type="radio" {{ $article->status == 1 ? 'checked' : '' }}>
                     </td>

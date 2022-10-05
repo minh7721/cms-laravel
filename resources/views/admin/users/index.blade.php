@@ -46,7 +46,7 @@
                                    onclick="removeRow({{$user->id}}">
                                     <i class="fa fa-trash"></i>
                                 </a>
-                                <a class="btn btn-success btn-sm" href="#">
+                                <a class="btn btn-success btn-sm" href="{{ route('admin.user.change', $user->id) }}">
                                     <i class="fa fa-arrow-right"></i>
                                 </a>
                             </td>
