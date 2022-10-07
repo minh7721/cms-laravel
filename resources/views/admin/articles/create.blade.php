@@ -19,7 +19,7 @@
                 <div class="col-md-12">
 
                     <div class="card card-primary">
-                        <form id="quickForm" action="{{ route('admin.article.store') }}" method="POST">
+                        <form id="quickForm" action="{{ route('admin.article.store') }}" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Title</label>

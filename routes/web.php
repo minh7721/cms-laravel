@@ -1,18 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\MainController as AdminMainController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\UploadController;
-use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\Admin\Users\PermissionController;
-use App\Http\Controllers\Admin\Users\RegisterController;
-use App\Http\Controllers\Admin\Users\RoleController;
-use App\Http\Controllers\Admin\Users\UserController;
-use App\Http\Controllers\User\MainController;
-use App\Http\Controllers\User\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -136,6 +123,3 @@ use Illuminate\Support\Facades\Route;
 //Route::post('/admin/upload/services', [UploadController::class, 'store']);
 //
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

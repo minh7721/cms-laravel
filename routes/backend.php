@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
-use App\Models\Category;
 
 
 Route::prefix('admin')
@@ -19,7 +18,6 @@ Route::prefix('admin')
                 Route::get('', [DashboardController::class, 'index'])->name('admin.dashboard');
 
                 //Category
-
                 Route::prefix('category')->group(function (){
                     Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
                     Route::get('{id}/show', [CategoryController::class, 'show'])->name('admin.category.show');
@@ -61,6 +59,9 @@ Route::prefix('admin')
                     Route::get('{id}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
                     Route::post('{id}/update', [UserController::class, 'update'])->name('admin.user.update');
                     Route::get('{id}/delete', [UserController::class, 'delete'])->name('admin.user.delete');
+                    Route::get('{id}/loginAnotherUser', [UserController::class, 'loginAnotherUser'])->name('admin.user.change');
                 });
+
             });
     });
+

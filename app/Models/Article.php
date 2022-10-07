@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Article extends Model
 {
@@ -59,14 +60,14 @@ class Article extends Model
         return $query->where('featured', true);
     }
 
-//    public function getCreatedAtAttribute($date)
-//    {
-//        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
-//    }
-//
-//    public function getUpdatedAtAttribute($date)
-//    {
-//        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
-//    }
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
+    }
+
+    public function getUpdatedAtAttribute($date)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
+    }
 
 }

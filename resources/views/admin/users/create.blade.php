@@ -27,22 +27,22 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                                    <input value="{{old('name')}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                    <input value="{{old('email')}}" type="email" name="email" class="form-control" id="email" placeholder="Enter email">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                    <input value="{{old('password')}}" type="password" name="password" class="form-control" id="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label for="role_id">Role</label>
                                     <select name="role_id" class="custom-select">
-                                        <option value="0">Admin</option>
-                                        <option value="1">Editor</option>
-                                        <option value="2" selected>User</option>
+                                        <option value="1">Admin</option>
+                                        <option value="2">Editor</option>
+                                        <option value="3" selected>User</option>
                                     </select>
                                 </div>
                             </div>

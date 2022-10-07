@@ -34,7 +34,7 @@
 
 <li class="nav-header text-uppercase font-weight-bold">Systems</li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="/admin/log-viewer" class="nav-link">
         <i class="nav-icon fas fa-terminal"></i>
         <p>Logs</p>
     </a>

@@ -50,7 +50,7 @@ Password: admin
 **Frontend**
 - [ ] Auth, Login facebook/google (* Login Frontend và Admin là khác nhau)
 - [ ] Người dùng có thể cập nhập lại thông tin, mật khẩu
-- [ ] Ốp giao diện blog đã làm từ trước (hoặc giao diện khác)
+- [X] Ốp giao diện blog đã làm từ trước (hoặc giao diện khác)
 - [ ] Hiển thị số lượt view trên mỗi bài viết
 - [ ] Command lấy các bài viết mới nhất của một trang báo/blog bất kỳ (setup chạy hàng ngày)
 - [ ] Search (sử dụng elasticsearch)
