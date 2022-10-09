@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class DetailController extends Controller
 {
     public function index(Request $request){
+        $data['user'] = $request->user();
         $slug = $request->slugArticle;
         $data['categories'] = Category::where('parent_id', 0)->get();
         $data['article'] = Article::with('author')

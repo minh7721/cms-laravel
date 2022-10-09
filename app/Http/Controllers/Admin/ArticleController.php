@@ -73,6 +73,7 @@ class ArticleController extends Controller
                 'category_id' => $request->input('category_id'),
                 'title' => $request->input('title'),
                 'slug' => Str::of($request->input('input'))->slug('-'),
+                'thumb' => (string) $request->input('thumb'),
                 'description' => $request->input('description'),
                 'content' => $request->input('content'),
                 'status' => $request->input('status'),
@@ -113,6 +114,7 @@ class ArticleController extends Controller
             $id->slug = Str::of($request->input('title'))->slug('-');
             $id->description = $request->input('description');
             $id->content = $request->input('content');
+            $id->thumb = (string) $request->input('thumb');
             $id->status = $request->input('status');
             $id->updated_at = now();
             $id->save();

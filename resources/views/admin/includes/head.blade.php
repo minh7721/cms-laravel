@@ -11,9 +11,12 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"/>
 
+
 <link rel="stylesheet" href="{{asset('assets_admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('assets_admin/css/adminlte.min.css?v=3.2.0')}}">
 <link rel="stylesheet" href="{{asset('assets_admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @yield('after_styles')
 @stack('after_styles')

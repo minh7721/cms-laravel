@@ -38,40 +38,54 @@
         </button>
     </div>
     <div class="header__left color__text lg:flex">
-        <a href="" class="font__text text-sm opacity-50 ml-10">Mua nhà</a>
-        <a href="" class="font__text text-sm opacity-50 ml-10">Thuê nhà</a>
-        <a href="" class="font__text text-sm opacity-50 ml-10">Khám phá</a>
+        <a href="" class="font__text text-sm opacity-50 ml-10">Home</a>
+        <a href="" class="font__text text-sm opacity-50 ml-10">Lộ trình</a>
+        <a href="" class="font__text text-sm opacity-50 ml-10">Khóa học</a>
         <a href="/" class="font__text text-sm text-mauDo ml-10 shrink underline decoration-1 underline-offset-8">
             Blog
         </a>
     </div>
-    <div class="hidden lg:block lg:text-center md:text-left color__text font__text font-bold">*Reviewnhà</div>
+    <div class="hidden lg:block lg:text-center md:text-left color__text font__text font-bold">Học lập trình để đi làm</div>
     <div class="navbar-right flex justify-end header__right flex-row md:w-full">
         <div class="icon-heart md:mr-6 sm:mr-1">
             <i class="fa-solid fa-heart-circle-check"></i>
         </div>
 
-{{--        <a href="/post/create" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">--}}
-{{--            Đăng bài--}}
-{{--        </a>--}}
-
-        {!! Auth::check() === false ? '<a href="/auth/login" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-            Đăng nhập
-        </a>': '<a href="/auth/login/logout" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-            Đăng xuất
-        </a>' !!}
-
-
-
+        @if(Auth::check() === false)
+            <a href="{{ route('frontend.auth.login') }}" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                Đăng nhập
+            </a>
+        @else
+            <a href="/post/create" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                Đăng bài
+            </a>
+        @endif
         <div class="profile flex">
             <div class="hidden lg:block profile-name">
                 <div class="profile-name__name">{{ $user->name ?? 'Khách' }}</div>
                 <div class="profile-name__job opacity-50 text-xs float-right font-normal">
-                    Tư vấn
+                    @if(isset($user))
+                        {{ $user->role_id == 3 ? 'User' : 'Admin'}}
+                    @else
+                        Khách vãng lai
+                    @endif
                 </div>
             </div>
             <div class="profile-avatar pl-2.5">
-                <img src="/template/images/blog/avatar.jpg" alt="" class="rounded-full profile-avatar__img" />
+                <div class="dropdown">
+                    <div class="" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/template/images/blog/avatar.jpg" alt="" class="rounded-full profile-avatar__img" />
+                    </div>
+
+                    @if(Auth::check() === true)
+                        <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenu">
+                            <a class="dropdown-item py-2 fs-1" href="{{ route('frontend.user.profile') }}">Thông tin cá nhân</a>
+                            <a class="dropdown-item py-2 fs-1" href="{{ route('frontend.user.changepass') }}">Đổi mật khẩu</a>
+                            <a class="dropdown-item py-2 fs-1" href="{{ route('frontend.auth.logout') }}">Đăng xuất</a>
+                        </div>
+                    @endif
+
+                </div>
             </div>
         </div>
     </div>

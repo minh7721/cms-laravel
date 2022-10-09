@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Services;
-/** @deprecated  */
 class UploadService
 {
     public function store($request){

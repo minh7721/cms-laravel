@@ -43,7 +43,7 @@
                         <p class="ml-2 hidden lg:block font-normal text-base text-sm">Gửi mail</p>
                     </div>
 
-                    <div class="btn fb-share-button rounded-36px flex items-center justify-center py-1.5 px-6 border-2 border-primary bg-primary" data-href="{{ route('frontend.main.detail', $article->slug) }}" data-layout="button" data-size="large">
+                    <div class="btn fb-share-button rounded-36px flex items-center justify-center py-1.5 px-6 border-2 border-primary bg-primary" data-href="{{ route('frontend.detail.index', $article->slug) }}" data-layout="button" data-size="large">
                         <i class="fa-brands fa-facebook"></i>
                         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
                            <p class="bg-none ml-2 hidden lg:block font-normal text-base text-sm ">Chia sẻ</p>
@@ -77,7 +77,7 @@
             <div class="mt-9">
                 <p class="font-semibold text-2xl">{{ $article->description }}</p>
                 <p class="mt-4 font-normal text-base opacity-70 tracking-[0.005em]">
-                    {{ $article->content }}
+                    {!! $article->content !!}
                 </p>
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 1: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 2: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
@@ -86,7 +86,7 @@
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 5: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
             </div>
             <div class="mt-9 flex flex-row">
-                <a href="" class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">{{ $article->tags[0]->name }}</a>
+                <a href="{{ route('frontend.main.listbytag', $article->tags[0]->slug) }}" class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">{{ $article->tags[0]->name }}</a>
             </div>
             <div class="mt-9 flex flex-row justify-between">
                 <div class="flex">
@@ -94,12 +94,12 @@
                     <p class=" text-sm bg-xanhLaDam text-white rounded-36px px-6 py-1.5 flex justify-center items-center">{{ $article->category->name}}</p>
                 </div>
                 <i class="py-1.5 fa-solid fa-greater-than hidden sm:block"></i>
-                <a href="/category/{{$article->category->id}}" class="sm:hidden text-sm font-normal text-mauChu">Xem tất cả</a>
+                <a href="{{ route('frontend.category.index', $article->category->slug) }}" class="sm:hidden text-sm font-normal text-mauChu">Xem tất cả</a>
             </div>
             <div class="mt-9 flex flex-col justify-center">
 
                 @foreach($articles as $article1)
-                    <a href="{{ route('frontend.main.detail', $article1->slug)}}" class="flex flex-row sm:flex-col my-8">
+                    <a href="{{ route('frontend.detail.index', $article1->slug)}}" class="flex flex-row sm:flex-col my-8">
                         <div class="w-full mr-6 d-flex justify-center">
                             <img class="" style="height: 300px;" src="{{ $article1->thumb }}" alt="">
                         </div>

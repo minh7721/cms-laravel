@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(Request $request){
+        $data['user'] = $request->user();
         $slug = $request->slugCategory;
         $idCategory = Category::where('slug', $slug)->get()[0];
         $data['categories'] = Category::where('parent_id', 0)->get();

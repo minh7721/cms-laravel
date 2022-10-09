@@ -101,6 +101,44 @@
         }
     }
 </script>
+
+<script>
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Upload file
+    $('#upload').change(function (){
+        const form = new FormData();
+        form.append('file', $(this)[0].files[0]);
+
+        $.ajax({
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            datatype: 'JSON',
+            data: form,
+            url: "{{ route('admin.upload.store') }}",
+            success: function (rs){
+                if(rs.error === false){
+                    $('#image_show').html('<a href="'+ rs.url+'" target="_blank">' +
+                        '<img src="'+rs.url+'" width="100px;" alt=""></a>');
+                    $('#thumb').val(rs.url);
+                }
+                else {
+                    alert('Upload failed');
+                }
+
+            }
+        })
+
+    });
+
+</script>
+
 <script>
     CKEDITOR.replace( 'content' );
 </script>

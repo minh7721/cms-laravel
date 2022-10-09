@@ -198,7 +198,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        ],
+        Yajra\Datatables\DatatablesServiceProvider::class,
+//        Laravel\Socialite\SocialiteServiceProvider::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -214,6 +216,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+//        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
 
 ];

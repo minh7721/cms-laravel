@@ -1,10 +1,10 @@
-<div id="slider" class="flex justify-center w-full md:h-96 sm:h-24">
+<div id="slider" class="flex justify-center w-full md:h-96 sm:h-24 bg-no-repeat bg-center rounded-3xl">
     <div class="lg:w-11/12 w-full">
         <div class="bg-contain bg-no-repeat bg-center rounded-3xl slider w-full h-full">
-            <div class="text-white grid content-center h-full ml-[10%]">
-                <p class="md:text-5xl sm:text-3xl">Reviewnhà</p>
-                <p class="w-full">Finding your best home</p>
-            </div>
+            <a href="https://www.facebook.com/HNMinh77" class="text-white grid content-center h-full ml-[10%]">
+                <p class="md:text-5xl sm:text-3xl">MinhHN</p>
+                <p class="w-full">Học, học nữa, học mãi</p>
+            </a>
         </div>
     </div>
 </div>

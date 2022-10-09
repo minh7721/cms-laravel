@@ -2,9 +2,9 @@
 <div class="mt-9 flex flex-col justify-center mb-9">
     <p class="">Danh sách tin</p>
     @foreach($articles as $key => $article)
-        <a href="{{route('frontend.main.detail', $article->slug)}}" class="flex flex-row sm:flex-col my-8">
+        <a href="{{route('frontend.detail.index', $article->slug)}}" class="flex flex-row sm:flex-col my-8">
             <div class="w-full mr-6">
-                <img class="w-full rounded-36px" style="height: 300px;" src="{{ $article->thumb }}" alt="">
+                <img class="w-full rounded-36px" style="max-height: 500px;" src="{{ $article->thumb }}" alt="">
             </div>
             <div class="flex flex-col w-full">
                 <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $article->title }}</p>

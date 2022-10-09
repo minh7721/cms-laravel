@@ -14,9 +14,9 @@
     <!-- Start Content -->
     <div id="content" class="mt-9 flex justify-center">
         <div class="lg:w-9/12 sm:w-full">
-            <!-- List Category -->
-            @include('frontend.categories.list')
-            <!-- List Category -->
+{{--            <!-- List tag -->--}}
+            @include('frontend.tags.list')
+{{--            <!-- List tag -->--}}
 
             <!-- List articles -->
             @include('frontend.articles.list')

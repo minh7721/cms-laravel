@@ -70,7 +70,7 @@ class UserController extends Controller
             ]);
 
             Session::flash('success', 'Tạo mới user thành công');
-            return redirect('admin/user');
+            return redirect()->route('admin.user.index');
         }
         catch (\Exception $err){
             Session::flash('error', 'Tạo mới user thất bại');
@@ -97,7 +97,7 @@ class UserController extends Controller
             $id->fill($request->input());
             $id->save();
             Session::flash('success', 'Cập nhật thông tin thành công');
-            return redirect('admin/user');
+            return redirect()->route('admin.user.index');
 
         }
         catch (\Exception $err){

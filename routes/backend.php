@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -38,6 +39,9 @@ Route::prefix('admin')
                     Route::post('{id}/update', [ArticleController::class, 'update'])->name('admin.article.update');
                     Route::get('{id}/delete', [ArticleController::class, 'delete'])->name('admin.article.delete');
                 });
+
+                #Upload
+                Route::post('upload/services', [UploadController::class, 'store'])->name('admin.upload.store');
 
                 //Tag
                 Route::prefix('tag')->group(function (){
