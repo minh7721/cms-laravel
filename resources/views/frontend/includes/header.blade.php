@@ -74,7 +74,7 @@
             <div class="profile-avatar pl-2.5">
                 <div class="dropdown">
                     <div class="" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/template/images/blog/avatar.jpg" alt="" class="rounded-full profile-avatar__img" />
+                        <img src="{{ $user->thumb??'/template/images/blog/avatar.jpg' }}" alt="" class="rounded-full profile-avatar__img" />
                     </div>
 
                     @if(Auth::check() === true)

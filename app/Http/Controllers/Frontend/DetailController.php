@@ -22,8 +22,9 @@ class DetailController extends Controller
             ->whereHas('tags')
             ->where('slug', $slug)
             ->first();
-
-        dd($data['article']);
+//        dd($data['article']);
+        $data['article']->views = $data['article']->views +1 ;
+        $data['article']->save();
 
         $idCategory = Category::where('id', $data['article']->category_id)->first();
         $data['articles'] = Article::with('author')
