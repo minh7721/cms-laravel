@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Frontend\Auth\LoginController;
+use App\Http\Controllers\Frontend\Auth\LoginGoogleController;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\DetailController;
 use App\Http\Controllers\Frontend\MainController;
+use App\Http\Controllers\Frontend\UploadController;
 use App\Http\Controllers\Frontend\UserController;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -16,15 +18,22 @@ Route::prefix('/')
         Route::get('logout', [LoginController::class, 'logout'])->name('frontend.auth.logout');
         Route::get('registration', [RegisterController::class, 'showRegistrationForm'])->name('frontend.auth.registration');
         Route::post('registration', [RegisterController::class, 'create'])->name('frontend.auth.registration');
-        Route::get('auth/redirect', function () {
+
+        // Login Facebook
+        Route::get('auth/facebook', function () {
             return Socialite::driver('facebook')->redirect();
-        });
+        })->name('frontend.login.facebook');
 
         Route::get('auth/facebook/callback', function () {
-//            $user = Socialite::driver('facebook')->user();
             return 'Call back Facebook';
-            // $user->token
         });
+
+        // Google
+        Route::get('auth/google', function () {
+            return Socialite::driver('google')->redirect();
+        })->name('frontend.login.google');
+
+        Route::get('auth/google/callback', [LoginGoogleController::class, 'index']);
 
 
         Route::middleware('auth')->group(function (){
@@ -32,6 +41,8 @@ Route::prefix('/')
             Route::post('profile',[UserController::class, 'update'])->name('frontend.user.update');
             Route::get('change-password', [UserController::class, 'changePass'])->name('frontend.user.changepass');
             Route::post('change-password', [UserController::class, 'updatePassword'])->name('frontend.user.updatePassword');
+            #Upload
+            Route::post('upload/services', [UploadController::class, 'store'])->name('frontend.upload.store');
         });
 
         Route::get('/', [MainController::class, 'index'])->name('frontend.main.index');

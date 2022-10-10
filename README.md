@@ -48,7 +48,7 @@ Password: admin
 - [X] Dashboard
 
 **Frontend**
-- [ ] Auth, Login facebook/google (* Login Frontend và Admin là khác nhau)
+- [X] Auth, Login facebook/google (* Login Frontend và Admin là khác nhau)
 - [X] Người dùng có thể cập nhập lại thông tin, mật khẩu
 - [X] Ốp giao diện blog đã làm từ trước (hoặc giao diện khác)
 - [ ] Hiển thị số lượt view trên mỗi bài viết

@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request): Factory|View|Application
+    {
         $data['user'] = $request->user();
         $slug = $request->slugArticle;
         $data['categories'] = Category::where('parent_id', 0)->get();
@@ -18,6 +22,8 @@ class DetailController extends Controller
             ->whereHas('tags')
             ->where('slug', $slug)
             ->first();
+
+        dd($data['article']);
 
         $idCategory = Category::where('id', $data['article']->category_id)->first();
         $data['articles'] = Article::with('author')

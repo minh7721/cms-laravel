@@ -77,13 +77,13 @@
                                 <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                             </div>
 
-                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href=""
+                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="{{ route('frontend.login.facebook') }}"
                                role="button">
                                 <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
                             </a>
-                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href=""
+                            <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="{{ route('frontend.login.google') }}"
                                role="button">
-                                <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
+                                <i class="fa-brands fa-google me-3"></i>Đăng nhập bằng tài khoaản Google</a>
 
                         </form>
                     </div>

@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 255);
+            $table->longText('thumb');
             $table->rememberToken();
-            $table->integer('role_id')->default(2);
+            $table->integer('role_id')->default(3);
+            $table->string('social_id')->nullable();
+            $table->string('social_type')->nullable();
             $table->jsonb('permissions')->default(DB::raw("('{}')"));
             $table->timestamps();
         });
@@ -31,7 +34,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('users');
     }

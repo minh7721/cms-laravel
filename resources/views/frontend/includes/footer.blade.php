@@ -1,3 +1,58 @@
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Upload file
+    $('#upload').change(function (){
+        console.log(123);
+        const form = new FormData();
+        form.append('file', $(this)[0].files[0]);
+
+        $.ajax({
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            datatype: 'JSON',
+            data: form,
+            url: "{{ route('frontend.upload.store') }}",
+            success: function (rs){
+                if(rs.error === false){
+                    $('#thumb').val(rs.url);
+                }
+                else {
+                    alert('Upload failed');
+                }
+            }
+        })
+    });
+
+
+    function removeRow(id, url){
+        if (confirm('Bạn có chắc chắn muốn xóa không?')){
+            $.ajax({
+                type: 'DELETE',
+                datatype: 'JSON',
+                data: {id},
+                url: url,
+                success: function (result){
+                    if(result.error === false){
+                        alert('Xóa thành công');
+                        location.reload();
+                    }
+                    else{
+                        alert('Xóa không thành công');
+                    }
+                }
+            })
+        }
+    }
+
+</script>
+
+
 <!-- jQuery -->
 <script src="/template/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -12,4 +67,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@yield('footer')
+{{--@yield('footer')--}}

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('content');
             $table->smallInteger('status')->index()->comment("PUBLISHED/DRAFT");
             $table->boolean('featured')->default(0);
+            $table->bigInteger('views')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

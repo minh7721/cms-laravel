@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserChangePassRequest;
 use App\Http\Requests\UserProfileRequest;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,17 +19,21 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function profile(Request $request){
+    public function profile(Request $request): Factory|View|Application
+    {
         $data['title'] = 'Profile';
         $data['user'] = $request->user();
         return view('frontend.users.profile', $data);
     }
 
-    public function update(UserProfileRequest $request){
+    public function update(UserProfileRequest $request): RedirectResponse
+    {
         $user = Auth::user();
+        dd($request->input('thumb'));
         try {
             $user->name = (string) $request->input('name');
             $user->email = (string) $request->input('email');
+            $user->thumb = (string) $request->input('thumb');
             $user->email_verified_at = now();
             $user->save();
             Session::flash('success', 'Cập nhật thông tin thành công');
@@ -39,13 +47,15 @@ class UserController extends Controller
         }
     }
 
-    public function changePass(Request $request){
+    public function changePass(Request $request): Factory|View|Application
+    {
         $data['title'] = 'Đổi mật khẩu';
         $data['user'] = $request->user();
         return view('frontend.users.changepassword', $data);
     }
 
-    public function updatePassword(UserChangePassRequest $request){
+    public function updatePassword(UserChangePassRequest $request): RedirectResponse
+    {
         #Kiem tra pass cu
         if(!Hash::check($request->old_password, auth()->user()->password)){
             return back()->with("error", "Mật khẩu cũ chưa đúng");

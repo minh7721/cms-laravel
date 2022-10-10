@@ -31,7 +31,7 @@
                     <div class="grid lg:grid-flow-col grid-flow-row grid-cols-10 gap-4 justify-items-center">
                         <a href="{{ route('frontend.detail.index', $articles[0]->slug) }}"
                            class="row-span-4 col-span-12 lg:col-span-6">
-                            <img src="{{ $articles[0] -> thumb }}"style="height: 800px;" class="w-full rounded-36px" alt="">
+                            <img src="{{ $articles[0] -> thumb }}" style="height: 800px;" class="w-full rounded-36px" alt="">
                             <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $articles[0]->title }}</p>
                             <div class="flex flex-row text-sm mt-3">
                                 <p class="text-xanhLaDam text-base">{{ $articles[0]->category->name }}</p>
@@ -50,7 +50,7 @@
                             <div class="flex flex-row text-sm mt-3">
                                 <p class="text-xanhLaDam text-base">{{ $articles[1]->category->name }}</p>
                                 <p class="mx-2">•</p>
-                                <p class="font-normal text-base">{{ $articles[0]->author->name }}</p>
+                                <p class="font-normal text-base">{{ $articles[1]->author->name }}</p>
                                 <p class="mx-2">•</p>
                                 <p class="font-normal opacity-50 text-base">{{ $articles[1]->created_at}}</p>
                             </div>
@@ -63,7 +63,7 @@
                             <div class="flex flex-row text-sm mt-3">
                                 <p class="text-xanhLaDam text-base">{{ $articles[2]->category->name }}</p>
                                 <p class="mx-2">•</p>
-                                <p class="font-normal text-base">{{ $articles[0]->author->name }}</p>
+                                <p class="font-normal text-base">{{ $articles[2]->author->name }}</p>
                                 <p class="mx-2">•</p>
                                 <p class="font-normal opacity-50 text-base">{{ $articles[2]->created_at }}</p>
                             </div>
@@ -88,7 +88,7 @@
                             <p class="font-semibold text-lg tracking-spaceChu">Đi cạnh cao tốc pháp vân ...</p>
                             <div class="flex flex-row items-center">
                                 <p class="font-normal text-xs tracking-spaceChu">
-                                    5000 lượt xem
+                                    {{ $articles[0]->views }} lượt xem
                                 </p>
                                 <p class="mx-2">•</p>
                                 <p class="opacity-50 font-normal text-xs tracking-spaceChu">
@@ -104,7 +104,7 @@
                             <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                             <p class="mt-3 font-semibold text-sm tracking-spaceChu">Đi cạnh cao tốc pháp vân...</p>
                             <div class="flex flex-row items-center">
-                                <p class="font-normal text-xs">5000 lượt xem</p>
+                                <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                                 <p class="mx-2">•</p>
                                 <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                             </div>
@@ -113,7 +113,7 @@
                             <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                             <p class="mt-3 font-semibold text-sm tracking-spaceChu">Đi cạnh cao tốc pháp vân...</p>
                             <div class="flex flex-row items-center">
-                                <p class="font-normal text-xs">5000 lượt xem</p>
+                                <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                                 <p class="mx-2">•</p>
                                 <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                             </div>
@@ -122,7 +122,7 @@
                             <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                             <p class="mt-3 font-semibold text-sm tracking-spaceChu">Đi cạnh cao tốc pháp vân...</p>
                             <div class="flex flex-row items-center">
-                                <p class="font-normal text-xs">5000 lượt xem</p>
+                                <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                                 <p class="mx-2">•</p>
                                 <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                             </div>
@@ -131,7 +131,7 @@
                             <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                             <p class="mt-3 font-semibold text-sm tracking-spaceChu">Đi cạnh cao tốc pháp vân...</p>
                             <div class="flex flex-row items-center">
-                                <p class="font-normal text-xs">5000 lượt xem</p>
+                                <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                                 <p class="mx-2">•</p>
                                 <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                             </div>
@@ -146,7 +146,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -155,7 +155,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -164,7 +164,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -173,7 +173,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -182,7 +182,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -191,7 +191,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -200,7 +200,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -209,7 +209,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -218,17 +218,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
-                            <p class="mx-2">•</p>
-                            <p class="opacity-50 font-normal text-xs">18/08/2022</p>
-                        </div>
-                    </div>
-
-                    <div class="mr-6">
-                        <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
-                        <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
-                        <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -238,7 +228,7 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>
@@ -248,7 +238,17 @@
                         <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
                         <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
                         <div class="flex flex-row items-center">
-                            <p class="font-normal text-xs">5000 lượt xem</p>
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
+                            <p class="mx-2">•</p>
+                            <p class="opacity-50 font-normal text-xs">18/08/2022</p>
+                        </div>
+                    </div>
+
+                    <div class="mr-6">
+                        <img class="w-full rounded-2xl" src="{{ $articles[0]->thumb }}" alt="">
+                        <p class="mt-3 font-semibold text-xs tracking-spaceChu w-56">Đi cạnh cao tốc pháp vân...</p>
+                        <div class="flex flex-row items-center">
+                            <p class="font-normal text-xs">{{ $articles[0]->views }} lượt xem</p>
                             <p class="mx-2">•</p>
                             <p class="opacity-50 font-normal text-xs">18/08/2022</p>
                         </div>

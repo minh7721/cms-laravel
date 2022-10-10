@@ -76,3 +76,11 @@ $post = Post::create([
 $newPost = $post->replicate();
 // $newPost->slug is "my-awesome-blog-post-1"
 ```
+
+
+# Crawl Data
+
+**Keyword**
+* guzzle laravel
+* https://viblo.asia/p/crawl-data-using-laravel-proxy-and-simple-html-dom-Az45bojwKxY
+* Symfony dom crawler
