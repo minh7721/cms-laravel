@@ -32,39 +32,24 @@ class VnexpressCrawler extends Command
             foreach ($articles as $article_url) {
                 $this->info("Goto: $article_url");
                 $data = $this->parseArticle($article_url);
-                dd($data['category']);
+                $this->info("Title: {$data['title']}");
+
+                $article = Article::firstOrCreate([
+                    'source' => $article_url,
+                ],[
+                    'author_id' => 1,
+                    'category_id' => $this->mappingCategories($data['category']),
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'content' => $data['content'],
+                    'status' => ArticleStatus::PUBLISHED,
+                ]);
             }
         }
 
 
 
-//        $sub_urls = $dom_crawler->filter('.thumb-art > a');
-//        $sub_urls->each(function ($item) {
-//            $urlPage = $item->attr('href');
-//            $client = new Client();
-//            $response = $client->get($urlPage);
-//            $html = $response->getBody()->getContents();
-//            $dom_crawler = new DomCrawler();
-//            $dom_crawler->addHtmlContent($html);
-//
-//
-//            $thumb = $dom_crawler->filter('.fig-picture > picture > source > img')->attr('data-src');
-//
-//            $article = Article::create([
-//                'author_id' => 1,
-//                'category_id' => 8,
-//                'title' => $title,
-//                'thumb' => $thumb,
-//                'description' => $description,
-//                'content' => $content[0][0],
-//                'status' => ArticleStatus::PUBLISHED,
-//            ]);
-//
-//            DB::table('article_tag')->insert([
-//                'article_id' => $article->id,
-//                'tag_id' => 1
-//            ]);
-//        });
+
     }
 
     protected function getCategories(string $homepage) {
