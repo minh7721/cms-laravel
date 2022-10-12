@@ -1,3 +1,19 @@
+<!-- jQuery -->
+<script src="/template/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/template/admin/dist/js/adminlte.min.js"></script>
+
+<script src="/template/admin/js/main.js"></script>
+
+<script src="/template/js/index.js"></script>
+<script src="/template/js/tailwind.config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 <script>
     $.ajaxSetup({
         headers: {
@@ -7,7 +23,6 @@
 
     // Upload file
     $('#upload').change(function (){
-        console.log(123);
         const form = new FormData();
         form.append('file', $(this)[0].files[0]);
 
@@ -49,22 +64,23 @@
             })
         }
     }
+    $("#listTag").on('click', function (){
+        const tag = $(this).val();
 
+        $.ajax({
+            url: '/tag/'+tag,
+            method: "GET",
+            data:{
+                tag: tag
+            },
+            success: function(dt){
+                console.log(dt)
+            },
+            error: function (dt){
+                console.log(dt)
+            }
+        })
+    })
 </script>
 
-
-<!-- jQuery -->
-<script src="/template/admin/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/template/admin/dist/js/adminlte.min.js"></script>
-
-<script src="/template/admin/js/main.js"></script>
-
-<script src="/template/js/index.js"></script>
-<script src="/template/js/tailwind.config.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{{--@yield('footer')--}}
+@yield('footer')

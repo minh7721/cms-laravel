@@ -14,12 +14,14 @@
     <!-- Start Content -->
     <div id="content" class="mt-9 flex justify-center">
         <div class="lg:w-9/12 sm:w-full">
-{{--            <!-- List tag -->--}}
+            <!-- List tag -->
             @include('frontend.tags.list')
-{{--            <!-- List tag -->--}}
+            <!-- List tag -->
 
             <!-- List articles -->
-            @include('frontend.articles.list')
+            <div class="articles-list">
+                @include('frontend.articles.list')
+            </div>
             <!-- List articles -->
         </div>
     </div>
@@ -30,6 +32,8 @@
     <!--End Footer  -->
 </div>
 @include('frontend.includes.footer')
+
+@yield('scripts')
 </body>
 
 </html>

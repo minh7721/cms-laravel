@@ -8,7 +8,7 @@
         "php": "^8.0.2",
         "almasaeed2010/adminlte": "~3.2",
         "cviebrock/eloquent-sluggable": "^9.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
         "laravel/socialite": "^5.5",
@@ -16,6 +16,7 @@
         "laravel/ui": "^4.0",
         "myclabs/php-enum": "^1.8",
         "opcodesio/log-viewer": "^1.5",
+        "symfony/dom-crawler": "^6.0",
         "yajra/laravel-datatables-oracle": "^10.1"
     },
     "require-dev": {

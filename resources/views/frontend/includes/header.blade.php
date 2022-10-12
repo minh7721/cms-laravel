@@ -56,8 +56,8 @@
                 Đăng nhập
             </a>
         @else
-            <a href="/post/create" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                Đăng bài
+            <a href="{{ route('frontend.auth.logout') }}" class="btn__dangBai mr-6 text-sm font-semibold pt-2 pb-2 pl-6 pr-6 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                Đăng xuất
             </a>
         @endif
         <div class="profile flex">

@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request): Factory|View|Application
+    {
         $data['user'] = $request->user();
         $slug = $request->path();
         $data['categories'] = Category::where('parent_id', 0)->get();
@@ -38,7 +39,7 @@ class MainController extends Controller
             ->with('category')
             ->with('tags')
             ->whereHas('tags', function (Builder $query) use ($idTag) {
-                $query->where('tag_id','=',3);
+                $query->where('tag_id', $idTag);
             })
             ->orderBy('id', 'desc')
             ->paginate(5);

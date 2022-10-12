@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Mô tả chi tiết</label>
-                                    <p class="form-control">{!! $article->description !!}</p>
+                                    <p class="form-control">{!! $article->content !!}</p>
                                 </div>
                                 <div class="form-group w-50">
                                     <label>Ảnh bài viết</label>

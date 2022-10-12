@@ -36,6 +36,8 @@
                     <p class="font-normal text-base text-[14px] tracking-spaceChu">{{ $article->author->name }}</p>
                     <p class="mx-2">•</p>
                     <p class="font-normal opacity-50 text-base text-[14px] tracking-spaceChu">{{ $article->created_at }}</p>
+                    <p class="mx-2">•</p>
+                    <p class="font-normal text-base text-[14px] tracking-spaceChu">{{ $article->views }} lượt xem</p>
                 </div>
                 <div class="columns-3 md:mt-0 mt-3">
                     <div class="text-white rounded-36px flex items-center justify-center py-1.5 px-6 border-2 border-gray-300" style="background-color: #ccc;">
@@ -60,8 +62,8 @@
             <div class="mt-9 d-flex justify-content-center">
                 <img src="{{ $article->thumb }}" class="rounded-36px" style="height: 600px;" alt="">
             </div>
-            <div class="mt-9">
-                <p class="font-normal text-base opacity-70">{!! $article->content !!}</p>
+            <div class="mt-9 leading-7 space005 font-normal text-base" style="color: #3B4144;">
+                {!! $article->content !!}
             </div>
             <div class="mt-9 w-full">
                 <div class="grid grid-cols-3 gap-4">
@@ -76,9 +78,9 @@
             </div>
             <div class="mt-9">
                 <p class="font-semibold text-2xl">{{ $article->description }}</p>
-                <p class="mt-4 font-normal text-base opacity-70 tracking-[0.005em]">
-                    {!! $article->content !!}
-                </p>
+{{--                <p class="mt-4 font-normal text-base opacity-70 tracking-[0.005em]">--}}
+{{--                    {!! $article->content !!}--}}
+{{--                </p>--}}
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 1: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 2: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
                 <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 3: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>

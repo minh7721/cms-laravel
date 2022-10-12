@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Mô tả chi tiết</label>
-                                    <textarea name="content" id="content" class="form-control" placeholder="Enter content">{{ $article->description }}</textarea>
+                                    <textarea name="content" id="content" class="form-control" placeholder="Enter content">{{ $article->content }}</textarea>
                                 </div>
                                 <div class="form-group w-50">
                                     <label>Ảnh bài viết</label>

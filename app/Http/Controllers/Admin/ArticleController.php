@@ -21,22 +21,46 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request): Factory|View|Application
+    {
         $search = $request->search ?? '';
         $category = $request->category ?? '';
         $tag = $request->tag ?? '';
-        if($search != '' || $category != '' || $tag != ''){
-            $data['articles'] = Article::with('author')->with('category')->with('tags')
+        if($search != ''){
+            $data['articles'] = Article::with('author')
+                ->with('category')
+                ->with('tags')
+                ->whereHas('tags')
+                ->where('title', 'like', '%'.$search.'%')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+        }
+        elseif ($category != ''){
+            $data['articles'] = Article::with('author')
+                ->with('category')
+                ->with('tags')
+                ->whereHas('tags')
+                ->where('category_id', $category)
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+        }
+        elseif ($tag != ''){
+            $data['articles'] = Article::with('author')
+                ->with('category')
+                ->with('tags')
                 ->whereHas('tags', function (Builder $query) use ($tag) {
                     $query->where('tag_id', $tag);
                 })
-                ->where('title', 'like', '%'.$search.'%')
-                ->orWhere('category_id', '=', $category)
                 ->orderBy('id', 'desc')
                 ->paginate(10);
         }
         else{
-            $data['articles'] = Article::with('author')->with('category')->with('tags')->whereHas('tags')->orderBy('id', 'desc')->paginate(10);
+            $data['articles'] = Article::with('author')
+                ->with('category')
+                ->with('tags')
+                ->whereHas('tags')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
         }
 
         $data['categories'] = Category::get();
@@ -72,7 +96,6 @@ class ArticleController extends Controller
                 'author_id' => Auth::id(),
                 'category_id' => $request->input('category_id'),
                 'title' => $request->input('title'),
-                'slug' => Str::of($request->input('input'))->slug('-'),
                 'thumb' => (string) $request->input('thumb'),
                 'description' => $request->input('description'),
                 'content' => $request->input('content'),
@@ -98,7 +121,8 @@ class ArticleController extends Controller
     }
 
     //GET
-    public function edit(Article $id) {
+    public function edit(Article $id): Factory|View|Application
+    {
         $data['title'] = "Cập nhật Article";
         $data['article'] = $id;
         $data['categories'] = Category::get();
@@ -107,11 +131,11 @@ class ArticleController extends Controller
     }
 
     //POST
-    public function update(ArticleRequest $request, Article $id) {
+    public function update(ArticleRequest $request, Article $id): RedirectResponse
+    {
         try {
             $id->title = (string) $request->input('title');
             $id->category_id = $request->input('category_id');
-            $id->slug = Str::of($request->input('title'))->slug('-');
             $id->description = $request->input('description');
             $id->content = $request->input('content');
             $id->thumb = (string) $request->input('thumb');
@@ -134,10 +158,12 @@ class ArticleController extends Controller
         }
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request): RedirectResponse
+    {
         $article = Article::where('id', $request->id);
         if($article){
             $article->delete();
+            DB::table('article_tag')->where('article_id', $request->id)->delete();
             Session::flash('success', 'Xóa article thành công');
             return redirect()->route('admin.article.index');
         }

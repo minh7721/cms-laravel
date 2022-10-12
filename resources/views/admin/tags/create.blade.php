@@ -18,11 +18,11 @@
                 <div class="col-md-12">
 
                     <div class="card card-primary">
-                        <form id="quickForm" action="{{ route('admin.tag.update', $tag->id) }}" method="POST">
+                        <form id="quickForm" action="{{ route('admin.tag.store') }}" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input disabled value="{{ $tag->name }}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                                 </div>
                             </div>
                             <div class="card-footer">

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d60a236a70c9a54e6e0eba284cfb70e4",
+    "content-hash": "4c0da36cd5cedb4e28de0e5b47d5d62e",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1089,16 +1089,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.34.0",
+            "version": "v9.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b7af7ff35497eb1c4e61652f522a862164dbba5a"
+                "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b7af7ff35497eb1c4e61652f522a862164dbba5a",
-                "reference": "b7af7ff35497eb1c4e61652f522a862164dbba5a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
+                "reference": "79aed20f54b6ab75f926bf7d0dd7a5043ceb774a",
                 "shasum": ""
             },
             "require": {
@@ -1271,7 +1271,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-10-04T13:33:43+00:00"
+            "time": "2022-10-11T17:30:47+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2638,16 +2638,16 @@
         },
         {
             "name": "opcodesio/log-viewer",
-            "version": "v1.5.2",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opcodesio/log-viewer.git",
-                "reference": "9ca546437cf57de43fa2564506e42dc609c06c65"
+                "reference": "60dd54f381a7f3441efd947a0a12dec2eeae148e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opcodesio/log-viewer/zipball/9ca546437cf57de43fa2564506e42dc609c06c65",
-                "reference": "9ca546437cf57de43fa2564506e42dc609c06c65",
+                "url": "https://api.github.com/repos/opcodesio/log-viewer/zipball/60dd54f381a7f3441efd947a0a12dec2eeae148e",
+                "reference": "60dd54f381a7f3441efd947a0a12dec2eeae148e",
                 "shasum": ""
             },
             "require": {
@@ -2707,9 +2707,9 @@
             ],
             "support": {
                 "issues": "https://github.com/opcodesio/log-viewer/issues",
-                "source": "https://github.com/opcodesio/log-viewer/tree/v1.5.2"
+                "source": "https://github.com/opcodesio/log-viewer/tree/v1.6.1"
             },
-            "time": "2022-10-05T06:11:29+00:00"
+            "time": "2022-10-11T06:49:32+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -3669,6 +3669,79 @@
                 }
             ],
             "time": "2022-01-02T09:55:41+00:00"
+        },
+        {
+            "name": "symfony/dom-crawler",
+            "version": "v6.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dom-crawler.git",
+                "reference": "c69331ec49913a91f32737e29ed451ecee8cbea2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/c69331ec49913a91f32737e29ed451ecee8cbea2",
+                "reference": "c69331ec49913a91f32737e29ed451ecee8cbea2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "masterminds/html5": "<2.6"
+            },
+            "require-dev": {
+                "masterminds/html5": "^2.6",
+                "symfony/css-selector": "^5.4|^6.0"
+            },
+            "suggest": {
+                "symfony/css-selector": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DomCrawler\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Eases DOM navigation for HTML and XML documents",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dom-crawler/tree/v6.0.12"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-08-04T19:18:27+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -5958,16 +6031,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v10.1.5",
+            "version": "v10.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "26257891d55ae45f56097c0ff4b5ee73d2cac9ab"
+                "reference": "fa2b807b1702280ebe955a755eaeaa80e73a76f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/26257891d55ae45f56097c0ff4b5ee73d2cac9ab",
-                "reference": "26257891d55ae45f56097c0ff4b5ee73d2cac9ab",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/fa2b807b1702280ebe955a755eaeaa80e73a76f1",
+                "reference": "fa2b807b1702280ebe955a755eaeaa80e73a76f1",
                 "shasum": ""
             },
             "require": {
@@ -6029,7 +6102,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v10.1.5"
+                "source": "https://github.com/yajra/laravel-datatables/tree/v10.1.6"
             },
             "funding": [
                 {
@@ -6045,7 +6118,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-10-06T07:12:46+00:00"
+            "time": "2022-10-10T03:00:08+00:00"
         }
     ],
     "packages-dev": [

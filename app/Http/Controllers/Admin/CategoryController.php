@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -59,7 +60,6 @@ class CategoryController extends Controller
             Category::create([
                 'name' => (string) $request->input('name'),
                 'parent_id' => $request->input('parent_id'),
-                'slug' => Str::of($request->input('name'))->slug('-'),
                 'description' => $request->input('description'),
                 'content' => $request->input('content'),
                 'created_at' => now(),
@@ -107,6 +107,7 @@ class CategoryController extends Controller
         $category = Category::where('id', $request->id);
         if($category){
             $category->delete();
+            Article::where('category_id', $request->id)->delete();
             Session::flash('success', 'Xóa category thành công');
             return redirect()->route('admin.category.index');
         }

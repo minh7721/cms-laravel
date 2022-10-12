@@ -29,16 +29,24 @@ class UserController extends Controller
     public function update(UserProfileRequest $request): RedirectResponse
     {
         $user = Auth::user();
-        dd($request->input('thumb'));
         try {
-            $user->name = (string) $request->input('name');
-            $user->email = (string) $request->input('email');
-            $user->thumb = (string) $request->input('thumb');
-            $user->email_verified_at = now();
-            $user->save();
-            Session::flash('success', 'Cập nhật thông tin thành công');
-            return redirect()->route('frontend.user.profile');
-
+            if ($request->thumb === null){
+                $user->name = (string) $request->input('name');
+                $user->email = (string) $request->input('email');
+                $user->email_verified_at = now();
+                $user->save();
+                Session::flash('success', 'Cập nhật thông tin thành công');
+                return redirect()->route('frontend.user.profile');
+            }
+            else{
+                $user->name = (string) $request->input('name');
+                $user->email = (string) $request->input('email');
+                $user->thumb = (string) $request->input('thumb');
+                $user->email_verified_at = now();
+                $user->save();
+                Session::flash('success', 'Cập nhật thông tin thành công');
+                return redirect()->route('frontend.user.profile');
+            }
         }
         catch (\Exception $err){
             Session::flash('error', 'Cập nhật thông tin thất bại');
