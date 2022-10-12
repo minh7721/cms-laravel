@@ -7,9 +7,6 @@ use App\Models\Article;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler as DomCrawler;
 use App\Models\Enums\ArticleStatus;
 
