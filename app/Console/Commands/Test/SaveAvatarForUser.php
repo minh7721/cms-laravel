@@ -54,7 +54,7 @@ class SaveAvatarForUser extends Command
             $new_file = false;
         } else {
             $disk = 'public'; //sử dụng config
-            $path = 'users/' . IdToPath::makePathFromDate($user->id, 'jpg');
+            $path = 'users/' . IdToPath::make($user->id, 'jpg');
             $path_info = new DiskPathInfo($disk, $path);
             $new_file = true;
         }
