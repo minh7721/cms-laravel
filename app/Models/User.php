@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Castables\FileInformation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -46,6 +47,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'avatar' => FileInformation::class,
     ];
 
     public function articles(): HasMany

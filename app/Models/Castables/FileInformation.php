@@ -3,6 +3,7 @@
 
 namespace App\Models\Castables;
 
+use App\Libs\DiskPathInfo;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
