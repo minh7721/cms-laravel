@@ -28,6 +28,8 @@ return [
     |
     */
 
+//    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+
     'disks' => [
 
         'local' => [
@@ -44,6 +46,7 @@ return [
             'throw' => false,
         ],
 
+//        Thiết lập filesystems.php
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -53,8 +56,17 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-            'throw' => false,
         ],
+
+//        'minio' => [
+//            'driver' => 'minio',
+//            'key' => env('MINIO_ACCESS_KEY'),
+//            'secret' => env('MINIO_SECRET_KEY'),
+//            'region' => env('MINIO_REGION', 'us-east-1'),
+//            'bucket' => env('MINIO_DEFAULT_BUCKET', 'image'),
+//            'endpoint' => env('MINIO_ENDPOINT', 'http://localhost:9001'),
+//        ],
+
 
     ],
 

@@ -23,7 +23,7 @@
                 </a>
                 <div class="flex flex-row ">
                     <p class="hidden md:block py-1.5 text-sm font-normal opacity-70">Chuyên mục</p>
-                    <div class="bg-xanhLaDam ml-4 rounded-36px text-white py-1.5 px-9">{{ $article->category->name}}</div>
+                    <a href="{{ route('frontend.category.index', $article->category->slug) }}" class="bg-xanhLaDam ml-4 rounded-36px text-white py-1.5 px-9">{{ $article->category->name}}</a>
                 </div>
             </div>
             <div class="mt-16">
@@ -31,7 +31,7 @@
             </div>
             <div class="mt-3 md:flex justify-between">
                 <div class="flex flex-row">
-                    <p class="text-xanhLaDam font-semibold text-base text-[14px] tracking-spaceChu">{{ $article->category->name}}</p>
+                    <a href="{{ route('frontend.category.index', $article->category->slug) }}" class="text-xanhLaDam font-semibold text-base text-[14px] tracking-spaceChu">{{ $article->category->name}}</a>
                     <p class="mx-2">•</p>
                     <p class="font-normal text-base text-[14px] tracking-spaceChu">{{ $article->author->name }}</p>
                     <p class="mx-2">•</p>
@@ -59,8 +59,12 @@
                 </div>
             </div>
 
-            <div class="mt-9 d-flex justify-content-center">
-                <img src="{{ $article->thumb }}" class="rounded-36px" style="height: 600px;" alt="">
+{{--            <div class="mt-9 d-flex justify-content-center">--}}
+{{--                <img src="{{ $article->thumb }}" class="rounded-36px" style="height: 600px;" alt="">--}}
+{{--            </div>--}}
+
+            <div class="mt-9">
+                <p class="leading-7 space005 font-normal text-base">{{ $article->description }}</p>
             </div>
             <div class="mt-9 leading-7 space005 font-normal text-base" style="color: #3B4144;">
                 {!! $article->content !!}

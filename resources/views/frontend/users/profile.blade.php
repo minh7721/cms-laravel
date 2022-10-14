@@ -68,12 +68,11 @@
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center p-3 py-5">
                         <img class="rounded-circle mt-5" style="width: 250px; height: 250px;"
-                             src="{{ $user->thumb }}"
+                             src="{{ $user-> thumb}}"
                              alt="Avatar">
                         <span class="font-weight-bold">{{ $user->name }}</span>
                         <span class="text-black-50">{{ $user->email }}</span>
-
-                        <input type="file" class="form-control" id="upload">
+                        <input type="file" id="upload" name="avatar" class="form-control">
                         <input type="hidden" name="thumb" id="thumb">
                     </div>
                 </div>

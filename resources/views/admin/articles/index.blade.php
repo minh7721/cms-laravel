@@ -64,7 +64,7 @@
                     <td>{{$article->title}}</td>
                     <td>{{$article->author->name}}</td>
                     <td>{{$article->category->name }}</td>
-                    <td>{{$article->title}}</td>
+                    <td class="col-4">{{$article->description}}</td>
                     <th>
                         @foreach($article->tags as $tagItem)
                             {{ $tagItem->name." " }}

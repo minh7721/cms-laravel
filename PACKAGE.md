@@ -84,3 +84,18 @@ $newPost = $post->replicate();
 * guzzle laravel
 * https://viblo.asia/p/crawl-data-using-laravel-proxy-and-simple-html-dom-Az45bojwKxY
 * Symfony dom crawler
+
+
+
+
+[X] Lưu trữ file ở những đâu?
+[X] Amazon S3 là gì? (Object storage) -> cung cấp API cho mình sử dụng
+[X] Config để sử dụng s3 trong laravel
+[ ] Không sử dụng laravel thì có s3 AWS CLI
+[X] Môột số cách sử dụng trên AWS S3
+[X] Làm sao để push lên S3
+[X] Tạo Buckget
+[X] Tạo user trên S3 (Quyền cơ bản)
+[X] Lấy đường dẫn của ảnh để show lên giao diện
+[ ] S3 interface và S3 API ?
+

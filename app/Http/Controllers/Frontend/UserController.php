@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -23,25 +24,32 @@ class UserController extends Controller
     {
         $data['title'] = 'Profile';
         $data['user'] = $request->user();
-        return view('frontend.users.profile', $data);
+        $user = Auth::user();
+//        $imgUrl = Storage::disk('s3')->url('avatars/'.$user->id.'/'.$user->thumb);
+//        $path = Storage::disk('s3')->path('avatars/'.$user->id.'/'.$user->thumb);
+        return view('frontend.users.profile', $data,);
     }
 
     public function update(UserProfileRequest $request): RedirectResponse
     {
         $user = Auth::user();
         try {
-            if ($request->thumb === null){
+            if ($request->hasFile('avatar')){
+//                $file = $request->file('avatar');
+//                $fileName = $file->getClientOriginalName();
+//                $file->storeAs('avatars/'.$user->id, $fileName, 's3');
                 $user->name = (string) $request->input('name');
                 $user->email = (string) $request->input('email');
+                $user->thumb = $request->input('thumb');
                 $user->email_verified_at = now();
                 $user->save();
-                Session::flash('success', 'Cập nhật thông tin thành công');
+
+                Session::flash('success', 'Cập nhật thông tin thành côn');
                 return redirect()->route('frontend.user.profile');
             }
             else{
                 $user->name = (string) $request->input('name');
                 $user->email = (string) $request->input('email');
-                $user->thumb = (string) $request->input('thumb');
                 $user->email_verified_at = now();
                 $user->save();
                 Session::flash('success', 'Cập nhật thông tin thành công');

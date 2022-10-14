@@ -1,0 +1,23 @@
+version: "3.5"
+
+networks:
+    minio:
+
+services:
+    minio:
+        image: minio/minio:latest
+        restart: always
+        command:
+            - server
+            - /data
+        ports:
+            - "9001:90"
+        networks:
+            - minio
+        environment:
+            MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minio}
+            MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-miniostorage}
+            MINIO_REGION_NAME: ${MINIO_REGION_NAME:-us-east-1}
+        volumes:
+            - ${PATH_DATA:-./data}/minio:/data
+

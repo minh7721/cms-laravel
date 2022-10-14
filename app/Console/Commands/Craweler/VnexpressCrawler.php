@@ -7,6 +7,7 @@ use App\Models\Article;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler as DomCrawler;
 use App\Models\Enums\ArticleStatus;
 
@@ -15,38 +16,46 @@ class VnexpressCrawler extends Command
     protected $signature = 'crawl:vnexpress';
 
     protected $homepage = '';
-    /**
-     * @throws GuzzleException
-     */
+
     public function handle()
     {
+        $listName = [];
         $this->homepage = "https://vnexpress.net";
         $categories = $this->getCategories($this->homepage);
 
         foreach ($categories as $key => $category_url) {
             if ($key == 0 || $key == 1) continue;
             $articles = $this->getArticles($category_url);
-            foreach ($articles as $article_url) {
-                $this->info("Goto: $article_url");
-                $data = $this->parseArticle($article_url);
-                $this->info("Title: {$data['title']}");
 
-                $article = Article::firstOrCreate([
+            foreach ($articles as $article_url) {
+                try {
+                    $this->info("Go to: $article_url");
+                    $data = $this->parseArticle($article_url);
+//                    $this->info("Title: {$data['title']}");
+//                    $this->info("Content: {$data['content'][0][0]}");
+                    $article = Article::firstOrCreate([
                     'source' => $article_url,
-                ],[
+                    ],[
                     'author_id' => 1,
                     'category_id' => $this->mappingCategories($data['category']),
                     'title' => $data['title'],
+                    'thumb' => $data['thumb'],
                     'description' => $data['description'],
-                    'content' => $data['content'],
+                    'content' => $data['content'][0][0],
                     'status' => ArticleStatus::PUBLISHED,
+                     'source' => $article_url
                 ]);
+
+                    DB::table('article_tag')->insert([
+                        'article_id' => $article->id,
+                        'tag_id' => 1
+                    ]);
+                }
+                catch (\Exception $err){
+                    continue;
+                }
             }
         }
-
-
-
-
     }
 
     protected function getCategories(string $homepage) {
@@ -62,8 +71,8 @@ class VnexpressCrawler extends Command
         $categories =  CrawlerHelper::extractAttributes($dom_crawler, '#wrap-main-nav > nav > ul > li > a', ['text', 'href']);
 
         return array_map(function ($item) {
-            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
-        }, $categories);
+                return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
+            }, $categories);
     }
 
     protected function getArticles(string $url) {
@@ -95,9 +104,7 @@ class VnexpressCrawler extends Command
 
         $title = $dom_crawler->filter('.title-detail')->text();
 
-        $category = $dom_crawler->filter('#dark_theme > section.section.page-detail.top-detail > div > div.sidebar-1 > div.header-content.width_common > ul > li > a')
-                        ->text();
-
+        $category = $dom_crawler->filter('.breadcrumb>li>a')->text();
         $description = $dom_crawler->filter('.description')->text();
 
         $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler, $i){
@@ -109,12 +116,32 @@ class VnexpressCrawler extends Command
             });
         });
 
-        return compact('title', 'category', 'description', 'content');
+        $thumb = $dom_crawler->filter('.fig-picture > picture > source > img')->attr('data-src');
+
+        return compact('title', 'category', 'description', 'content', 'thumb');
     }
 
     protected function mappingCategories(string $string) {
         return match ($string) {
-            "Thời sự" => 8,
+            "Mới nhất" => 6,
+            "Thời sự" => 7,
+            "Góc nhìn" => 8,
+            "Thế giới" => 9,
+            "Podcats" => 10,
+            "Kinh doanh" => 11,
+            "Khoa học" => 12,
+            "Giải trí" => 13,
+            "Thể thao" => 14,
+            "Pháp luật" => 15,
+            "Giáo dục" => 16,
+            "Sức khỏe" => 17,
+            "Đời sống" => 18,
+            "Du lịch" => 19,
+            "Số hóa" => 20,
+            "Xe" => 21,
+            "Ý kiến" => 22,
+            "Tâm sự" => 23,
+            "Hài" => 24,
             default => 0,
         };
     }

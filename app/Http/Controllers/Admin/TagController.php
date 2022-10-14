@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -105,6 +106,7 @@ class TagController extends Controller
         $tag = Tag::where('id', $request->id);
         if($tag){
             $tag->delete();
+            DB::table('article_tag')->where('tag_id', $request->id)->delete();
             Session::flash('success', 'Xóa tag thành công');
             return redirect()->route('admin.tag.index');
         }

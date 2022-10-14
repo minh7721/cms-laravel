@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -57,4 +58,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
+
+
+//    App\Models\Users
+    protected $appends = ['url'];
+
+    public function getUrlAttribute(): string
+    {
+        $fullSrc = 'upload/' . $this->thumb;
+        return Storage::disk('s3')->url($fullSrc);
+    }
+
 }
