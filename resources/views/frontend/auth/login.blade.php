@@ -33,7 +33,6 @@
     </style>
 </head>
 <body>
-
 <div class="container d-flex justify-content-center align-items-center" style="height: 800px;">
         <section class="vh-100">
             <div class="container py-5 h-100">
