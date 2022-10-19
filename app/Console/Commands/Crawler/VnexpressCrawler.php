@@ -4,6 +4,7 @@ namespace App\Console\Commands\Crawler;
 
 use App\Libs\CrawlerHelper;
 use App\Models\Article;
+use App\Models\Category;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
@@ -31,17 +32,25 @@ class VnexpressCrawler extends Command
                 try {
                     $this->info("Go to: $article_url");
                     $data = $this->parseArticle($article_url);
+                    $category = Category::firstOrCreate([
+                        'name' => $data['category']
+                    ],[
+                        'name' => $data['category'],
+                        'description' => $data['category'],
+                        'content' => $data['category']
+                    ]);
+
                     $article = Article::firstOrCreate([
                     'source' => $article_url,
                     ],[
                     'author_id' => 1,
-                    'category_id' => $this->mappingCategories($data['category']),
+                    'category_id' => $category->id,
                     'title' => $data['title'],
                     'thumb' => $data['thumb'],
                     'description' => $data['description'],
                     'content' => $data['content'][0][0],
                     'status' => ArticleStatus::PUBLISHED,
-                     'source' => $article_url
+                    'source' => $article_url
                 ]);
 
                     DB::table('article_tag')->insert([
@@ -91,6 +100,23 @@ class VnexpressCrawler extends Command
         }, $articles);
     }
 
+    protected function getTags(string $url){
+        $html = (new Client([
+            'verify' => false,
+            'timeout' => 30, // 30 seconds
+        ]))->get($url)
+            ->getBody()->getContents();
+
+        $dom_crawler = new DomCrawler();
+        $dom_crawler->addHtmlContent($html);
+
+        $tags = CrawlerHelper::extractAttributes($dom_crawler, '.item-tag > a', ['text', 'href']);
+
+        return array_map(function ($item) {
+            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
+        }, $tags);
+    }
+
     protected function parseArticle(string $url) {
         $html = (new Client([
             'verify' => false,
@@ -122,25 +148,25 @@ class VnexpressCrawler extends Command
 
     protected function mappingCategories(string $string) {
         return match ($string) {
-            "Mới nhất" => 6,
-            "Thời sự" => 7,
-            "Góc nhìn" => 8,
-            "Thế giới" => 9,
-            "Podcats" => 10,
-            "Kinh doanh" => 11,
-            "Khoa học" => 12,
-            "Giải trí" => 13,
-            "Thể thao" => 14,
-            "Pháp luật" => 15,
-            "Giáo dục" => 16,
-            "Sức khỏe" => 17,
-            "Đời sống" => 18,
-            "Du lịch" => 19,
-            "Số hóa" => 20,
-            "Xe" => 21,
-            "Ý kiến" => 22,
-            "Tâm sự" => 23,
-            "Hài" => 24,
+            "Mới nhất" => 1,
+            "Thời sự" => 2,
+            "Góc nhìn" => 3,
+            "Thế giới" => 4,
+            "Podcats" => 5,
+            "Kinh doanh" => 6,
+            "Khoa học" => 7,
+            "Giải trí" => 8,
+            "Thể thao" => 9,
+            "Pháp luật" => 10,
+            "Giáo dục" => 11,
+            "Sức khỏe" => 12,
+            "Đời sống" => 13,
+            "Du lịch" => 14,
+            "Số hóa" => 15,
+            "Xe" => 16,
+            "Ý kiến" => 17,
+            "Tâm sự" => 18,
+            "Hài" => 19,
             default => 0,
         };
     }

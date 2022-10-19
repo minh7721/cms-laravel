@@ -37,8 +37,8 @@ class ArticleController extends Controller
 //        $searchResult = Article::search($query)->get();
 
 //        dd($searchResult);
-        $articles = Article::search('title:(Việt Nam)')->get();
-        dd($articles);
+//        $articles = Article::search('title:(đẹp or nam)')->get();
+//        dd($articles);
 
 
         $data['articles'] = Article::query()->with('author')

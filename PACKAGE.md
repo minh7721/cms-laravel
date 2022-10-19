@@ -85,7 +85,12 @@ $newPost = $post->replicate();
 * https://viblo.asia/p/crawl-data-using-laravel-proxy-and-simple-html-dom-Az45bojwKxY
 * Symfony dom crawler
 
+# Elasticsearch
 
+**Keyword**
+* Scout Driver
+* https://github.com/babenkoivan/elastic-scout-driver#installation
+* 
 
 
 [X] Lưu trữ file ở những đâu?
@@ -99,3 +104,9 @@ $newPost = $post->replicate();
 [X] Lấy đường dẫn của ảnh để show lên giao diện
 [ ] S3 interface và S3 API ?
 
+
+# 19/10
+[ ] Crawl data: Category check theo name, nếu có thì add vào, không có thì tạo category mới
+[ ] Crawl data: Tag check theo name, nếu có thì add vào, không có thì tạo tag mới 
+[ ] Hoàn thiện Elasticsearch 
+[ ] Sửa lại giao diện blog

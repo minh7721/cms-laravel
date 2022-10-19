@@ -107,10 +107,10 @@
                 @foreach($articles as $article1)
                     <a href="{{ route('frontend.detail.index', $article1->slug)}}" class="flex flex-row sm:flex-col my-8">
                         <div class="w-full mr-6 d-flex justify-center">
-                            <img class="" style="height: 300px;" src="{{ $article1->thumb }}" alt="">
+                            <img class="rounded-36px" style="width: 600px; height: 350px;" src="{{ $article1->thumb }}" alt="">
                         </div>
                         <div class="flex flex-col w-full">
-                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $article1->name }}</p>
+                            <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $article1->title }}</p>
                             <div class="flex flex-row text-xs tracking-spaceChu">
                                 <p class="text-xanhLaDam mr-2 text-base">{{ $article1->category->name }} •</p>
                                 <p class="font-normal mr-2 text-base">Hoàng Minh •</p>
@@ -120,30 +120,6 @@
                         </div>
                     </a>
                 @endforeach
-
-                {{--                <div class="mt-9 flex justify-between">--}}
-                {{--                    <p class="font-normal">Tin thịnh hành</p>--}}
-                {{--                    <i class="fa-solid fa-greater-than hidden sm:block"></i>--}}
-                {{--                    <a href="/category/{{$article->category->id}}" class="sm:hidden opacity-70 font-normal">Xem tất cả</a>--}}
-                {{--                </div>--}}
-
-                {{--                        @foreach($articles as $article1)--}}
-                {{--                            <div class="flex flex-row sm:flex-col my-8">--}}
-                {{--                                <div class="w-full mr-6">--}}
-                {{--                                    <img class="w-full" src="{{ $article1->thumb }}" alt="">--}}
-                {{--                                </div>--}}
-                {{--                                <div class="flex flex-col w-full">--}}
-                {{--                                    <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $article1->name }}</p>--}}
-                {{--                                    <div class="flex flex-row text-xs tracking-spaceChu">--}}
-                {{--                                        <p class="text-xanhLaDam mr-2 text-base">{{ $article1->category->name }} •</p>--}}
-                {{--                                        <p class="font-normal mr-2 text-base">Hoàng Minh •</p>--}}
-                {{--                                        <p class="font-normal opacity-50 text-base">{{ $article1->created_at }}</p>--}}
-                {{--                                    </div>--}}
-                {{--                                    <p class="font-normal opacity-50 text-base">{{ $article1->description }}</p>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        @endforeach--}}
-
             </div>
         </div>
     </div>
