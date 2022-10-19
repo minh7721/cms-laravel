@@ -32,17 +32,17 @@ class VnexpressCrawler extends Command
                     $this->info("Go to: $article_url");
                     $data = $this->parseArticle($article_url);
                     $article = Article::firstOrCreate([
-                    'source' => $article_url,
-                    ],[
-                    'author_id' => 1,
-                    'category_id' => $this->mappingCategories($data['category']),
-                    'title' => $data['title'],
-                    'thumb' => $data['thumb'],
-                    'description' => $data['description'],
-                    'content' => $data['content'][0][0],
-                    'status' => ArticleStatus::PUBLISHED,
-                     'source' => $article_url
-                ]);
+                        'source' => $article_url,
+                    ], [
+                        'author_id' => 1,
+                        'category_id' => $this->mappingCategories($data['category']),
+                        'title' => $data['title'],
+                        'thumb' => $data['thumb'],
+                        'description' => $data['description'],
+                        'content' => $data['content'][0][0],
+                        'status' => ArticleStatus::PUBLISHED,
+                        'source' => $article_url
+                    ]);
 
                     DB::table('article_tag')->insert([
                         'article_id' => $article->id,
