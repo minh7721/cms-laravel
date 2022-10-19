@@ -145,29 +145,4 @@ class VnexpressCrawler extends Command
 
         return compact('title', 'category', 'description', 'content', 'thumb');
     }
-
-    protected function mappingCategories(string $string) {
-        return match ($string) {
-            "Mới nhất" => 1,
-            "Thời sự" => 2,
-            "Góc nhìn" => 3,
-            "Thế giới" => 4,
-            "Podcats" => 5,
-            "Kinh doanh" => 6,
-            "Khoa học" => 7,
-            "Giải trí" => 8,
-            "Thể thao" => 9,
-            "Pháp luật" => 10,
-            "Giáo dục" => 11,
-            "Sức khỏe" => 12,
-            "Đời sống" => 13,
-            "Du lịch" => 14,
-            "Số hóa" => 15,
-            "Xe" => 16,
-            "Ý kiến" => 17,
-            "Tâm sự" => 18,
-            "Hài" => 19,
-            default => 0,
-        };
-    }
 }

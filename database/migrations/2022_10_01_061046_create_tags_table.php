@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('normalized')->index();
             $table->string('slug')->nullable()->index();
             $table->unsignedInteger('length')->default(0)->index();
             $table->timestamps();
