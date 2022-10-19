@@ -29,16 +29,16 @@ class ArticleController extends Controller
         $category = $request->category ?? '';
         $tag = $request->tag ?? '';
 
-        $query = Query::match()
-            ->field('title')
-            ->query('bộ')
-            ->fuzziness('AUTO');
+//        $query = Query::match()
+//            ->field('title')
+//            ->query('bộ')
+//            ->fuzziness('AUTO');
+//
+//        $searchResult = Article::search($query)->get();
 
-        $searchResult = Article::searchQuery($query)->execute();
-
-        dd($searchResult);
-//        $articles = Article::search('Việt Nam')->get();
-//        dd($articles);
+//        dd($searchResult);
+        $articles = Article::search('title:(Việt Nam)')->get();
+        dd($articles);
 
 
         $data['articles'] = Article::query()->with('author')
