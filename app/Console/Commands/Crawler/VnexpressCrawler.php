@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Craweler;
+namespace App\Console\Commands\Crawler;
 
 use App\Libs\CrawlerHelper;
 use App\Models\Article;
@@ -31,8 +31,6 @@ class VnexpressCrawler extends Command
                 try {
                     $this->info("Go to: $article_url");
                     $data = $this->parseArticle($article_url);
-//                    $this->info("Title: {$data['title']}");
-//                    $this->info("Content: {$data['content'][0][0]}");
                     $article = Article::firstOrCreate([
                     'source' => $article_url,
                     ],[
@@ -75,7 +73,8 @@ class VnexpressCrawler extends Command
             }, $categories);
     }
 
-    protected function getArticles(string $url) {
+    protected function getArticles(string $url): array
+    {
         $html = (new Client([
             'verify' => false,
             'timeout' => 30, // 30 seconds

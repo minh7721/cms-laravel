@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Elastic\ScoutDriverPlus\Searchable;
 
 class Article extends Model
 {
     use HasFactory;
     use Sluggable;
     use SoftDeletes;
+    use Searchable;
 
     protected $table = 'articles';
 
@@ -25,6 +27,48 @@ class Article extends Model
     protected $casts = [
         'featured'  => 'boolean',
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'category_id' => $this->category_id,
+            'author_id' => $this->author_id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'thumb' => $this->thumb,
+            'description' => $this->description,
+            'content' => $this->content,
+            'status' => $this->status,
+            'views' => $this->views,
+            'created_at' => $this->created_at
+        ];
+    }
+
+    public function searchableAs()
+    {
+        return 'title';
+    }
+
+//    public function getScoutKey()
+//    {
+//        return $this->title;
+//    }
+//
+//    public function getScoutKeyName()
+//    {
+//        return 'title';
+//    }
+
+
+
+
+//    protected $mappingProperties = array(
+//        'title' => [
+//            'type' => 'text',
+//            "analyzer" => "standard",
+//        ]
+//    );
 
     public function sluggable(): array
     {
@@ -69,5 +113,6 @@ class Article extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
     }
+
 
 }
