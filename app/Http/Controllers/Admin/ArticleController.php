@@ -39,28 +39,36 @@ class ArticleController extends Controller
 //        dd($searchResult);
 //        $articles = Article::search('title:(đẹp or nam)')->get();
 //        dd($articles);
-
-
-        $data['articles'] = Article::query()->with('author')
-            ->with('category')
-            ->with('tags');
-        if ($tag != ''){
-            $data['articles'] = $data['articles']->whereHas('tags', function (Builder $query) use ($tag) {
+        $query = Article::with(['author', 'category', 'tags']);
+        $query->when($tag, function (Builder $query, $tag) {
+            return $query->whereHas('tags', function (Builder $query) use ($tag) {
                 $query->where('tag_id', $tag);
             });
-        }
-        else{
-            $data['articles'] = $data['articles']->whereHas('tags');
-        }
+        })->when($search, fn(Builder $query) => $query->where('title', 'like', '%'.$search.'%'))
+            ->when($category, fn(Builder $query) => $query->where('category_id', $category));
 
-        if($search != ''){
-            $data['articles'] = $data['articles']->where('title', 'like', '%'.$search.'%');
-        }
-        if ($category != ''){
-            $data['articles'] = $data['articles']->where('category_id', $category);
-        }
-        $data['articles'] = $data['articles']->orderBy('id', 'desc')
-            ->paginate(10);
+        $data['articles'] = $query->orderBy('id', 'desc')->paginate(10);
+
+//        $data['articles'] = Article::query()->with('author')
+//            ->with('category')
+//            ->with('tags');
+//        if ($tag != ''){
+//            $data['articles'] = $data['articles']->whereHas('tags', function (Builder $query) use ($tag) {
+//                $query->where('tag_id', $tag);
+//            });
+//        }
+//        else{
+//            $data['articles'] = $data['articles']->whereHas('tags');
+//        }
+//
+//        if($search != ''){
+//            $data['articles'] = $data['articles']->where('title', 'like', '%'.$search.'%');
+//        }
+//        if ($category != ''){
+//            $data['articles'] = $data['articles']->where('category_id', $category);
+//        }
+//        $data['articles'] = $data['articles']->orderBy('id', 'desc')
+//            ->paginate(10);
 
         $data['categories'] = Category::get();
         $data['tags'] = Tag::get();
