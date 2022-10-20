@@ -34,7 +34,8 @@ class ArticleManager
      * Kiểm tra article tồn tại không?
      * @return Article|null
      */
-    public static function existedBySource(string $source) {
+    public static function existedBySource(string $source)
+    {
         return Article::where('source', $source)->first();
     }
 
