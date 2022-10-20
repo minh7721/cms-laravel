@@ -22,7 +22,7 @@ class DetailController extends Controller
             ->whereHas('tags')
             ->where('slug', $slug)
             ->first();
-//        dd($data['article']);
+
         $data['article']->views = $data['article']->views +1 ;
         $data['article']->save();
 

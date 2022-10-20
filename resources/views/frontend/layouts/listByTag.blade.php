@@ -15,7 +15,7 @@
     <div id="content" class="mt-9 flex justify-center">
         <div class="lg:w-9/12 sm:w-full">
             <!-- List tag -->
-            @include('frontend.tags.list')
+{{--            @include('frontend.tags.list')--}}
             <!-- List tag -->
 
             <!-- List articles -->

@@ -59,40 +59,16 @@
                 </div>
             </div>
 
-{{--            <div class="mt-9 d-flex justify-content-center">--}}
-{{--                <img src="{{ $article->thumb }}" class="rounded-36px" style="height: 600px;" alt="">--}}
-{{--            </div>--}}
-
             <div class="mt-9">
                 <p class="leading-7 space005 font-normal text-base">{{ $article->description }}</p>
             </div>
             <div class="mt-9 leading-7 space005 font-normal text-base" style="color: #3B4144;">
                 {!! $article->content !!}
             </div>
-            <div class="mt-9 w-full">
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="md:col-span-2 col-span-3">
-                        <img src="{{ $article->thumb }}" class="md:h-full sm:w-full" alt="">
-                    </div>
-                    <div class="md:col-span-1 sm:col-span-3 flex md:flex-col ">
-                        <img src="{{ $article-> thumb}}" class="md:h-1/2 md:mb-3 sm:w-1/2 sm:mr-3 rounded-36px" alt="">
-                        <img src="{{ $article-> thumb}}" class="md:h-1/2 sm:w-1/2 rounded-36px" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="mt-9">
-                <p class="font-semibold text-2xl">{{ $article->description }}</p>
-{{--                <p class="mt-4 font-normal text-base opacity-70 tracking-[0.005em]">--}}
-{{--                    {!! $article->content !!}--}}
-{{--                </p>--}}
-                <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 1: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
-                <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 2: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
-                <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 3: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
-                <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 4: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
-                <div class="mt-3"><p class="float-left mr-3">• Tiêu chí 5: </p><p class="flex flex-wrap font-normal text-base opacity-70 ml-3 tracking-[0.005em]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit molestie etiam nunc egestas</p></div>
-            </div>
             <div class="mt-9 flex flex-row">
-                <a href="{{ route('frontend.main.listbytag', $article->tags[0]->slug) }}" class="rounded-36px px-9 py-1.5 w-36 flex justify-center items-center" style="background-color: #E6E6E6;">{{ $article->tags[0]->name }}</a>
+                @foreach($article->tags as $tag)
+                    <a href="{{ route('frontend.main.listbytag', $tag->slug) }}" class="rounded-36px px-9 py-1.5 flex justify-center items-center mr-2" style="background-color: #E6E6E6;">{{ $tag->name }}</a>
+                @endforeach
             </div>
             <div class="mt-9 flex flex-row justify-between">
                 <div class="flex">

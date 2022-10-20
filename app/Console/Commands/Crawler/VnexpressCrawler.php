@@ -5,12 +5,14 @@ namespace App\Console\Commands\Crawler;
 use App\Libs\CrawlerHelper;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler as DomCrawler;
 use App\Models\Enums\ArticleStatus;
+use App\Services\ArticleManager;
 
 class VnexpressCrawler extends Command
 {
@@ -32,31 +34,18 @@ class VnexpressCrawler extends Command
                 try {
                     $this->info("Go to: $article_url");
                     $data = $this->parseArticle($article_url);
-                    $category = Category::firstOrCreate([
-                        'name' => $data['category']
-                    ],[
-                        'name' => $data['category'],
-                        'description' => $data['category'],
-                        'content' => $data['category']
-                    ]);
+                    $category = ArticleManager::getCategory($data['category'], $data);
 
-                    $article = Article::firstOrCreate([
-                    'source' => $article_url,
-                    ],[
-                    'author_id' => 1,
-                    'category_id' => $category->id,
-                    'title' => $data['title'],
-                    'thumb' => $data['thumb'],
-                    'description' => $data['description'],
-                    'content' => $data['content'][0][0],
-                    'status' => ArticleStatus::PUBLISHED,
-                    'source' => $article_url
-                ]);
+                    $article = ArticleManager::store($article_url, $category->id, $data);
 
-                    DB::table('article_tag')->insert([
-                        'article_id' => $article->id,
-                        'tag_id' => 1
-                    ]);
+                    $tags = $this->getTags($article_url);
+                    foreach ($tags as $tag){
+                        $tag_id = ArticleManager::getTag($tag);
+                        DB::table('article_tag')->updateOrInsert([
+                            'article_id' => $article->id,
+                            'tag_id' => $tag_id->id
+                        ]);
+                    }
                 }
                 catch (\Exception $err){
                     continue;
@@ -110,11 +99,14 @@ class VnexpressCrawler extends Command
         $dom_crawler = new DomCrawler();
         $dom_crawler->addHtmlContent($html);
 
-        $tags = CrawlerHelper::extractAttributes($dom_crawler, '.item-tag > a', ['text', 'href']);
+        $tags = $dom_crawler->filterXpath("//meta[@name='its_tag']")->extract(array('content'));
+        $tags = explode(', ', $tags[0]);
+        return $tags;
+//        $tags = CrawlerHelper::extractAttributes($dom_crawler, "//meta[@name='its_tag']", ['text', 'href', 'content']);
 
-        return array_map(function ($item) {
-            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
-        }, $tags);
+//        return array_map(function ($item) {
+//            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
+//        }, $tags);
     }
 
     protected function parseArticle(string $url) {
