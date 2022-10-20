@@ -32,20 +32,27 @@ class VnexpressCrawler extends Command
 
             foreach ($articles as $article_url) {
                 try {
-                    $this->info("Go to: $article_url");
-                    $data = $this->parseArticle($article_url);
-                    $category = ArticleManager::getCategory($data['category'], $data);
-
-                    $article = ArticleManager::store($article_url, $category->id, $data);
-
-                    $tags = $this->getTags($article_url);
-                    foreach ($tags as $tag){
-                        $tag_id = ArticleManager::getTag($tag);
-                        DB::table('article_tag')->updateOrInsert([
-                            'article_id' => $article->id,
-                            'tag_id' => $tag_id->id
-                        ]);
+                    $count_article = ArticleManager::existedBySource($article_url);
+                    if(count((array)$count_article->id)){
+                        $this->info('Article đã tồn tại');
                     }
+                    else{
+                        $this->info("Go to: $article_url");
+                        $data = $this->parseArticle($article_url);
+                        $category = ArticleManager::getCategory($data['category'], $data);
+
+                        $article = ArticleManager::store($article_url, $category->id, $data);
+
+                        $tags = $this->getTags($article_url);
+                        foreach ($tags as $tag){
+                            $tag_id = ArticleManager::getTag($tag);
+                            DB::table('article_tag')->updateOrInsert([
+                                'article_id' => $article->id,
+                                'tag_id' => $tag_id->id
+                            ]);
+                        }
+                    }
+
                 }
                 catch (\Exception $err){
                     continue;
@@ -102,11 +109,6 @@ class VnexpressCrawler extends Command
         $tags = $dom_crawler->filterXpath("//meta[@name='its_tag']")->extract(array('content'));
         $tags = explode(', ', $tags[0]);
         return $tags;
-//        $tags = CrawlerHelper::extractAttributes($dom_crawler, "//meta[@name='its_tag']", ['text', 'href', 'content']);
-
-//        return array_map(function ($item) {
-//            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
-//        }, $tags);
     }
 
     protected function parseArticle(string $url) {
