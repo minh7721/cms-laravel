@@ -37,7 +37,6 @@ class ArticleController extends Controller
                 });
             })
             ->when($category, fn(Builder $query) => $query->where('category_id', $category));
-
         }
         else{
             $articles = Article::search("title:   ($search)")
@@ -49,7 +48,6 @@ class ArticleController extends Controller
                 })
                 ->when($category, fn(Builder $query) => $query->where('category_id', $category));
         }
-
 
         $data['articles'] = $articles->paginate();
 //        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(10);
