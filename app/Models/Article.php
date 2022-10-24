@@ -28,8 +28,25 @@ class Article extends Model
         'featured'  => 'boolean',
     ];
 
+    protected $mapping = [
+        'properties' => [
+            'title' => [
+                'type' => 'text',
+                // Also you can configure multi-fields, more details you can find here https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+                'fields' => [
+                    'raw' => [
+                        'type' => 'keyword',
+                    ]
+                ]
+            ],
+        ]
+    ];
+
+
     public function toSearchableArray()
     {
+//        $array = $this->toArray();
+//        return $array;
         return [
             'id' => $this->id,
             'category_id' => $this->category_id,
@@ -61,14 +78,6 @@ class Article extends Model
 //    }
 
 
-
-
-//    protected $mappingProperties = array(
-//        'title' => [
-//            'type' => 'text',
-//            "analyzer" => "standard",
-//        ]
-//    );
 
     public function sluggable(): array
     {

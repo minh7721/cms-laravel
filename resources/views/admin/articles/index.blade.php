@@ -14,31 +14,47 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-1">
-            <a href="{{route('admin.article.create')}}" class="btn btn-primary col-12" style="height: 42px;">
+            <a href="{{route('admin.article.create')}}" class="btn btn-primary col-12" style="height: 38px;">
                 <p>Thêm</p>
             </a>
         </div>
-        <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Lọc theo danh mục
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+{{--        <div class="dropdown show">--}}
+{{--            <a class="btn dropdown-toggle ml-3" href="" style="height: 42px;border: 3px solid ; border-bottom-color: hsl(89, 43%, 51%);" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                Lọc theo danh mục--}}
+{{--            </a>--}}
+{{--            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
+{{--                @foreach($categories as $key=>$category)--}}
+{{--                    <a class="dropdown-item" href="?category={{ $category->id }}">{{ $category->name }}</a>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
+        <div class="ml-3">
+            <select class="selectpicker categoryTag" data-live-search="true" data-style="btn-info" title="Danh mục" onchange="location = this.value;">
                 @foreach($categories as $key=>$category)
-                    <a class="dropdown-item" href="?category={{ $category->id }}">{{ $category->name }}</a>
+                <option value="?category={{ $category->id }}" data-tokens="{{ $category->name }}">{{ $category->name }}</option>
                 @endforeach
-            </div>
+            </select>
         </div>
 
-        <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Lọc theo tag
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                @foreach($tags as $key=>$tag)
-                    <a class="dropdown-item" href="?tag={{ $tag->id }}">{{ $tag->name }}</a>
-                @endforeach
-            </div>
-        </div>
+       <div class="ml-3">
+           <select class="selectpicker categoryTag" data-live-search="true" data-style="btn-info" title="Tag" data-size="2" onchange="location = this.value;">
+               @foreach($tags as $key=>$tag)
+                   <option value="?tag={{ $tag->id }}" data-tokens="{{ $tag->name }}">{{ $tag->name }}</option>
+               @endforeach
+           </select>
+       </div>
+
+        {{--        <div class="dropdown show">--}}
+{{--            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                Lọc theo tag--}}
+{{--            </a>--}}
+{{--            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
+{{--                @foreach($tags as $key=>$tag)--}}
+{{--                    <a class="dropdown-item" href="?tag={{ $tag->id }}">{{ $tag->name }}</a>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+
+{{--        </div>--}}
 
     </div>
 
@@ -67,7 +83,7 @@
                     <td class="col-4">{{$article->description}}</td>
                     <th>
                         @foreach($article->tags as $tagItem)
-                            {{ $tagItem->name." " }}
+                            {{ $tagItem->name.", " }}
                         @endforeach
                     </th>
                     <td>

@@ -16,6 +16,9 @@
 
 <link rel="stylesheet" href="{{asset('assets_admin/css/adminlte.min.css?v=3.2.0')}}">
 <link rel="stylesheet" href="{{asset('assets_admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @yield('after_styles')

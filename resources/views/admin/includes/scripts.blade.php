@@ -5,6 +5,12 @@
 <script src="{{asset("assets_admin/plugins/jquery/jquery.min.js")}}"></script>
 <script src="{{asset("assets_admin/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 <script src="{{asset('assets_admin/js/adminlte.min.js?v=3.2.0')}}"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
 <script>
     $(function () {
         $.validator.setDefaults({
@@ -142,5 +148,34 @@
 <script>
     CKEDITOR.replace( 'content' );
 </script>
+
+{{-- Show --}}
+<script>
+    {{--$(".categoryTag").click(function() {--}}
+    {{--    var open = $(this).data("isopen");--}}
+    {{--    if(open) {--}}
+    {{--        window.location.href = $(this).val()--}}
+    {{--    }--}}
+    {{--    //set isopen to opposite so next time when use clicked select box--}}
+    {{--    //it wont trigger this event--}}
+    {{--    $(this).data("isopen", !open);--}}
+    {{--});--}}
+    {{--$('.categoryTag').on('change', function (){--}}
+    {{--    const category = $(this).val();--}}
+    {{--    $.ajax({--}}
+    {{--        url: "{{ route('admin.article.index') }}",--}}
+    {{--        data: {--}}
+    {{--            category: category--}}
+    {{--        },--}}
+    {{--        method: 'GET',--}}
+    {{--        success: function (dt){--}}
+    {{--            console.log("Oke")--}}
+    {{--        }--}}
+    {{--    })--}}
+    {{--})--}}
+    // $('.selectpicker').selectpicker('val', 'Mustard');
+</script>
+
+
 @yield('after_scripts')
 @stack('after_scripts')

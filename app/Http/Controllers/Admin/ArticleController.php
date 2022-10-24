@@ -29,28 +29,42 @@ class ArticleController extends Controller
         $category = $request->category ?? '';
         $tag = $request->tag ?? '';
 
-//        $query = Query::match()
-//            ->field('title')
-//            ->query('bộ')
-//            ->fuzziness('AUTO');
-//
-//        $searchResult = Article::search($query)->get();
+        if($search == ''){
+            $articles = Article::with(['author', 'category', 'tags']);
+            $articles->when($tag, function (Builder $query, $tag) {
+                return $query->whereHas('tags', function (Builder $query) use ($tag) {
+                    $query->where('tag_id', $tag);
+                });
+            })
+            ->when($category, fn(Builder $query) => $query->where('category_id', $category));
 
-//        dd($searchResult);
-//        $articles = Article::search('title:(Việt Nam)')->get();
-//        dd($articles);
+        }
+        else{
+            $articles = Article::search("title:   ($search)")
+                ->query(fn ($query) => $query->with(['author', 'category', 'tags']))
+                ->when($tag, function (Builder $query, $tag) {
+                    return $query->whereHas('tags', function (Builder $query) use ($tag) {
+                        $query->where('tag_id', $tag);
+                    });
+                })
+                ->when($category, fn(Builder $query) => $query->where('category_id', $category));
+        }
 
 
-        $query = Article::with(['author', 'category', 'tags']);
-        $query->when($tag, function (Builder $query, $tag) {
-            return $query->whereHas('tags', function (Builder $query) use ($tag) {
-                $query->where('tag_id', $tag);
-            });
-        })->when($search, fn(Builder $query) => $query->where('title', 'like', '%'.$search.'%'))
-        ->when($category, fn(Builder $query) => $query->where('category_id', $category));
+        $data['articles'] = $articles->paginate();
+//        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(10);
 
-        $data['articles'] = $query->orderBy('id', 'desc')
-            ->paginate(10);
+//        dd($data['articles']);
+//        $query = Article::with(['author', 'category', 'tags']);
+//        $query->when($tag, function (Builder $query, $tag) {
+//            return $query->whereHas('tags', function (Builder $query) use ($tag) {
+//                $query->where('tag_id', $tag);
+//            });
+//        })->when($search, fn(Builder $query) => $query->where('title', 'like', '%'.$search.'%'))
+//            ->when($category, fn(Builder $query) => $query->where('category_id', $category));
+
+//        $data['articles'] = $query->orderBy('id', 'desc')
+//            ->paginate(10);
 
         $data['categories'] = Category::get();
         $data['tags'] = Tag::get();

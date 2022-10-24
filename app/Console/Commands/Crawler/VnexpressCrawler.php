@@ -33,10 +33,7 @@ class VnexpressCrawler extends Command
             foreach ($articles as $article_url) {
                 try {
                     $count_article = ArticleManager::existedBySource($article_url);
-                    if(count((array)$count_article->id)){
-                        $this->info('Article đã tồn tại');
-                    }
-                    else{
+
                         $this->info("Go to: $article_url");
                         $data = $this->parseArticle($article_url);
                         $category = ArticleManager::getCategory($data['category'], $data);
@@ -51,8 +48,6 @@ class VnexpressCrawler extends Command
                                 'tag_id' => $tag_id->id
                             ]);
                         }
-                    }
-
                 }
                 catch (\Exception $err){
                     continue;
