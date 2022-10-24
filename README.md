@@ -52,6 +52,6 @@ Password: admin
 - [X] Người dùng có thể cập nhập lại thông tin, mật khẩu
 - [X] Ốp giao diện blog đã làm từ trước (hoặc giao diện khác)
 - [X] Hiển thị số lượt view trên mỗi bài viết
-- [ ] Command lấy các bài viết mới nhất của một trang báo/blog bất kỳ (setup chạy hàng ngày)
+- [X] Command lấy các bài viết mới nhất của một trang báo/blog bất kỳ (setup chạy hàng ngày)
 - [ ] Search (sử dụng elasticsearch)
 - [ ] Tìm hiểu kiển thức cơ bản về SEO, thêm vào trang của mình
