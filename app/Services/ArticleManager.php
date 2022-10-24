@@ -14,12 +14,15 @@ class ArticleManager
 {
     /**
      * Tìm Hoặc tạo mới category
-     * @return Category
+     * @return Category|Model
      */
     public static function getCategory(string $name, array $data = []) {
         return Category::firstOrCreate([
             'name' => $name
-        ], $data);
+        ], [
+            'description' => $name,
+            'content' => $name,
+        ]);
     }
 
     public static function getTag(string $name): Model|Tag

@@ -41,40 +41,68 @@ class VnexpressCrawler extends Command
                     $pages = $this->getPaginate($link);
                 }
             }
-
-//            $articles = $this->getArticles($category_url);
-//
 //            foreach ($articles as $article_url) {
 //                try {
-//                    $count_article = ArticleManager::existedBySource($article_url);
-//                    $this->info("Ton tai: $count_article->id");
-//                        $this->info("Go to: $article_url");
-//                        $data = $this->parseArticle($article_url);
-//                        $category = ArticleManager::getCategory($data['category'], $data);
+//                    $this->info("Go to: $article_url");
+//                    $data = $this->parseArticle($article_url);
+//                    $category = ArticleManager::getCategory($data['category'], $data);
 //
-//                        $article = ArticleManager::store($article_url, $category->id, $data);
+//                    $article = ArticleManager::store($article_url, $category->id, $data);
 //
-//                        $tags = $this->getTags($article_url);
-//                        foreach ($tags as $tag){
-//                            $tag_id = ArticleManager::getTag($tag);
-//                            DB::table('article_tag')->updateOrInsert([
-//                                'article_id' => $article->id,
-//                                'tag_id' => $tag_id->id
-//                            ]);
-//                        }
-//                }
-//                catch (\Exception $err){
+//                    $tags = $this->getTags($article_url);
+//                    foreach ($tags as $tag) {
+//                        $tag_id = ArticleManager::getTag($tag);
+//                        DB::table('article_tag')->updateOrInsert([
+//                            'article_id' => $article->id,
+//                            'tag_id' => $tag_id->id
+//                        ]);
+//                    }
+//                } catch (\Exception $err) {
 //                    continue;
 //                }
 //            }
         }
     }
 
-    protected function createArticle($articles){
+//    protected function paginateArticle(){
+//        for ($i = 0; $i < 20; $i++) {
+//            foreach ($pages as $link) {
+//                if ($link != NULL) {
+//                    $articles = $this->getArticles($link);
+//                    foreach ($articles as $article_url) {
+//                        try {
+////                                $count_article = ArticleManager::existedBySource($article_url);
+////                                $this->info("Ton tai: $count_article->id");
+//                            $this->info("Go to: $article_url");
+//                            $data = $this->parseArticle($article_url);
+//                            $category = ArticleManager::getCategory($data['category'], $data);
+//
+//                            $article = ArticleManager::store($article_url, $category->id, $data);
+//
+//                            $tags = $this->getTags($article_url);
+//                            foreach ($tags as $tag) {
+//                                $tag_id = ArticleManager::getTag($tag);
+//                                DB::table('article_tag')->updateOrInsert([
+//                                    'article_id' => $article->id,
+//                                    'tag_id' => $tag_id->id
+//                                ]);
+//                            }
+//                        } catch (\Exception $err) {
+//                            continue;
+//                        }
+//                    }
+//                }
+//                $pages = $this->getPaginate($link);
+//            }
+//        }
+//    }
+
+    protected function createArticle($articles)
+    {
         foreach ($articles as $article_url) {
             try {
-                $count_article = ArticleManager::existedBySource($article_url);
-                $this->info("Ton tai: $count_article->id");
+//                $count_article = ArticleManager::existedBySource($article_url);
+//                $this->info("Ton tai: $count_article->id");
                 $this->info("Go to: $article_url");
                 $data = $this->parseArticle($article_url);
                 $category = ArticleManager::getCategory($data['category'], $data);
@@ -82,38 +110,39 @@ class VnexpressCrawler extends Command
                 $article = ArticleManager::store($article_url, $category->id, $data);
 
                 $tags = $this->getTags($article_url);
-                foreach ($tags as $tag){
+                foreach ($tags as $tag) {
                     $tag_id = ArticleManager::getTag($tag);
                     DB::table('article_tag')->updateOrInsert([
                         'article_id' => $article->id,
                         'tag_id' => $tag_id->id
                     ]);
                 }
-            }
-            catch (\Exception $err){
+            } catch (\Exception $err) {
                 continue;
             }
         }
     }
 
-    protected function getCategories(string $homepage) {
+    protected function getCategories(string $homepage)
+    {
         $html = (new Client([
             'verify' => false,
             'timeout' => 30, // 30 seconds
         ]))->get($homepage)
-        ->getBody()->getContents();
+            ->getBody()->getContents();
 
         $dom_crawler = new DomCrawler();
         $dom_crawler->addHtmlContent($html);
 
-        $categories =  CrawlerHelper::extractAttributes($dom_crawler, '#wrap-main-nav > nav > ul > li > a', ['text', 'href']);
+        $categories = CrawlerHelper::extractAttributes($dom_crawler, '#wrap-main-nav > nav > ul > li > a', ['text', 'href']);
 
         return array_map(function ($item) {
-                return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
-            }, $categories);
+            return CrawlerHelper::makeFullUrl($this->homepage, $item['href']);
+        }, $categories);
     }
 
-    protected function getPaginate(string $page){
+    protected function getPaginate(string $page)
+    {
         $html = (new Client([
             'verify' => false,
             'timeout' => 30, // 30 seconds
@@ -148,7 +177,8 @@ class VnexpressCrawler extends Command
         }, $articles);
     }
 
-    protected function getTags(string $url){
+    protected function getTags(string $url)
+    {
         $html = (new Client([
             'verify' => false,
             'timeout' => 30, // 30 seconds
@@ -163,7 +193,8 @@ class VnexpressCrawler extends Command
         return $tags;
     }
 
-    protected function parseArticle(string $url) {
+    protected function parseArticle(string $url)
+    {
         $html = (new Client([
             'verify' => false,
             'timeout' => 30, // 30 seconds
@@ -178,7 +209,7 @@ class VnexpressCrawler extends Command
         $category = $dom_crawler->filter('.breadcrumb>li>a')->text();
         $description = $dom_crawler->filter('.description')->text();
 
-        $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler, $i){
+        $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler, $i) {
             return $parentCrawler->filter('.fig-picture > picture > source > img')->each(function (DomCrawler $node) use ($parentCrawler) {
                 $content = $parentCrawler->html();
                 $src = $node->attr('src');
