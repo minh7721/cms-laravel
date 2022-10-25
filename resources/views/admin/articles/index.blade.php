@@ -26,13 +26,20 @@
             </select>
         </div>
 
-       <div class="ml-3">
+       <div class="ml-3 col-6">
            <select class="selectpicker categoryTag" data-live-search="true" data-style="btn-info" title="Tag" data-size="2" onchange="location = this.value;">
                @foreach($tags as $key=>$tag)
                    <option value="?tag={{ $tag->id }}" data-tokens="{{ $tag->name }}">{{ $tag->name }}</option>
                @endforeach
            </select>
        </div>
+
+        <nav class="navbar navbar-light bg-light float-right">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" value="{{ $search ?? '' }}" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
 
         {{--        <div class="dropdown show">--}}
 {{--            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}

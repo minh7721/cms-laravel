@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use Elastic\ScoutDriverPlus\Searchable;
+//use Elastic\ScoutDriverPlus\Searchable;
+use Laravel\Scout\Searchable;
+
 
 class Article extends Model
 {

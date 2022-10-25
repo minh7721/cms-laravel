@@ -13,11 +13,19 @@
 
 @section('content')
     <div class="row mb-3">
-        <div class="col-4">
-            <a href="{{route('admin.category.create')}}" class="btn btn-primary col-2" style="height: 42px;">
+        <div class="col-9">
+            <a href="{{route('admin.category.create')}}" class="btn btn-primary col-1" style="height: 42px;">
                 <p>Thêm</p>
             </a>
         </div>
+
+        <nav class="navbar navbar-light bg-light float-right">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" value="{{ $search ?? '' }}" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+
     </div>
     <div id="crudTable_wrapper" class="mb-2">
         <table class="table table-hover text-wrap bg-white ">

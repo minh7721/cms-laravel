@@ -31,6 +31,15 @@
             </div>
             <div class="mt-3 md:flex justify-between">
                 <div class="flex flex-row">
+{{--                    <nav aria-label="breadcrumb">--}}
+{{--                        <ol class="breadcrumb bg-transparent">--}}
+{{--                            <li class="breadcrumb-item"><a href="{{ route('frontend.main.index') }}">Home</a></li>--}}
+{{--                            <li class="breadcrumb-item">--}}
+{{--                                <a href="{{ route('frontend.category.index', $article->category->slug) }}" class="text-xanhLaDam font-semibold text-base text-[14px] tracking-spaceChu">{{ $article->category->name}}</a>--}}
+{{--                            </li>--}}
+{{--                        </ol>--}}
+{{--                    </nav>--}}
+
                     <a href="{{ route('frontend.category.index', $article->category->slug) }}" class="text-xanhLaDam font-semibold text-base text-[14px] tracking-spaceChu">{{ $article->category->name}}</a>
                     <p class="mx-2">•</p>
                     <p class="font-normal text-base text-[14px] tracking-spaceChu">{{ $article->author->name }}</p>

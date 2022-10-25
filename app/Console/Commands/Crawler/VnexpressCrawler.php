@@ -52,6 +52,7 @@ class VnexpressCrawler extends Command
             try {
                 $this->info("Go to: $article_url");
                 $data = $this->parseArticle($article_url);
+
                 $category = ArticleManager::getCategory($data['category'], $data);
 
                 $article = ArticleManager::store($article_url, $category->id, $data);
@@ -70,7 +71,7 @@ class VnexpressCrawler extends Command
         }
     }
 
-    protected function getCategories(string $homepage)
+    protected function getCategories(string $homepage): array
     {
         $html = (new Client([
             'verify' => false,
@@ -88,7 +89,7 @@ class VnexpressCrawler extends Command
         }, $categories);
     }
 
-    protected function getPaginate(string $page)
+    protected function getPaginate(string $page): array
     {
         $html = (new Client([
             'verify' => false,
@@ -136,11 +137,10 @@ class VnexpressCrawler extends Command
         $dom_crawler->addHtmlContent($html);
 
         $tags = $dom_crawler->filterXpath("//meta[@name='its_tag']")->extract(array('content'));
-        $tags = explode(', ', $tags[0]);
-        return $tags;
+        return explode(', ', $tags[0]);
     }
 
-    protected function parseArticle(string $url)
+    protected function parseArticle(string $url): array
     {
         $html = (new Client([
             'verify' => false,
@@ -157,7 +157,7 @@ class VnexpressCrawler extends Command
         $description = $dom_crawler->filter('.description')->text();
 
         $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler, $i) {
-            return $parentCrawler->filter('.fig-picture > picture > source > img')->each(function (DomCrawler $node) use ($parentCrawler) {
+            return $parentCrawler->filter('.fig-picture img')->each(function (DomCrawler $node) use ($parentCrawler) {
                 $content = $parentCrawler->html();
                 $src = $node->attr('src');
                 $data_src = $node->attr('data-src');
@@ -165,7 +165,7 @@ class VnexpressCrawler extends Command
             });
         });
 
-        $thumb = $dom_crawler->filter('.fig-picture > picture > source > img')->attr('data-src');
+        $thumb = $dom_crawler->filter('.fig-picture img')->attr('data-src');
 
         return compact('title', 'category', 'description', 'content', 'thumb');
     }
