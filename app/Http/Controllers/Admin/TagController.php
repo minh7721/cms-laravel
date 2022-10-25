@@ -27,13 +27,13 @@ class TagController extends Controller
     {
         $search = $request->search ?? '';
         if($search != ''){
-            $tags = Tag::where('name', 'like', '%'.$search.'%')->paginate(10);
+            $tags = Tag::search($search);
         }
         else{
-            $tags = Tag::paginate(10);
+            $tags = Tag::query();
         }
         $data['title'] = "Tags";
-        $data['tags'] = $tags;
+        $data['tags'] = $tags->orderBy('id', 'desc')->paginate(10);
         $data['search'] = $search;
         return view('admin.tags.index', $data);
     }

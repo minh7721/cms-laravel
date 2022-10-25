@@ -20,7 +20,7 @@ class CategoryController extends Controller
             ->whereHas('tags')
             ->where('category_id', $idCategory->id)
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->paginate(20);
         $data['slug'] = $slug;
         $data['title'] = "Danh mục";
         return view('frontend.layouts.category', $data);

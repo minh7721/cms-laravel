@@ -41,68 +41,15 @@ class VnexpressCrawler extends Command
                     $pages = $this->getPaginate($link);
                 }
             }
-//            foreach ($articles as $article_url) {
-//                try {
-//                    $this->info("Go to: $article_url");
-//                    $data = $this->parseArticle($article_url);
-//                    $category = ArticleManager::getCategory($data['category'], $data);
-//
-//                    $article = ArticleManager::store($article_url, $category->id, $data);
-//
-//                    $tags = $this->getTags($article_url);
-//                    foreach ($tags as $tag) {
-//                        $tag_id = ArticleManager::getTag($tag);
-//                        DB::table('article_tag')->updateOrInsert([
-//                            'article_id' => $article->id,
-//                            'tag_id' => $tag_id->id
-//                        ]);
-//                    }
-//                } catch (\Exception $err) {
-//                    continue;
-//                }
-//            }
+
         }
     }
 
-//    protected function paginateArticle(){
-//        for ($i = 0; $i < 20; $i++) {
-//            foreach ($pages as $link) {
-//                if ($link != NULL) {
-//                    $articles = $this->getArticles($link);
-//                    foreach ($articles as $article_url) {
-//                        try {
-////                                $count_article = ArticleManager::existedBySource($article_url);
-////                                $this->info("Ton tai: $count_article->id");
-//                            $this->info("Go to: $article_url");
-//                            $data = $this->parseArticle($article_url);
-//                            $category = ArticleManager::getCategory($data['category'], $data);
-//
-//                            $article = ArticleManager::store($article_url, $category->id, $data);
-//
-//                            $tags = $this->getTags($article_url);
-//                            foreach ($tags as $tag) {
-//                                $tag_id = ArticleManager::getTag($tag);
-//                                DB::table('article_tag')->updateOrInsert([
-//                                    'article_id' => $article->id,
-//                                    'tag_id' => $tag_id->id
-//                                ]);
-//                            }
-//                        } catch (\Exception $err) {
-//                            continue;
-//                        }
-//                    }
-//                }
-//                $pages = $this->getPaginate($link);
-//            }
-//        }
-//    }
 
     protected function createArticle($articles)
     {
         foreach ($articles as $article_url) {
             try {
-//                $count_article = ArticleManager::existedBySource($article_url);
-//                $this->info("Ton tai: $count_article->id");
                 $this->info("Go to: $article_url");
                 $data = $this->parseArticle($article_url);
                 $category = ArticleManager::getCategory($data['category'], $data);

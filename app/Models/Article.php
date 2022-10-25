@@ -62,7 +62,12 @@ class Article extends Model
         ];
     }
 
-    public function searchableAs()
+//    public function searchableRouting()
+//    {
+//        return $this->articles->id;
+//    }
+
+    public function searchableAs(): string
     {
         return 'title';
     }

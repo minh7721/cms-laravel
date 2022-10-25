@@ -39,7 +39,7 @@ class ArticleController extends Controller
             ->when($category, fn(Builder $query) => $query->where('category_id', $category));
         }
         else{
-            $articles = Article::search("title:   ($search)")
+            $articles = Article::search("title: ($search)")
                 ->query(fn ($query) => $query->with(['author', 'category', 'tags']))
                 ->when($tag, function (Builder $query, $tag) {
                     return $query->whereHas('tags', function (Builder $query) use ($tag) {
@@ -49,10 +49,8 @@ class ArticleController extends Controller
                 ->when($category, fn(Builder $query) => $query->where('category_id', $category));
         }
 
-        $data['articles'] = $articles->paginate();
-//        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(10);
+        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(10);
 
-//        dd($data['articles']);
 //        $query = Article::with(['author', 'category', 'tags']);
 //        $query->when($tag, function (Builder $query, $tag) {
 //            return $query->whereHas('tags', function (Builder $query) use ($tag) {

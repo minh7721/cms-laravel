@@ -82,25 +82,51 @@ class UserController extends Controller
     }
 
     //GET
-    public function edit(User $id) {
-        $data['title'] = 'Edit user';
-        $data['user'] = $id;
-        return view('admin.users.edit', $data);
+    public function edit(Request $request, User $id) {
+        $current_user = Auth::user();
+        if($current_user->role_id == 1){
+            $data['title'] = 'Edit user';
+            $data['user'] = $id;
+
+            return view('admin.users.edit', $data);
+        }
+        Session::flash('error', 'Bạn không có quyền sửa!!!');
+        return redirect()->back();
     }
 
     //POST
     public function update(UserRequest $request, User $id) {
         try {
-            $id->name = (string) $request->input('name');
-            $id->email = (string) $request->input('email');
-            $id->email_verified_at = now();
-            $id->password = Hash::make($request->input('password')) ;
-            $id->save();
-            $id->fill($request->input());
-            $id->save();
-            Session::flash('success', 'Cập nhật thông tin thành công');
-            return redirect()->route('admin.user.index');
-
+            $current_user = Auth::user();
+            $user = User::where('id', $request->id)->get()[0];
+            if($current_user->role_id == 1){
+                $id->name = (string) $request->input('name');
+                $id->email = (string) $request->input('email');
+                $id->email_verified_at = now();
+                $id->password = Hash::make($request->input('password')) ;
+                $id->save();
+                $id->fill($request->input());
+                $id->save();
+                Session::flash('success', 'Cập nhật thông tin thành công');
+                return redirect()->route('admin.user.index');
+            }
+            elseif($current_user->role_id == 2){
+                if($user->role_id >=2 ){
+                    $id->name = (string) $request->input('name');
+                    $id->email = (string) $request->input('email');
+                    $id->email_verified_at = now();
+                    $id->password = Hash::make($request->input('password')) ;
+                    $id->save();
+                    $id->fill($request->input());
+                    $id->save();
+                    Session::flash('success', 'Cập nhật thông tin thành công');
+                    return redirect()->route('admin.user.index');
+                }
+                Session::flash('error', 'Cập nhật thông tin thất bại');
+                return redirect()->back();
+            }
+            Session::flash('error', 'Cập nhật thông tin thất bại');
+            return redirect()->back();
         }
         catch (\Exception $err){
             Session::flash('error', 'Cập nhật thông tin thất bại');
@@ -110,15 +136,26 @@ class UserController extends Controller
     }
 
     public function delete(Request $request) {
-        $user = User::where('id', $request->id);
-        if($user){
+        $current_user = Auth::user();
+        $user = User::where('id', $request->id)->get()[0];
+
+        if($current_user->role_id == 1){
             $user->delete();
             Session::flash('success', 'Xóa user thành công');
             return redirect()->back();
         }
+        elseif($current_user->role_id == 2){
+            if($user->role_id >=2 ){
+                $user->delete();
+                Session::flash('success', 'Xóa user thành công');
+                return redirect()->back();
+            }
+            Session::flash('error', 'Xóa user thất bại');
+            return redirect()->back();
+        }
+
         Session::flash('error', 'Xóa user thất bại');
         return redirect()->back();
-
     }
 
     public function loginAnotherUser(User $id): Redirector|RedirectResponse|Application

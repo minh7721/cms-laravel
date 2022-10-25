@@ -18,16 +18,6 @@
                 <p>Thêm</p>
             </a>
         </div>
-{{--        <div class="dropdown show">--}}
-{{--            <a class="btn dropdown-toggle ml-3" href="" style="height: 42px;border: 3px solid ; border-bottom-color: hsl(89, 43%, 51%);" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                Lọc theo danh mục--}}
-{{--            </a>--}}
-{{--            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
-{{--                @foreach($categories as $key=>$category)--}}
-{{--                    <a class="dropdown-item" href="?category={{ $category->id }}">{{ $category->name }}</a>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-{{--        </div>--}}
         <div class="ml-3">
             <select class="selectpicker categoryTag" data-live-search="true" data-style="btn-info" title="Danh mục" onchange="location = this.value;">
                 @foreach($categories as $key=>$category)
