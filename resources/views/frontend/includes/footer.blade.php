@@ -81,6 +81,23 @@
             }
         })
     })
+
+    // $('.btnSearch').on('click', function (){
+    //     const search = $('.valueSearch').val();
+    //     $(this).val(search);
+    //     window.location = "www.example.com/index.php?q=" + search;
+    //     $.ajax({
+    {{--        url: {{ route('frontend.search.index') }},--}}
+    //         method: "GET",
+    //         data:{
+    //             search: search
+    //         },
+    //         success: function(dt){
+    //             console.log(dt)
+    //         }
+    //     })
+    // })
+
 </script>
 
 @yield('footer')

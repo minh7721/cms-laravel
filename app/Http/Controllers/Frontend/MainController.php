@@ -16,16 +16,26 @@ class MainController extends Controller
 {
     public function index(Request $request): Factory|View|Application
     {
+        $search = $request->get('search') ?? '';
+
         $data['user'] = $request->user();
         $slug = $request->path();
         $data['categories'] = Category::where('parent_id', 0)->get();
-        $data['articles'] = Article::with('author')
-            ->with('category')
-            ->whereHas('tags')
-            ->orderBy('id', 'desc')
-            ->paginate(5);
+
+        if($search == ''){
+            $articles = Article::with(['author', 'category', 'tags']);
+        }
+        else{
+            $articles = Article::search("title: ({$search})")
+                ->query(fn ($query) => $query->with(['author', 'category', 'tags']));
+        }
+
+        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(5);
+
         $data['title'] = "Trang chủ";
         $data['slug'] = $slug;
+        $data['search'] = $search;
+
         return view('frontend.layouts.main', $data);
     }
 

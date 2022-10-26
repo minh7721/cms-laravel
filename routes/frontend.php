@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\DetailController;
 use App\Http\Controllers\Frontend\MainController;
+use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\UploadController;
 use App\Http\Controllers\Frontend\UserController;
 use Laravel\Socialite\Facades\Socialite;
@@ -49,4 +50,6 @@ Route::prefix('/')
         Route::get('category/{slugCategory}', [CategoryController::class, 'index'])->name('frontend.category.index');
         Route::get('post/{slugArticle}', [DetailController::class, 'index'])->name('frontend.detail.index');
         Route::get('/tag/{tag}', [MainController::class, 'listByTag'])->name('frontend.main.listbytag');
+        Route::get('q', [SearchController::class, 'index'])->name('frontend.search.index');
+
     });

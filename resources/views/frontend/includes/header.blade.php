@@ -46,7 +46,10 @@
         </a>
     </div>
     <div class="hidden lg:block lg:text-center md:text-left color__text font__text font-bold">Học lập trình để đi làm</div>
+
     <div class="navbar-right flex justify-end header__right flex-row md:w-full">
+
+
         <div class="icon-heart md:mr-6 sm:mr-1">
             <i class="fa-solid fa-heart-circle-check"></i>
         </div>

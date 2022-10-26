@@ -7,6 +7,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\User;
 use Elastic\Elasticsearch\ClientBuilder;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -18,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
 use Elastic\ScoutDriverPlus\Support\Query;
 
 class ArticleController extends Controller
@@ -28,6 +28,25 @@ class ArticleController extends Controller
         $search = $request->search ?? '';
         $category = $request->category ?? '';
         $tag = $request->tag ?? '';
+
+//        $query = Query::match()
+//            ->field('title')
+//            ->query($search)
+//            ->fuzziness('AUTO');
+//
+//        $query = [
+//            'match' => [
+//                'title' => [
+//                    'query' => $search,
+//                    'fuzziness' => 'AUTO'
+//                ]
+//            ]
+//        ];
+//
+//        $articles = Article::searchQuery($query)->execute();
+//
+//        dd($articles);
+
 
         if($search == ''){
             $articles = Article::with(['author', 'category', 'tags']);
@@ -39,7 +58,7 @@ class ArticleController extends Controller
             ->when($category, fn(Builder $query) => $query->where('category_id', $category));
         }
         else{
-            $articles = Article::search("title: ($search)")
+            $articles = Article::search($search)
                 ->query(fn ($query) => $query->with(['author', 'category', 'tags']))
                 ->when($tag, function (Builder $query, $tag) {
                     return $query->whereHas('tags', function (Builder $query) use ($tag) {
@@ -50,18 +69,6 @@ class ArticleController extends Controller
         }
 
         $data['articles'] = $articles->orderBy('id', 'desc')->paginate(10);
-
-//        $query = Article::with(['author', 'category', 'tags']);
-//        $query->when($tag, function (Builder $query, $tag) {
-//            return $query->whereHas('tags', function (Builder $query) use ($tag) {
-//                $query->where('tag_id', $tag);
-//            });
-//        })->when($search, fn(Builder $query) => $query->where('title', 'like', '%'.$search.'%'))
-//            ->when($category, fn(Builder $query) => $query->where('category_id', $category));
-
-//        $data['articles'] = $query->orderBy('id', 'desc')
-//            ->paginate(10);
-
         $data['categories'] = Category::get();
         $data['tags'] = Tag::get();
         $data['title'] = "Article";

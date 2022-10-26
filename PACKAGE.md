@@ -108,5 +108,5 @@ $newPost = $post->replicate();
 # 19/10
 [X] Crawl data: Category check theo name, nếu có thì add vào, không có thì tạo category mới
 [X] Crawl data: Tag check theo name, nếu có thì add vào, không có thì tạo tag mới 
-[ ] Hoàn thiện Elasticsearch 
+[X] Hoàn thiện Elasticsearch 
 [X] Sửa lại giao diện blog

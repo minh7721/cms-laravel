@@ -21,8 +21,9 @@
 
             <!-- List Category -->
             @include('frontend.categories.list')
+
             <!-- List Category -->
-            <div class="flex justify-center mt-11">
+            <div class="flex justify-center mt-12">
                 <i class="fa-solid fa-square-rss text-xanhLaDam text-4xl mr-8"></i>
                 <p class="text-4xl">Tin tức</p>
             </div>
