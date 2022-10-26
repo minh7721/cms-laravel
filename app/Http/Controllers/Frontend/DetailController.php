@@ -23,6 +23,7 @@ class DetailController extends Controller
             ->where('slug', $slug)
             ->first();
 
+
         $data['article']->views = $data['article']->views +1 ;
         $data['article']->save();
 

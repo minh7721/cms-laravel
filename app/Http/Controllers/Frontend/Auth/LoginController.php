@@ -59,19 +59,12 @@ class LoginController extends Controller
         $user = User::where('email', $email)->first();
 
         if($user){
-            $role = $user->role_id;
-            if($role == 3){
-                if(Auth::attempt([
-                    'email' => $request->input('email'),
-                    'password' => $request->input('password')
-                ], $request->input('remember'))){
-                    return redirect('/');
+            if(Auth::attempt([
+                'email' => $request->input('email'),
+                'password' => $request->input('password')
+            ], $request->input('remember'))){
+                return redirect('/');
                 }
-            }
-            else{
-                Session::flash('error', 'Email hoặc password không chính xác');
-                return redirect()->back();
-            }
         }
         Session::flash('error', 'Email hoặc password không chính xác');
         return redirect()->back();

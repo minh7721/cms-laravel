@@ -44,6 +44,11 @@
         <a href="/" class="font__text text-sm text-mauDo ml-10 shrink underline decoration-1 underline-offset-8">
             Blog
         </a>
+        @if(Auth::check() === true)
+            @if(Auth::user()->role_id == 1)
+                <a href="{{ route('admin.dashboard') }}" class="font__text text-sm opacity-50 ml-10">Trang quản trị</a>
+            @endif
+        @endif
     </div>
     <div class="hidden lg:block lg:text-center md:text-left color__text font__text font-bold">Học lập trình để đi làm</div>
 
