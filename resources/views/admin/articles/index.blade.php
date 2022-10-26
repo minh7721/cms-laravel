@@ -41,18 +41,6 @@
             </form>
         </nav>
 
-        {{--        <div class="dropdown show">--}}
-{{--            <a class="btn btn-secondary dropdown-toggle ml-3" href="" style="height: 42px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                Lọc theo tag--}}
-{{--            </a>--}}
-{{--            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
-{{--                @foreach($tags as $key=>$tag)--}}
-{{--                    <a class="dropdown-item" href="?tag={{ $tag->id }}">{{ $tag->name }}</a>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-
     </div>
 
     <div id="crudTable_wrapper" class="mb-2">
@@ -74,7 +62,7 @@
             @foreach($articles as $key => $article)
                 <tr>
                     <td>{{$article->id}}</td>
-                    <td>{{$article->title}}</td>
+                    <td><a href="{{ route('frontend.detail.index', $article->slug) }}">{{$article->title}}</a></td>
                     <td>{{$article->author->name}}</td>
                     <td>{{$article->category?->name}}</td>
                     <td class="col-4">{{$article->description}}</td>
