@@ -17,6 +17,8 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="{{ asset('/template/css/style.css') }}" />
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
