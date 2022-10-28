@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
+use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,19 +19,28 @@ class MainController extends Controller
     {
         $search = $request->get('search') ?? '';
 
+        $querySearch = Query::matchPhrase()
+            ->field('title')
+            ->query($search);
+
         $data['user'] = $request->user();
         $slug = $request->path();
         $data['categories'] = Category::where('parent_id', 0)->get();
 
         if($search == ''){
-            $articles = Article::with(['author', 'category', 'tags']);
+            $articles = Article::with(['author', 'category', 'tags'])
+                ->orderBy('id', 'desc')
+                ->paginate(5);
         }
         else{
-            $articles = Article::search("title: ({$search})")
-                ->query(fn ($query) => $query->with(['author', 'category', 'tags']));
+            $articles = Article::searchQuery($querySearch)
+                ->load(['author', 'category', 'tags'], Article::class)
+                ->highlight('title')
+                ->sort('id', 'desc')
+                ->paginate(5)->onlyModels();
         }
 
-        $data['articles'] = $articles->orderBy('id', 'desc')->paginate(5);
+        $data['articles'] = $articles;
 
         $data['title'] = "Trang chủ";
         $data['slug'] = $slug;

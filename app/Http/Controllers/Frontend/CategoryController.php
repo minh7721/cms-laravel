@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,10 @@ class CategoryController extends Controller
     public function index(Request $request){
         $search = $request->get('search') ?? '';
 
+        $querySearch = Query::matchPhrase()
+            ->field('title')
+            ->query($search);
+
         $data['user'] = $request->user();
         $slug = $request->slugCategory;
         $idCategory = Category::where('slug', $slug)->get()[0];
@@ -20,23 +25,20 @@ class CategoryController extends Controller
 
         if($search == ''){
             $articles = Article::with(['author', 'category', 'tags'])
-            ->where('category_id', $idCategory->id);
+            ->where('category_id', $idCategory->id)
+            ->paginate(10);
         }
         else{
-            $articles = Article::search("title: ({$search})")
-                ->query(fn ($query) => $query->with(['author', 'category', 'tags']))
-                ->where('category_id', $idCategory->id);
+            $articles = Article::searchQuery($querySearch)
+                ->load(['author', 'category', 'tags'], Article::class)
+                ->highlight('title')
+                ->sort('id', 'desc')
+                ->paginate(5)->onlyModels();
         }
 
 
-        $data['articles'] = $articles->paginate(10);
+        $data['articles'] = $articles;
 
-//        $data['articles'] = Article::with('author')
-//            ->with('category')
-//            ->whereHas('tags')
-//            ->where('category_id', $idCategory->id)
-//            ->orderBy('id', 'desc')
-//            ->paginate(20);
         $data['slug'] = $slug;
         $data['title'] = "Danh mục";
         $data['search'] = $search;

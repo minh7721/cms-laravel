@@ -2,8 +2,8 @@
     <p class="">Danh sách tin</p>
     @foreach($articles as $key => $article)
         <a href="{{route('frontend.detail.index', $article->slug)}}" class="flex flex-row sm:flex-col my-8">
-            <div class="w-full mr-6">
-                <img class="w-full rounded-36px" style="width: 600px; height: 350px;" src="{{ $article->thumb }}" alt="">
+            <div class="mr-6">
+                <img class="w-full rounded-36px" style="width: 500px; height: 200px;" src="{{ $article->thumb }}" alt="">
             </div>
             <div class="flex flex-col w-full">
                 <p class="mt-4 font-semibold text-lg tracking-spaceChu">{{ $article->title }}</p>
