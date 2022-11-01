@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use Elastic\ScoutDriverPlus\Support\Query;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request): Factory|View|Application
+    {
         $search = $request->get('search') ?? '';
 
         $querySearch = Query::matchPhrase()
