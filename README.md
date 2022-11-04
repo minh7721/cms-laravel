@@ -43,7 +43,7 @@ Password: admin
 - [X] Quản lý user và phân quyền
 - [X] CRUD Article/Category/Tag
 - [X] Filter Dứ liệu theo một số trường
-- [ ] Kết nối và lưu trữ ảnh bằng MinIO thông qua s3 driver
+- [X] Kết nối và lưu trữ ảnh bằng MinIO thông qua s3 driver
 - [X] Hiện thị Logs
 - [X] Dashboard
 
@@ -53,5 +53,5 @@ Password: admin
 - [X] Ốp giao diện blog đã làm từ trước (hoặc giao diện khác)
 - [X] Hiển thị số lượt view trên mỗi bài viết
 - [X] Command lấy các bài viết mới nhất của một trang báo/blog bất kỳ (setup chạy hàng ngày)
-- [ ] Search (sử dụng elasticsearch)
+- [X] Search (sử dụng elasticsearch)
 - [ ] Tìm hiểu kiển thức cơ bản về SEO, thêm vào trang của mình

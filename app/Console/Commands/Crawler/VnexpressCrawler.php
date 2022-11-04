@@ -50,7 +50,6 @@ class VnexpressCrawler extends Command
     {
         foreach ($articles as $article_url) {
             try {
-                $this->info("Go to: $article_url");
                 $data = $this->parseArticle($article_url);
 
                 $category = ArticleManager::getCategory($data['category'], $data);
@@ -65,6 +64,7 @@ class VnexpressCrawler extends Command
                         'tag_id' => $tag_id->id
                     ]);
                 }
+                $this->info("Crawl : $article_url");
             } catch (\Exception $err) {
                 continue;
             }
