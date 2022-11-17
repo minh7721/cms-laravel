@@ -35,13 +35,22 @@
                                     </select>
                                 </div>
 
+{{--                                <div class="form-group">--}}
+{{--                                    <label>Tag</label>--}}
+{{--                                    <select class="form-control" name="tag_id">--}}
+{{--                                        <option value="0"></option>--}}
+{{--                                        @foreach($tags as $tag)--}}
+{{--                                            <option value="{{$tag->id}}">{{$tag->name}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+
                                 <div class="form-group">
                                     <label>Tag</label>
-                                    <select class="form-control" name="tag_id">
-                                        <option value="0"></option>
-                                        @foreach($tags as $tag)
-                                            <option value="{{$tag->id}}">{{$tag->name}}</option>
-                                        @endforeach
+                                    <select class="selectpicker categoryTag form-control" name="tag_id" data-live-search="true" title="Tag" data-size="2">
+                                            @foreach($tags as $key=>$tag)
+                                                <option value="{{ $tag->id }}" data-tokens="{{ $tag->name }}">{{ $tag->name }}</option>
+                                            @endforeach
                                     </select>
                                 </div>
 

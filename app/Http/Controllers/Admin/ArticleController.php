@@ -98,20 +98,20 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request): RedirectResponse
     {
         try {
-            $article = Article::create([
+            $article = Article::firstOrCreate([
+                'title' => $request->input('title'),
+            ],[
                 'author_id' => Auth::id(),
                 'category_id' => $request->input('category_id'),
-                'title' => $request->input('title'),
-                'thumb' => (string) $request->input('thumb'),
+                'thumb' => $request->input('thumb'),
                 'description' => $request->input('description'),
                 'content' => $request->input('content'),
                 'status' => $request->input('status'),
-                'created_at' => now(),
-                'updated_at' => now(),
+                'source' => 'https://youtube.com/',
             ]);
 
             if($request->input('tag_id') != 0){
-                DB::table('article_tag')->insert([
+                    DB::table('article_tag')->insert([
                     'article_id' => $article->id,
                     'tag_id' => $request->input('tag_id')
                 ]);

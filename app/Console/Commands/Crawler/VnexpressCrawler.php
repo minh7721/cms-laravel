@@ -3,26 +3,25 @@
 namespace App\Console\Commands\Crawler;
 
 use App\Libs\CrawlerHelper;
-use App\Models\Article;
-use App\Models\Category;
-use App\Models\Tag;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler as DomCrawler;
-use App\Models\Enums\ArticleStatus;
 use App\Services\ArticleManager;
 
 class VnexpressCrawler extends Command
 {
     protected $signature = 'crawl:vnexpress';
 
-    protected $homepage = '';
+    protected string $homepage = '';
 
+    /**
+     * @throws GuzzleException
+     */
     public function handle()
     {
-        $listName = [];
+//        $listName = [];
         $this->homepage = "https://vnexpress.net";
         $categories = $this->getCategories($this->homepage);
 
@@ -31,21 +30,27 @@ class VnexpressCrawler extends Command
             $pages = $this->getPaginate($category_url);
             $articles = $this->getArticles($category_url);
             $this->createArticle($articles);
-
-            for ($i = 0; $i < 20; $i++) {
-                foreach ($pages as $link) {
-                    if ($link != NULL) {
-                        $articles = $this->getArticles($link);
-                        $this->createArticle($articles);
+            try {
+                for ($i = 0; $i < 20; $i++) {
+                    foreach ($pages as $link) {
+                        if ($link != NULL) {
+                            $articles = $this->getArticles($link);
+                            $this->createArticle($articles);
+                        }
+                        $pages = $this->getPaginate($link);
                     }
-                    $pages = $this->getPaginate($link);
                 }
             }
-
+            catch (\Exception $err){
+                continue;
+            }
         }
     }
 
 
+    /**
+     * @throws GuzzleException
+     */
     protected function createArticle($articles)
     {
         foreach ($articles as $article_url) {
@@ -57,13 +62,19 @@ class VnexpressCrawler extends Command
                 $article = ArticleManager::store($article_url, $category->id, $data);
 
                 $tags = $this->getTags($article_url);
+
                 foreach ($tags as $tag) {
                     $tag_id = ArticleManager::getTag($tag);
+
                     DB::table('article_tag')->updateOrInsert([
+                        'article_id' => $article->id,
+                        'tag_id' => $tag_id->id
+                    ],[
                         'article_id' => $article->id,
                         'tag_id' => $tag_id->id
                     ]);
                 }
+
                 $this->info("Crawl : $article_url");
             } catch (\Exception $err) {
                 continue;
@@ -71,6 +82,9 @@ class VnexpressCrawler extends Command
         }
     }
 
+    /**
+     * @throws GuzzleException
+     */
     protected function getCategories(string $homepage): array
     {
         $html = (new Client([
@@ -89,6 +103,9 @@ class VnexpressCrawler extends Command
         }, $categories);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     protected function getPaginate(string $page): array
     {
         $html = (new Client([
@@ -107,6 +124,9 @@ class VnexpressCrawler extends Command
         }, $articles);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     protected function getArticles(string $url): array
     {
         $html = (new Client([
@@ -125,7 +145,10 @@ class VnexpressCrawler extends Command
         }, $articles);
     }
 
-    protected function getTags(string $url)
+    /**
+     * @throws GuzzleException
+     */
+    protected function getTags(string $url): array
     {
         $html = (new Client([
             'verify' => false,
@@ -140,6 +163,9 @@ class VnexpressCrawler extends Command
         return explode(', ', $tags[0]);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     protected function parseArticle(string $url): array
     {
         $html = (new Client([
@@ -156,7 +182,7 @@ class VnexpressCrawler extends Command
         $category = $dom_crawler->filter('.breadcrumb>li>a')->text();
         $description = $dom_crawler->filter('.description')->text();
 
-        $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler, $i) {
+        $content = $dom_crawler->filter('.fck_detail')->each(function (DomCrawler $parentCrawler) {
             return $parentCrawler->filter('.fig-picture img')->each(function (DomCrawler $node) use ($parentCrawler) {
                 $content = $parentCrawler->html();
                 $src = $node->attr('src');

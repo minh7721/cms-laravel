@@ -38,9 +38,9 @@
                                 <div class="form-group">
                                     <label>Tag</label>
                                     <select class="form-control" name="tag_id">
-                                        @foreach($tags as $tag)
-                                            <option value="{{$tag->id}}" {{ $article->tags[0]->id == $tag->id ? 'selected' : '' }}>{{$tag->name}}</option>
-                                        @endforeach
+                                            @foreach($tags as $tag)
+                                                <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                            @endforeach
                                     </select>
                                 </div>
 

@@ -27,7 +27,7 @@ class TagController extends Controller
     {
         $search = $request->search ?? '';
         if($search != ''){
-            $tags = Tag::search($search);
+            $tags = Tag::where('name', 'like', "%$search%");
         }
         else{
             $tags = Tag::query();
@@ -56,7 +56,10 @@ class TagController extends Controller
     public function store(TagRequest $request): RedirectResponse
     {
         try {
-            Tag::create([
+            $normalized = StringUtils::normalize($request->input('name'));
+            Tag::firstOrCreate([
+                'normalized' => $normalized
+            ],[
                 'name' => (string) $request->input('name'),
                 'slug' => Str::of($request->input('name'))->slug('-'),
                 'length' => StringUtils::wordsCount($request->input('name')),

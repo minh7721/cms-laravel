@@ -54,7 +54,6 @@ class ArticleManager
             'description' => $data['description'],
             'content' => $data['content'][0][0],
             'status' => ArticleStatus::PUBLISHED,
-            'source' => $source
         ]);
     }
 
