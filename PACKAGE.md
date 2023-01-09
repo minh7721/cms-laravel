@@ -110,3 +110,29 @@ $newPost = $post->replicate();
 [X] Crawl data: Tag check theo name, nếu có thì add vào, không có thì tạo tag mới 
 [X] Hoàn thiện Elasticsearch 
 [X] Sửa lại giao diện blog
+
+# Elasticsearch
+
+**Keyword**
+* Scout Driver
+* https://github.com/babenkoivan/elastic-scout-driver#installation
+* 
+
+
+[X] Lưu trữ file ở những đâu?
+[X] Amazon S3 là gì? (Object storage) -> cung cấp API cho mình sử dụng
+[X] Config để sử dụng s3 trong laravel
+[ ] Không sử dụng laravel thì có s3 AWS CLI
+[X] Môột số cách sử dụng trên AWS S3
+[X] Làm sao để push lên S3
+[X] Tạo Buckget
+[X] Tạo user trên S3 (Quyền cơ bản)
+[X] Lấy đường dẫn của ảnh để show lên giao diện
+[ ] S3 interface và S3 API ?
+
+
+# 19/10
+[X] Crawl data: Category check theo name, nếu có thì add vào, không có thì tạo category mới
+[X] Crawl data: Tag check theo name, nếu có thì add vào, không có thì tạo tag mới 
+[X] Hoàn thiện Elasticsearch 
+[X] Sửa lại giao diện blog

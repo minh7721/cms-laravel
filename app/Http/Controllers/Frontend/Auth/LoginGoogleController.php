@@ -14,6 +14,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginGoogleController extends Controller
 {
+    /**
+     * @throws \Exception
+     */
     public function index(){
         try {
 
@@ -44,7 +47,7 @@ class LoginGoogleController extends Controller
             }
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
 }

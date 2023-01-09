@@ -49,7 +49,7 @@ class LoginController extends Controller
         return 'backend';
     }
 
-    protected function guard()
+    protected function guard(Request $request)
     {
         return \Auth::guard('backend');
     }
@@ -59,9 +59,9 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-//    public function logout()
-//    {
-//        Auth::logout();
-//        return redirect()->route('admin.auth.login');
-//    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin.auth.login');
+    }
 }
